@@ -1,6 +1,7 @@
 # Team_Name
 
 **Schema Changes**
+
 -Change 'users' table to 'user'
 
 -Change 'roles' table to 'role'
