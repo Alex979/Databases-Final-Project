@@ -38,7 +38,7 @@ CREATE TABLE course (
     FOREIGN KEY (instructor_id) REFERENCES user(uid),
     FOREIGN KEY (prereq1_id) REFERENCES course(cid),
     FOREIGN KEY (prereq2_id) REFERENCES course(cid),
-    CONSTRAINT unique_course UNIQUE(dept, cnum)
+    CONSTRAINT unique_course UNIQUE(dept, courseNumber)
 );
 
 -- Create schedule table
