@@ -24,3 +24,10 @@
 
 -'formOne: id' and 'formOneValid: id' is now 'uid'
 
+
+**Upcoming Plan**
+
+-Creating a universal homepage with two buttons – Apply & Access Portal
+-New page for registration portal that displays an nice UI for accessing course list, transcript, 
+
+
