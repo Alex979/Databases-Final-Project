@@ -74,11 +74,6 @@ if(isset($_POST['signup'])){
         $pword2 = test_input($_POST["password2"]);
       }
       
-      //inserting
-      //INSERT INTO applicant (ssn,uname,fname,lname,address,email,phone) VALUES ("0123","bob","rob","robertson","somewherestreet","email","phone");
-
-      //INSERT INTO user VALUES("jake","pword","applicant");
-
 
       if($fieldError==0){
 
@@ -121,14 +116,18 @@ if(isset($_POST['signup'])){
         $query = "INSERT INTO applicant (uname,fname,lname,email,complete) VALUES ('$uname','$fname','$lname','$email',false)";
         $result = mysqli_query($conn,$query);
 
-        $query = "INSERT INTO user (uname,pword,role) VALUES ('$uname','$pword','applicant')";
-        $result = mysqli_query($conn,$query);
-
-        $query = "SELECT uid FROM applicant WHERE uname='$uname'";
+	$query = "SELECT uid FROM applicant WHERE uname='$uname'";
         $result = mysqli_query($conn,$query);
         $row = mysqli_fetch_assoc($result);
         $uid = $row['uid'];
 
+	$query = "INSERT INTO user (uid, username, password, fname, lname) VALUES ('$uid', '$uname', '$pword', '$fname', '$lname')";
+	$result = mysqli_query($conn, $query);
+
+        $query = "INSERT INTO role (uid, type) VALUES ('$uid','applicant')";
+        $result = mysqli_query($conn,$query);
+
+        
         $query = "INSERT INTO application_status (uid,ready_for_evaluation,admission_status,num_evaluations) VALUES ('$uid','no','incomplete',0)";
         $result = mysqli_query($conn,$query);
 
