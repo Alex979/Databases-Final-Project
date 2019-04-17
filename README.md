@@ -1,6 +1,6 @@
 # Team_Name
 
-**Schema Changes**
+**Integration Changes**
 
 -Change 'users' table to 'user'
 
