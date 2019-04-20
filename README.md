@@ -34,18 +34,42 @@
 
 **Systems Admin**
 
+* register.php (Ben)
+  * Creates a new user
+
 **Student**
 
+* viewStudentInfo.php (Ben)
+  * view student name, id, address, balance
+* transcript.php (Alex)
+  * view student transcript
+* editPersonalInfo.php (Ben)
+  * edit information from viewStudentInfo.php
+* applyToGraduate.php (Ben)
+  * apply to graduate after submitting a form 1
+* courseCatalog.php (Ben)
+  * view all courses
+
+  
 **Instructor**
 
 **Faculty Advisor**
 
-* viewStudentInfo.php (view student name, id, address, balance)
-* transcript.php (view student transcript)
-* viewForm1.php (view student form 1)
+* viewStudentInfo.php (Ben)
+  * view student name, id, address, balance
+* transcript.php (Alex)
+  * view student transcript
+* viewForm1.php (Ben)
+  * view student form 1
 
 **Grad Secretary**
 
 **Alumni**
 
+* viewStudentInfo.php (Ben)
+  * view student name, id, address, balance
+* transcript.php (Alex)
+  * view student transcript
+* editPersonalInfo.php (Ben)
+  * edit information from viewStudentInfo.php
 
