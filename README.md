@@ -30,4 +30,22 @@
 -Creating a universal homepage with two buttons – Apply & Access Portal
 -New page for registration portal that displays an nice UI for accessing course list, transcript, 
 
+# Dashboard Items
+
+**Systems Admin**
+
+**Student**
+
+**Instructor**
+
+**Faculty Advisor**
+
+* viewStudentInfo.php (view student name, id, address, balance)
+* transcript.php (view student transcript)
+* viewForm1.php (view student form 1)
+
+**Grad Secretary**
+
+**Alumni**
+
 
