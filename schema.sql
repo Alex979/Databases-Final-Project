@@ -71,7 +71,7 @@ create table formOne(
     courseNumber int,
     dept varchar(100),
     primary key(num),
-    foreign key(uid) references users(uid)
+    foreign key(uid) references user(uid)
 );
   
 create table formOneValid(
