@@ -47,14 +47,18 @@
   * edit information from viewStudentInfo.php
 * applyToGraduate.php (Ben)
   * apply to graduate after submitting a form 1
+  * graduated.php (Ben)
+    * informs the user that their application to graduate was a success
+  * noGraduate.php (Ben)
+    * informs user about apply to graduate errors
 * courseCatalog.php (Ben)
   * view all courses
 * form1.php (Ben)
   * form 1 submission
   * successSubmit.php (Ben)
-    * redirects
-  * 
-
+    * redirects user if submission is a success
+  * form1Error.php (Ben)
+    * informs user about form 1 submission errors
   
 **Instructor**
 
@@ -68,6 +72,13 @@
   * view student form 1
 
 **Grad Secretary**
+
+* assignAdvisor.php (Ben)
+  * assign a student to a faculty advisor
+* clearedGrad.php (Ben)
+  * shows a list of students that are cleared to graduate
+* viewAllStudents.php (Ben)
+  * shows a list of all students
 
 **Alumni**
 
