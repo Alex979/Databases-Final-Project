@@ -49,6 +49,11 @@
   * apply to graduate after submitting a form 1
 * courseCatalog.php (Ben)
   * view all courses
+* form1.php (Ben)
+  * form 1 submission
+  * successSubmit.php (Ben)
+   * redirects
+  * 
 
   
 **Instructor**
