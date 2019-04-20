@@ -1,3 +1,21 @@
+SET foreign_key_checks = 0;
+DROP TABLE IF EXISTS  applicant;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS application_info;
+DROP TABLE IF EXISTS subject_score;
+DROP TABLE IF EXISTS application_status;
+DROP TABLE IF EXISTS rec_letters;
+DROP TABLE IF EXISTS faculty_evaluation;
+DROP TABLE IF EXISTS faculty;
+DROP TABLE IF EXISTS transcript;
+DROP TABLE IF EXISTS role;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS schedule;
+DROP TABLE IF EXISTS enrolls;
+DROP TABLE IF EXISTS formOne;
+DROP TABLE IF EXISTS formOneValid;
+SET foreign_key_checks = 1;
+
 -- Create user table
 CREATE TABLE user (
     uid INT,
