@@ -89,13 +89,13 @@ th, td {
 		{
 			$firstname = $student_row["fname"];
 			$lastname = $student_row["lname"];
-      $email = $student_row["email"];
-      $address = $student_row["address"];
-      $balance = $student_row["balance"];
+      			$email = $student_row["email"];
+      			$address = $student_row["address"];
+      			$balance = $student_row["balance"];
 		}
 	}
 	
-	echo 'Name: '.$firstname.' '.$lastname.'<br>';
+  echo 'Name: '.$firstname.' '.$lastname.'<br>';
   echo 'University ID: '.$id.'<br>';
   echo 'Email: '.$email.'<br>';
   echo 'Address: '.$address.'<br>';
