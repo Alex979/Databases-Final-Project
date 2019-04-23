@@ -57,7 +57,7 @@
   echo '<form action="student.php" method = "post"></form>';
   echo '<br><br><br>';
 
-  $id = $_SESSION["id"];
+  $uid = $_SESSION["uid"];
   $role = $_SESSION["role"];
 
 switch ($role) {
@@ -79,7 +79,7 @@ switch ($role) {
 	}
 	
 	echo '<form action="'.$destination.'.php" method = "post">';
-        echo '<input type="hidden" name="id" value = "'.$id.'"/>';
+        echo '<input type="hidden" name="id" value = "'.$uid.'"/>';
 	echo '<input type="hidden" name="permission" value = 1/>';
         echo '<button class="button" style="vertical-align:middle"><span>Return to Home Page</span></button>';
   	echo '</form>';
