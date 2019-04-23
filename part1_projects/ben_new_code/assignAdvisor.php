@@ -1,51 +1,6 @@
 <html>
 <head>
-	<style>
-		.button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #000000;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 20px;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-.button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-.button:hover span {
-  padding-right: 25px;
-}
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-th, td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-	</style>
+
  <title>GWU Advising</title>
   <link rel="stylesheet" href="style.css">
 <link rel="icon" href="http://www.gwrha.com/uploads/1/7/9/9/17997469/gw_atx_4cp_pos.png">
@@ -62,9 +17,9 @@ th, td {
 	
 	/* Create connection */
 	$servername = "localhost";
-	$username = "TeamEighteen";
-	$password = "DatabasePassword1!";
-	$dbname = "TeamEighteen";	
+	$username = "Team_Name";
+	$password = "p@ssW0RD";
+	$dbname = "Team_Name";	
 	
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
 		  
@@ -73,7 +28,7 @@ th, td {
 		die("Connection failed: ".mysqli_connect_error());
 	}
 	
-	$query = "SELECT * FROM roles r, users u WHERE r.id = u.id AND r.role = 'student' AND u.advisorid IS NULL";
+	$query = "SELECT * FROM role r, user u WHERE r.uid = u.uid AND r.type = 'student' AND u.advisorid IS NULL";
 	$result = mysqli_query($conn,$query);
 	if (mysqli_num_rows($result) > 0)
 	{
@@ -84,7 +39,7 @@ th, td {
 			echo '<table style="width50%" border="1">';
    
       			echo '<tr><th>Name</th>';
-			echo '<th>ID</th>';
+			echo '<th>UID</th>';
 			echo '<th>Select Advisor</th>';
 			echo '<th>Action</th></tr>';
 			
@@ -94,24 +49,24 @@ th, td {
 			{	
 				$fname = $row["fname"];
 				$lname = $row["lname"];
-				$id = $row["id"];
+				$uid = $row["uid"];
 				
 				echo '<tr><td>'.$fname.' '.$lname.'</td>';
 				
       				echo '<td>';
-				echo $id;
+				echo $uid;
 				echo '</td>';
 				
 				echo '<td>';	
 				echo '<form action="advisorAssignments.php" method="post">';
 				echo '<select name="advisorid">';
-					$advisor_query = "SELECT * FROM roles r, users u WHERE r.id = u.id AND r.role = 'advisor'";
+					$advisor_query = "SELECT * FROM role r, user u WHERE r.uid = u.uid AND r.type = 'advisor'";
 					$advisor_result = mysqli_query($conn,$advisor_query);
 					if (mysqli_num_rows($advisor_result) > 0)
 					{
 						while ($row = mysqli_fetch_assoc($advisor_result))
 						{
-							$advisor_id = $row["id"];
+							$advisor_id = $row["uid"];
 							$advisor_fname = $row["fname"];
 							$advisor_lname = $row["lname"];
   							echo '<option value="'.$advisor_id.'">'.$advisor_fname.' '.$advisor_lname.'</option>';
@@ -121,7 +76,7 @@ th, td {
 				echo '</td>';
 				
 				echo '<td>';
-				echo '<input type="hidden" name="id" value = "'.$id.'">';
+				echo '<input type="hidden" name="uid" value = "'.$uid.'">';
 				echo '<input type="hidden" name="permission" value = 1/>';
 				echo '<input type="hidden" name="newAssignment" value = 1/>';
     				echo '<button type="submit">Assign</button>';
