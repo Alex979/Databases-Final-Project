@@ -74,7 +74,7 @@
 				
         
         			echo '<td><form action="gradSuccess.php" method = "post">';
-				echo '<input type="hidden" name="id" value = "'.$student_id.'">';
+				echo '<input type="hidden" name="uid" value = "'.$student_id.'">';
 				echo '<input type="hidden" name="permission" value = 1/>';
 				echo '<input type="hidden" name="newGrad" value = 1/>';
     				echo '<button type="submit">Graduate</button>';
