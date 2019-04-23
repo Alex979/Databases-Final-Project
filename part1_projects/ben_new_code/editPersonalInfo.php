@@ -19,9 +19,9 @@
 		header('Location: permissionDenied.html');
 	}
         $servername="localhost";	
-	$username = "TeamEighteen";
-	$password = "DatabasePassword1!";
-	$dbname = "TeamEighteen";		
+	$username = "Team_Name";
+	$password = "p@ssW0RD";
+	$dbname = "Team_Name";		
         $conn=mysqli_connect($servername,$username,$password, $dbname);	
 	if (!$conn){	
 		   die("Connection failed:".mysqli_connect_error());	
