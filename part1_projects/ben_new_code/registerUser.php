@@ -15,9 +15,9 @@
 	
      
 	    $servername = "localhost";
-	    $uname = "TeamEighteen";
-	    $pword = "DatabasePassword1!";
-	    $dbname = "TeamEighteen";
+	    $uname = "Team_Name";
+	    $pword = "p@ssW0RD";
+	    $dbname = "Team_Name";
       // define connection variable
       $conn = mysqli_connect($servername, $uname, $pword, $dbname);
       // Check connection
@@ -30,14 +30,14 @@
 	$fname = $_POST['fname'];
   	$lname = $_POST['lname'];
    	$email = $_POST['email'];
-   	$id = $_POST['id'];
+   	$uid = $_POST['uid'];
    	$username = $_POST['username'];
   	$password = $_POST['password'];
    	$address = $_POST['address'];
    	$role = $_POST['role'];
 	
 		
-	$id_query = "SELECT * FROM users WHERE id LIKE '%".$id."%'";
+	$id_query = "SELECT * FROM user WHERE uid LIKE '%".$uid."%'";
 	$id_result = mysqli_query($conn,$id_query);
 	if (mysqli_num_rows($id_result) > 0)
 	{
@@ -45,7 +45,7 @@
 		$noReg = 1;
 	}
 	
-	$username_query = "SELECT * FROM users WHERE username LIKE '%".$username."%'";
+	$username_query = "SELECT * FROM user WHERE username LIKE '%".$username."%'";
 	$username_result = mysqli_query($conn,$username_query);
 	if (mysqli_num_rows($username_result) > 0)
 	{
@@ -58,10 +58,10 @@
 		if($noReg != 1)
 		{
 			echo 'time to register';
-     		 	$query = "INSERT INTO users (id, email, fname, lname, username, password, address, balance) VALUES ('$id', '$email', '$fname', '$lname', '$username', '$password', '$address', 0.00)";
+     		 	$query = "INSERT INTO users (uid, email, fname, lname, username, password, city, balance) VALUES ('$uid', '$email', '$fname', '$lname', '$username', '$password', '$address', 0.00)";
       			$result = mysqli_query($conn, $query);
       			if($result){
-				$role_query = "INSERT INTO roles (id, role, reviewForm, approveThesis, clearedToGrad) VALUES ('$id', '$role', 0, 0, 0)";
+				$role_query = "INSERT INTO role (uid, type) VALUES ('$uid', '$role')";
         			$role_result = mysqli_query($conn, $role_query);
         			header('Location: sysadmin.php');
 				echo '<br>';
