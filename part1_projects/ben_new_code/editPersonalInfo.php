@@ -14,10 +14,7 @@
   $lname = $_POST["lname"]; 
   $email =$_POST["email"]; 
   $address = $_POST["address"]; 
-	if (($role != "student") && ($role != "alumni"))
-	{
-		header('Location: permissionDenied.html');
-	}
+
         $servername="localhost";	
 	$username = "Team_Name";
 	$password = "p@ssW0RD";
