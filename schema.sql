@@ -31,6 +31,7 @@ CREATE TABLE user (
     reviewForm int,
     approveThesis int,
     clearedToGrad int,
+    advisorid int,
     PRIMARY KEY (uid)
 );
 
