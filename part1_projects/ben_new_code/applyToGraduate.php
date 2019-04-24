@@ -43,7 +43,10 @@
       }
       $numformOne = mysqli_num_rows($result);
       $y = 0;
-      $queryTaken = "SELECT * FROM taken WHERE id = '$uid'";
+      $queryTaken = "SELECT uid, schedule.sid, course.cid, dept, courseNumber
+		FROM enrolls, schedule, course 
+			WHERE schedule.sid = enrolls.sid 
+				AND course.cid = schedule.cid AND enrolls.uid = '$uid'";
       $resultTaken = mysqli_query($conn, $queryTaken) or die("Bad Query: $queryTaken");
       while($row = mysqli_fetch_array($resultTaken)){
         $deptTaken[$y] = $row['dept'];
@@ -59,9 +62,10 @@
         $compBool = 1;
       }
       for($x = 0; $x < 12; $x++){
-        $query2 = "SELECT * FROM taken
-                    WHERE dept = '$deptArray[$x]'
-                      AND courseNumber = '$numArray[$x]'";
+	$query2 = "SELECT uid, schedule.sid, course.cid, dept, courseNumber
+		FROM enrolls, schedule, course 
+			WHERE schedule.sid=enrolls.sid 
+				AND course.cid=schedule.cid AND enrolls.uid = '$uid' AND dept = '$deptArray[$x]' AND courseNumber = '$numArray[$x]'";    
         $result2 = mysqli_query($conn, $query2) or die("Bad Query: $query2");
         while($row = mysqli_fetch_array($result2)){
           $gradeArray[$x] = $row['grade'];
@@ -105,12 +109,15 @@
           }
         }
         $numClasses = 0;
-        $query3 = "SELECT * FROM taken WHERE id = '$id'";
+        $query3 = "SELECT uid, schedule.sid, course.cid, dept, courseNumber
+		FROM enrolls, schedule, course 
+			WHERE schedule.sid = enrolls.sid 
+				AND course.cid = schedule.cid AND enrolls.uid = '$uid'";
         $result3 = mysqli_query($conn, $query3) or die("Bad Query: $query3");
         $numClasses = mysqli_num_rows($result3);
         $totalGPA = $totalGPA / $creditCount;
         if($error != 1 && $totalGPA >= 3.0 && $failCounter <= 2 && $compBool == 1){
-          $query4 = "UPDATE roles SET clearedToGrad = 1 WHERE id = '$id'";
+          $query4 = "UPDATE user SET clearedToGrad = 1 WHERE uid = '$uid'";
           $result4 = mysqli_query($conn, $query4) or die("Bad Query: $query4");
           header("Location: graduated.php");
         }

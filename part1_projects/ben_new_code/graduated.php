@@ -10,7 +10,7 @@
   <h1>GWU Advising</h1>
   <p>
     Your application to graduate has successfully been submitted!
-    <a href="student.php">Go Back</a><br>
+    <a href="../FlatEarthSociety/public_html/dashboard.php">Go Back</a><br>
   </p>
 </body>
 </html>
