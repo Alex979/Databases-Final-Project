@@ -13,7 +13,11 @@
   $fname = $_POST["fname"]; 
   $lname = $_POST["lname"]; 
   $email =$_POST["email"]; 
-  $address = $_POST["address"]; 
+  $street = $_POST["street"]; 
+  $city = $_POST["city"]; 
+  $state = $_POST["state"]; 
+  $zip = $_POST["zip"]; 
+	
 
         $servername="localhost";	
 	$username = "Team_Name";
@@ -38,8 +42,20 @@
 		  $query3 = "UPDATE user SET email='$email' WHERE uid='$uid'";
 		  $result3=mysqli_query($conn,$query3); 
 		}
-		if (isset($address)){
-		  $query4 = "UPDATE user SET city='$address' WHERE uid='$uid'";
+		if (isset($street)){
+		  $query4 = "UPDATE user SET street='$street' WHERE uid='$uid'";
+		  $result4=mysqli_query($conn,$query4); 
+		}
+		if (isset($city)){
+		  $query4 = "UPDATE user SET city='$city' WHERE uid='$uid'";
+		  $result4=mysqli_query($conn,$query4); 
+		}
+		if (isset($state)){
+		  $query4 = "UPDATE user SET state='$state' WHERE uid='$uid'";
+		  $result4=mysqli_query($conn,$query4); 
+		}
+		if (isset($zip)){
+		  $query4 = "UPDATE user SET zip='$zip' WHERE uid='$uid'";
 		  $result4=mysqli_query($conn,$query4); 
 		}
 		header("Location: ../FlatEarthSociety/public_html/info.php");
@@ -53,7 +69,10 @@ echo '<form action="editPersonalInfo.php" method="post"><b>Update: </b><br><br>'
     echo '<b>First Name: </b> <br><input type="text" ID="fname" name="fname"><br>';
     echo '<b>Last Name: </b> <br><input type="text" ID="lname" name="lname"><br>';
     echo '<b>Email: </b> <br><input type="text" ID="email" name="email"><br>';
-    echo '<b>Address: </b> <br><input type="text" ID="address" name="address" ><br><br>';
+    echo '<b>Street: </b> <br><input type="text" ID="street" name="street" ><br>';
+    echo '<b>City: </b> <br><input type="text" ID="city" name="city" ><br>';
+    echo '<b>State: </b> <br><input type="text" ID="state" name="state" ><br>';
+    echo '<b>Zipcode: </b> <br><input type="text" ID="zip" name="zip" ><br><br>';
     echo '<button class="button" style="vertical-align:middle"><span>Update</span></button>';
   echo '</form>';
 
@@ -75,7 +94,7 @@ echo '<form action="editPersonalInfo.php" method="post"><b>Update: </b><br><br>'
         	break;
 	}
 	
-	echo '<form action="../FlatEarthSociety/public_html/info.php" method = "post">';
+	echo '<form action="../FlatEarthSociety/public_html/dashboard.php" method = "post">';
         echo '<input type="hidden" name="uid" value = "'.$uid.'"/>';
 	echo '<input type="hidden" name="permission" value = 1/>';
         echo '<button class="button" style="vertical-align:middle"><span>Return to Home Page</span></button>';
