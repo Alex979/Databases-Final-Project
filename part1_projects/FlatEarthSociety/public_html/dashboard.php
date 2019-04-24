@@ -15,7 +15,8 @@ if (!$conn) {
 }
 
 function create_link($title, $description, $link_text, $url) {
-    echo "<div class=\"card\" style=\"box-shadow: 0 0 15px rgba(0, 0, 0, 0.1)\">
+    echo "<div class=\"col-sm-6 mb-3\">
+            <div class=\"card\" style=\"box-shadow: 0 0 15px rgba(0, 0, 0, 0.1)\">
                 <div class=\"card-body\">
                     <h5 class=\"card-title text-primary\">$title</h5>
                     <p class=\"card-text\">$description</p>
@@ -23,7 +24,8 @@ function create_link($title, $description, $link_text, $url) {
                 <div class=\"card-footer\">
                     <a href=\"$url\" class=\"btn btn-primary\">$link_text</a>
                 </div>
-            </div>";
+            </div>
+        </div>";
 }
 ?>
 <!DOCTYPE html>
@@ -31,7 +33,7 @@ function create_link($title, $description, $link_text, $url) {
 
 <head>
 
-    <title>Portal</title>
+    <title>User Dashboard</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -48,9 +50,9 @@ function create_link($title, $description, $link_text, $url) {
     <?php
     include("navbar.php");
     ?>
-    <div class="container mt-3">
+    <div class="container-fluid mt-4">
+        <h1 class="text-dark">User Dashboard</h1>
         <div class="row">
-            <div class="card-deck">
                 <?php
                 if (!empty($_SESSION["role"])) {
                     if (in_array("student", $_SESSION["role"])) {
@@ -69,7 +71,7 @@ function create_link($title, $description, $link_text, $url) {
                     create_link("Info", "View personal information and logout.", "Go to info page", "info.php");
                 }
                 ?>
-            </div>
+
         </div>
     </div>
 
