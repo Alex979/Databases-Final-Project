@@ -16,6 +16,7 @@ DROP TABLE IF EXISTS formOne;
 DROP TABLE IF EXISTS formOneValid;
 SET foreign_key_checks = 1;
 
+
 -- Create user table
 CREATE TABLE user (
     uid INT,
@@ -53,10 +54,10 @@ CREATE TABLE course (
     prereq1_id INT,
     prereq2_id INT,
     PRIMARY KEY (cid),
-    -- Uncomment when 'user' table is created
-    FOREIGN KEY (instructor_id) REFERENCES user(uid),
-    FOREIGN KEY (prereq1_id) REFERENCES course(cid),
-    FOREIGN KEY (prereq2_id) REFERENCES course(cid),
+    --  Uncomment when 'user' table is created
+     FOREIGN KEY (instructor_id) REFERENCES user(uid),
+     FOREIGN KEY (prereq1_id) REFERENCES course(cid),
+     FOREIGN KEY (prereq2_id) REFERENCES course(cid),
     CONSTRAINT unique_course UNIQUE(dept, courseNumber)
 );
 
@@ -205,3 +206,4 @@ source populate_role.sql;
 source populate_courses.sql;
 source populate_schedule.sql;
 source populate_enrolls.sql;
+

@@ -8,39 +8,57 @@
 </head>
 <?php
   session_start();
-  $uid = $_SESSION["uid"];
+  $uid = $_SESSION["user_id"];
   $role = $_SESSION["role"];
   $fname = $_POST["fname"]; 
   $lname = $_POST["lname"]; 
   $email =$_POST["email"]; 
-  $address = $_POST["address"]; 
-	if (($role != "student") && ($role != "alumni"))
-	{
-		header('Location: permissionDenied.html');
-	}
+  $street = $_POST["street"]; 
+  $city = $_POST["city"]; 
+  $state = $_POST["state"]; 
+  $zip = $_POST["zip"]; 
+	
+
         $servername="localhost";	
 	$username = "Team_Name";
 	$password = "p@ssW0RD";
-	$dbname = "Team_Name";		
+	$dbname = "Team_Name";
         $conn=mysqli_connect($servername,$username,$password, $dbname);	
 	if (!$conn){	
 		   die("Connection failed:".mysqli_connect_error());	
-	}		
-	if (isset($fname)){
-	  $query = "UPDATE user SET fname='$fname' WHERE uid='$uid'";
-	  $result=mysqli_query($conn,$query); 
 	}
-	if (isset($lname)){
-	  $query2 = "UPDATE user SET lname='$lname' WHERE uid='$uid'";
-	  $result2=mysqli_query($conn,$query2); 
-	}
-	if (isset($email)){
-	  $query3 = "UPDATE user SET email='$email' WHERE uid='$uid'";
-	  $result3=mysqli_query($conn,$query3); 
-	}
-	if (isset($address)){
-	  $query4 = "UPDATE user SET city='$address' WHERE uid='$uid'";
-	  $result4=mysqli_query($conn,$query4); 
+	
+	if($_SERVER['REQUEST_METHOD'] == 'POST'){
+		if (isset($fname)){
+		  $query = "UPDATE user SET fname='$fname' WHERE uid='$uid'";
+		  $result=mysqli_query($conn,$query); 
+
+		}
+		if (isset($lname)){
+		  $query2 = "UPDATE user SET lname='$lname' WHERE uid='$uid'";
+		  $result2=mysqli_query($conn,$query2); 
+		}
+		if (isset($email)){
+		  $query3 = "UPDATE user SET email='$email' WHERE uid='$uid'";
+		  $result3=mysqli_query($conn,$query3); 
+		}
+		if (isset($street)){
+		  $query4 = "UPDATE user SET street='$street' WHERE uid='$uid'";
+		  $result4=mysqli_query($conn,$query4); 
+		}
+		if (isset($city)){
+		  $query4 = "UPDATE user SET city='$city' WHERE uid='$uid'";
+		  $result4=mysqli_query($conn,$query4); 
+		}
+		if (isset($state)){
+		  $query4 = "UPDATE user SET state='$state' WHERE uid='$uid'";
+		  $result4=mysqli_query($conn,$query4); 
+		}
+		if (isset($zip)){
+		  $query4 = "UPDATE user SET zip='$zip' WHERE uid='$uid'";
+		  $result4=mysqli_query($conn,$query4); 
+		}
+		header("Location: ../FlatEarthSociety/public_html/info.php");
 	}
         mysqli_close($conn);
   ?>
@@ -51,7 +69,10 @@ echo '<form action="editPersonalInfo.php" method="post"><b>Update: </b><br><br>'
     echo '<b>First Name: </b> <br><input type="text" ID="fname" name="fname"><br>';
     echo '<b>Last Name: </b> <br><input type="text" ID="lname" name="lname"><br>';
     echo '<b>Email: </b> <br><input type="text" ID="email" name="email"><br>';
-    echo '<b>Address: </b> <br><input type="text" ID="address" name="address" ><br><br>';
+    echo '<b>Street: </b> <br><input type="text" ID="street" name="street" ><br>';
+    echo '<b>City: </b> <br><input type="text" ID="city" name="city" ><br>';
+    echo '<b>State: </b> <br><input type="text" ID="state" name="state" ><br>';
+    echo '<b>Zipcode: </b> <br><input type="text" ID="zip" name="zip" ><br><br>';
     echo '<button class="button" style="vertical-align:middle"><span>Update</span></button>';
   echo '</form>';
 
@@ -73,8 +94,8 @@ echo '<form action="editPersonalInfo.php" method="post"><b>Update: </b><br><br>'
         	break;
 	}
 	
-	echo '<form action="'.$destination.'.php" method = "post">';
-        echo '<input type="hidden" name="id" value = "'.$id.'"/>';
+	echo '<form action="../FlatEarthSociety/public_html/dashboard.php" method = "post">';
+        echo '<input type="hidden" name="uid" value = "'.$uid.'"/>';
 	echo '<input type="hidden" name="permission" value = 1/>';
         echo '<button class="button" style="vertical-align:middle"><span>Return to Home Page</span></button>';
   	echo '</form>';

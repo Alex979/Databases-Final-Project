@@ -808,8 +808,8 @@
                     <!--SUPPLEMENTAL-->
                     <h6 class="m-0 font-weight-bold text-primary">Supplemental</h6>
                     <div class="form-group">
-                      <label for="priorWork">Areas of Interest</label><span class="text-danger"><?php echo  $interestErr;?></span>
-                      <textarea class="form-control" id="interests" name="interest" rows="2" maxlength="20"></textarea>
+                      <label for="interests">Areas of Interest</label><span class="text-danger"><?php echo  $interestErr;?></span>
+                      <textarea class="form-control" id="interests" name="interests" rows="2" maxlength="20"></textarea>
                     </div>
                     <div class="form-group">
                       <label for="priorWork">Prior Work Experience</label><span class="text-danger"><?php echo  $priorWorkErr;?></span>

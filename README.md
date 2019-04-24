@@ -1,6 +1,6 @@
 # URL
 
-<a href="http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name"> Website </a>
+<a href="http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html"> Website </a>
 
 # Team_Name
 
