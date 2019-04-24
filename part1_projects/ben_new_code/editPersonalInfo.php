@@ -13,7 +13,11 @@
   $fname = $_POST["fname"]; 
   $lname = $_POST["lname"]; 
   $email =$_POST["email"]; 
-  $address = $_POST["address"]; 
+  $street = $_POST["street"]; 
+  $city = $_POST["city"]; 
+  $state = $_POST["state"]; 
+  $zip = $_POST["zip"]; 
+	
 
         $servername="localhost";	
 	$username = "Team_Name";
@@ -66,9 +70,9 @@ echo '<form action="editPersonalInfo.php" method="post"><b>Update: </b><br><br>'
     echo '<b>Last Name: </b> <br><input type="text" ID="lname" name="lname"><br>';
     echo '<b>Email: </b> <br><input type="text" ID="email" name="email"><br>';
     echo '<b>Street: </b> <br><input type="text" ID="street" name="street" ><br>';
-    echo '<b>City: </b> <br><input type="text" ID="street" name="city" ><br>';
-    echo '<b>State: </b> <br><input type="text" ID="street" name="state" ><br>';
-    echo '<b>Zipcode: </b> <br><input type="text" ID="street" name="zip" ><br><br>';
+    echo '<b>City: </b> <br><input type="text" ID="city" name="city" ><br>';
+    echo '<b>State: </b> <br><input type="text" ID="state" name="state" ><br>';
+    echo '<b>Zipcode: </b> <br><input type="text" ID="zip" name="zip" ><br><br>';
     echo '<button class="button" style="vertical-align:middle"><span>Update</span></button>';
   echo '</form>';
 
