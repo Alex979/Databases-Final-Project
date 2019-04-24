@@ -12,8 +12,12 @@ $uid = $_SESSION["user_id"];
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 
 
@@ -22,9 +26,9 @@ $uid = $_SESSION["user_id"];
     <?php
 
     $servername = "127.0.0.1";
-    $username = "FlatEarthSociety";
-    $password = "N@S@l1es";
-    $dbname = "FlatEarthSociety";
+    $username = "Team_Name";
+    $password = "p@ssW0RD";
+    $dbname = "Team_Name";
 
 
     include "navbar.php";
@@ -38,7 +42,7 @@ $uid = $_SESSION["user_id"];
     $scheduleid = $_POST["sid"];
     ?>
 
-    <div class="main-container">
+    <div class="container pt-3">
 
         <!--
         <p>Student Grades:</p>
@@ -62,7 +66,7 @@ $uid = $_SESSION["user_id"];
         $query = "select enrolls.uid,fname,lname,grade from enrolls,user where enrolls.sid='$scheduleid' and enrolls.uid=user.uid";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {
-            echo "<table>
+            echo "<table class=\"table\">
 
                         <tr>
                                 <th>StudentID</th>
@@ -106,11 +110,13 @@ $uid = $_SESSION["user_id"];
                 if ($row["grade"] == null){ 
                 echo "<td> 
                 
-                                <form method=\"post\" action=\"submitGrade.php\">
-                                <input type=\"text\" size=\"5\" name=\"gradeinput\">
+                                <form class=\"form-inline\" method=\"post\" action=\"submitGrade.php\">
+                                <div class=\"form-group\">
+                                <input class=\"form-control\" type=\"text\" size=\"5\" name=\"gradeinput\">
+                                </div>
                                 <input type=\"hidden\" name=\"stid\" value=\"" . $row["uid"] . "\">
                                 <input type=\"hidden\" name=\"scid\" value=\"$scheduleid\">
-                                <button type=\"submit\">Submit</button>
+                                <button class=\"btn btn-primary ml-3\" type=\"submit\">Submit</button>
                                 </form>
                         </td>";
                 }

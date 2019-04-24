@@ -7,9 +7,9 @@ if (empty($_SESSION["user_id"])) {
 $uid = $_SESSION["user_id"];
 
 $servername = "127.0.0.1";
-$username = "FlatEarthSociety";
-$password = "N@S@l1es";
-$dbname = "FlatEarthSociety";
+$username = "Team_Name";
+$password = "p@ssW0RD";
+$dbname = "Team_Name";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -27,19 +27,23 @@ if (!$conn) {
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 
 <body>
     <?php
     include "navbar.php";
     ?>
-    <div class="main-container">
-        <h1>Transcript</h1>
+    <div class="container pt-3">
+        <h1 class="text-primary">Transcript</h1>
         <?php
         // Show the users currently enrolled courses and their grade if entered
-        $query = "SELECT uid, schedule.sid, credits, section, term, day, start, end, is_current, grade, course.cid, dept, cnum, title FROM enrolls, schedule, course WHERE schedule.sid=enrolls.sid AND course.cid=schedule.cid AND enrolls.uid=" . $uid . " ORDER BY term";
+        $query = "SELECT uid, schedule.sid, credits, section, term, day, start, end, is_current, grade, course.cid, dept, courseNumber, title FROM enrolls, schedule, course WHERE schedule.sid=enrolls.sid AND course.cid=schedule.cid AND enrolls.uid=" . $uid . " ORDER BY term";
         $result = mysqli_query($conn, $query);
 
         $gpa = 0.0;
@@ -47,7 +51,7 @@ if (!$conn) {
 
         // Generate a table of all the enrolled courses
         if (mysqli_num_rows($result) > 0) {
-            echo "<table>
+            echo "<table class=\"table\">
                 <tr>
                     <th>Course</th>
                     <th>Title</th>
@@ -62,7 +66,7 @@ if (!$conn) {
                 </tr>";
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
-                echo "<td><a href=\"transcriptCourse.php?cid=" . $row["cid"] . "\">" . $row["dept"] . " " . $row["cnum"] . "</a></th>";
+                echo "<td><a href=\"transcriptCourse.php?cid=" . $row["cid"] . "\">" . $row["dept"] . " " . $row["courseNumber"] . "</a></th>";
                 echo "<td>" . $row["title"] . "</td>";
                 echo "<td>" . $row["section"] . "</td>";
                 echo "<td>" . $row["term"] . "</td>";
@@ -100,12 +104,12 @@ if (!$conn) {
                 } else {
                     echo "<td>IP</td>";
                 }
-                // Allow dropping so long as this is a current semester course
-                if($row["is_current"] == 1) {
+                // Allow dropping so long as this course has not already been graded
+                if($row["grade"] === null) {
                     echo "<td>
                             <form method=\"post\" action=\"drop.php\">
                                 <input type=\"hidden\" name=\"sid\" value=\"" . $row["sid"] . "\">
-                                <button class=\"danger-button\" type=\"submit\">Drop</button>
+                                <button class=\"btn btn-danger\" type=\"submit\">Drop</button>
                             </form>
                         </td>";
                 } else {
@@ -118,7 +122,9 @@ if (!$conn) {
             // Finalize gpa calcualtion
             if($gpa > 0)
                 $gpa /= $credit_hours;
-            echo "<h1>Current GPA: " . $gpa . "</h1>";
+            echo "<h1 class=\"text-dark\">Current GPA: " . $gpa . "</h1>";
+        } else {
+            echo "You have not enrolled in any courses.";
         }
         ?>
     </div>

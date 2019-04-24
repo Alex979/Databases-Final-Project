@@ -32,6 +32,7 @@ CREATE TABLE user (
     reviewForm int,
     approveThesis int,
     clearedToGrad int,
+    advisorid int,
     PRIMARY KEY (uid)
 );
 
@@ -58,6 +59,11 @@ CREATE TABLE course (
      FOREIGN KEY (prereq1_id) REFERENCES course(cid),
      FOREIGN KEY (prereq2_id) REFERENCES course(cid)
     -- CONSTRAINT unique_course UNIQUE(dept, cnum)
+    -- Uncomment when 'user' table is created
+    FOREIGN KEY (instructor_id) REFERENCES user(uid),
+    FOREIGN KEY (prereq1_id) REFERENCES course(cid),
+    FOREIGN KEY (prereq2_id) REFERENCES course(cid),
+    CONSTRAINT unique_course UNIQUE(dept, courseNumber)
 );
 
 -- Create schedule table
@@ -90,7 +96,7 @@ create table formOne(
     courseNumber int,
     dept varchar(100),
     primary key(num),
-    foreign key(uid) references users(uid)
+    foreign key(uid) references user(uid)
 );
   
 create table formOneValid(
@@ -199,3 +205,10 @@ CREATE TABLE faculty_evaluation(
     primary key(uid,fid),
     foreign key(fid) references faculty(fid)
 );
+
+source populate_users.sql;
+source populate_role.sql;
+source populate_courses.sql;
+source populate_schedule.sql;
+source populate_enrolls.sql;
+

@@ -59,7 +59,7 @@ if(isset($_POST['login'])){
                 $_SESSION['fid']=$fid;
               }
  
-              header('location:Dashboard.php');exit;
+              header('location:../../FlatEarthSociety/public_html/dashboard.php');exit;
             }
           }
           //if we get here the user doesn't exist in database
