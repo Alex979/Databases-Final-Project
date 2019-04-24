@@ -9,14 +9,6 @@
 <h1>Assign an advisor to a student</h1>
  
  <?php
-  $permission = 0;
-	$permission = $_POST["permission"];
-	if ($permission == 0)
-	{
-		header('Location: permissionDenied.html');
-	}
-	
-	
 	
 	/* Create connection */
 	$servername = "localhost";
