@@ -39,6 +39,7 @@
 	  $query4 = "UPDATE user SET city='$address' WHERE uid='$uid'";
 	  $result4=mysqli_query($conn,$query4); 
 	}
+	header("Location: ../FlatEarthSociety/public_html/info.php");
         mysqli_close($conn);
   ?>
 <body>
