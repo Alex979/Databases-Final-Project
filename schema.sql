@@ -57,12 +57,7 @@ CREATE TABLE course (
     --  Uncomment when 'user' table is created
      FOREIGN KEY (instructor_id) REFERENCES user(uid),
      FOREIGN KEY (prereq1_id) REFERENCES course(cid),
-     FOREIGN KEY (prereq2_id) REFERENCES course(cid)
-    -- CONSTRAINT unique_course UNIQUE(dept, cnum)
-    -- Uncomment when 'user' table is created
-    FOREIGN KEY (instructor_id) REFERENCES user(uid),
-    FOREIGN KEY (prereq1_id) REFERENCES course(cid),
-    FOREIGN KEY (prereq2_id) REFERENCES course(cid),
+     FOREIGN KEY (prereq2_id) REFERENCES course(cid),
     CONSTRAINT unique_course UNIQUE(dept, courseNumber)
 );
 
