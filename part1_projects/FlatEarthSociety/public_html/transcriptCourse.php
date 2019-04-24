@@ -7,9 +7,9 @@ if (empty($_SESSION["user_id"])) {
 $uid = $_SESSION["user_id"];
 
 $servername = "127.0.0.1";
-$username = "FlatEarthSociety";
-$password = "N@S@l1es";
-$dbname = "FlatEarthSociety";
+$username = "Team_Name";
+$password = "p@ssW0RD";
+$dbname = "Team_Name";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -27,24 +27,28 @@ if (!$conn) {
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 
 <body>
     <?php
     include "navbar.php";
     ?>
-    <div class="main-container">
+    <div class="container pt-3">
         <?php
     // Get all info for this course
-        $query = "SELECT c.*, p1.dept AS p1dept, p1.cnum AS p1num, p2.dept AS p2dept, p2.cnum AS p2num, fname, lname FROM course c LEFT JOIN course p1 ON c.prereq1_id=p1.cid LEFT JOIN course p2 ON c.prereq2_id=p2.cid LEFT JOIN user ON user.uid=c.instructor_id WHERE c.cid=" . $_GET["cid"];
+        $query = "SELECT c.*, p1.dept AS p1dept, p1.courseNumber AS p1num, p2.dept AS p2dept, p2.courseNumber AS p2num, fname, lname FROM course c LEFT JOIN course p1 ON c.prereq1_id=p1.cid LEFT JOIN course p2 ON c.prereq2_id=p2.cid LEFT JOIN user ON user.uid=c.instructor_id WHERE c.cid=" . $_GET["cid"];
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
 
             // Display course num and title
-            echo "<h1>" . $row["dept"] . " " . $row["cnum"] . ": " . $row["title"] . "</h1>";
+            echo "<h1>" . $row["dept"] . " " . $row["courseNumber"] . ": " . $row["title"] . "</h1>";
             
             // Display instructor if available
             if($row["instructor_id"] !== null) {
@@ -64,7 +68,7 @@ if (!$conn) {
             $result = mysqli_query($conn, $query);
             if (mysqli_num_rows($result) > 0) {
                 echo "<h2>Schedule</h2>
-                <table>
+                <table class=\"table\">
                     <tr>
                         <th>SID</th>
                         <th>Section</th>

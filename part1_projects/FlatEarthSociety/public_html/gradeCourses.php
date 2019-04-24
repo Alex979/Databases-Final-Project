@@ -14,8 +14,12 @@ $uid = $_SESSION["user_id"];
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 
 
@@ -24,9 +28,9 @@ $uid = $_SESSION["user_id"];
     <?php
 
     $servername = "127.0.0.1";
-    $username = "FlatEarthSociety";
-    $password = "N@S@l1es";
-    $dbname = "FlatEarthSociety";
+    $username = "Team_Name";
+    $password = "p@ssW0RD";
+    $dbname = "Team_Name";
 
     include "navbar.php";
 
@@ -47,7 +51,7 @@ else{
  */
     ?>
 
-    <div class="main-container">
+    <div class="container pt-3">
 
         <!--
         <p>Select a class to add grades to:</p>
@@ -66,10 +70,10 @@ else{
         if (in_array("student", $_SESSION["user_role"]))
         {
         echo "<h2>Your Grades: </h2><br/>";
-        $query = "select course.dept,course.cnum,course.title,enrolls.grade from course,enrolls,schedule where enrolls.uid='$uid' and enrolls.sid=schedule.sid and schedule.cid=course.cid and schedule.is_current=1";
+        $query = "select course.dept,course.courseNumber,course.title,enrolls.grade from course,enrolls,schedule where enrolls.uid='$uid' and enrolls.sid=schedule.sid and schedule.cid=course.cid and schedule.is_current=1";
         $result = mysqli_query($conn, $query);
                 if (mysqli_num_rows($result) > 0) {
-            echo "<table>
+            echo "<table class=\"table\">
 
                         <tr>
                                 <th>Dept</th>
@@ -82,7 +86,7 @@ else{
                 echo "<tr>";
                 //echo "<td>" . $row["cid"] . "</td>";
                 echo "<td>" . $row["dept"] . "</td>";
-                echo "<td>" . $row["cnum"] . "</td>";
+                echo "<td>" . $row["courseNumber"] . "</td>";
                 echo "<td>" . $row["title"] . "</td>";
                 if ($row["grade"] == null){
                 echo "<td>IP</td>";
@@ -101,10 +105,10 @@ else{
         if (in_array("instructor", $_SESSION["user_role"]))
         {
         echo "<h2>Your Courses: </h2><br/>";
-        $query = "select c.cid,c.dept,c.cnum,c.title,s.sid from course c, schedule s where c.instructor_id='$uid' and s.cid=c.cid and s.is_current=1";
+        $query = "select c.cid,c.dept,c.courseNumber,c.title,s.sid from course c, schedule s where c.instructor_id='$uid' and s.cid=c.cid and s.is_current=1";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {
-            echo "<table>
+            echo "<table class=\"table\">
 
                         <tr>
                                 <th>Dept</th>
@@ -117,13 +121,13 @@ else{
                 echo "<tr>";
                 //echo "<td>" . $row["cid"] . "</td>";
                 echo "<td>" . $row["dept"] . "</td>";
-                echo "<td>" . $row["cnum"] . "</td>";
+                echo "<td>" . $row["courseNumber"] . "</td>";
                 echo "<td>" . $row["title"] . "</td>";
                 echo "<td> 
                                 <form method=\"post\" action=\"gradeUsers.php\">
                                 <input type=\"hidden\" name=\"cid\" value=\"" . $row["cid"] . "\">
                                 <input type=\"hidden\" name=\"sid\" value=\"" . $row["sid"] . "\">
-                                <button type=\"submit\">View</button>
+                                <button class=\"btn btn-primary\" type=\"submit\">View</button>
                                 </form>
                         </td>";
                 echo "</tr>";

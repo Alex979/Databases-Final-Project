@@ -7,9 +7,9 @@ if (empty($_SESSION["user_id"])) {
 $uid = $_SESSION["user_id"];
 
 $servername = "127.0.0.1";
-$username = "FlatEarthSociety";
-$password = "N@S@l1es";
-$dbname = "FlatEarthSociety";
+$username = "Team_Name";
+$password = "p@ssW0RD";
+$dbname = "Team_Name";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -27,15 +27,19 @@ if (!$conn) {
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 
 <body>
     <?php
     include "navbar.php";
     ?>
-    <div class="main-container">
+    <div class="container pt-3">
         <h3>
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -89,7 +93,7 @@ if (!$conn) {
                     // If prereqs are met, check for time conflicts
                     if (empty($conflict)) {
                         // Get all of the users currently enrolled courses
-                        $query = "SELECT uid, schedule.sid, term, day, start, end, course.cid, dept, cnum FROM enrolls, schedule, course WHERE schedule.sid=enrolls.sid AND course.cid=schedule.cid AND enrolls.uid=" . $uid;
+                        $query = "SELECT uid, schedule.sid, term, day, start, end, course.cid, dept, courseNumber FROM enrolls, schedule, course WHERE schedule.sid=enrolls.sid AND course.cid=schedule.cid AND enrolls.uid=" . $uid;
                         $result = mysqli_query($conn, $query);
 
                         if (mysqli_num_rows($result) > 0) {
@@ -107,14 +111,14 @@ if (!$conn) {
                                         ($start_time >= $this_start_time && $start_time <= $this_end_time)
                                         || ($end_time >= $this_start_time && $end_time <= $this_end_time)
                                     ) {
-                                        $conflict = "This course conflicts with " . $row["dept"] . " "  . $row["cnum"];
+                                        $conflict = "This course conflicts with " . $row["dept"] . " "  . $row["courseNumber"];
                                     } else {
                                         // Check for 30 minute window before and after class
                                         if (
                                             ($start_time >= $this_end_time && ($start_time - $this_end_time < $time_buffer))
                                             || ($end_time <= $this_start_time && ($this_start_time - $end_time < $time_buffer))
                                         ) {
-                                            $conflict = "This course is scheduled too close to " . $row["dept"] . " "  . $row["cnum"] . ".  There must be 30 minutes in between courses.";
+                                            $conflict = "This course is scheduled too close to " . $row["dept"] . " "  . $row["courseNumber"] . ".  There must be 30 minutes in between courses.";
                                         }
                                     }
                                 }

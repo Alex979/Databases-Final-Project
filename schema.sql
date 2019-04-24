@@ -198,3 +198,9 @@ CREATE TABLE faculty_evaluation(
     primary key(uid,fid),
     foreign key(fid) references faculty(fid)
 );
+
+source populate_users.sql;
+source populate_role.sql;
+source populate_courses.sql;
+source populate_schedule.sql;
+source populate_enrolls.sql;

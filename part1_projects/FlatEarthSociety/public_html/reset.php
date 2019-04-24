@@ -22,7 +22,7 @@ $uid = $_SESSION["user_id"];
     include "navbar.php";
     ?>
 
-    <div class="main-container">
+    <div class="container pt-3">
         <?php
         chdir('/home/ead/sp19DBp1-FlatEarthSociety');
         $command = "mysql --user=FlatEarthSociety --password=N@S@l1es " . "-h 127.0.0.1 -D FlatEarthSociety < ./";
