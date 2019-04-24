@@ -15,7 +15,7 @@
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"courses.php\">Courses</a></li>");
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"transcript.php\">Transcript</a></li>");
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"../../ben_new_code/applyToGraduate.php\">Graduate</a></li>");
-                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"../../ben_new_code/form1.php\">Forms</a></li>");
+                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"../../ben_new_code/form1.html\">Forms</a></li>");
             }
             if (in_array("instructor", $_SESSION["role"])) {
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"courses.php\">Courses</a></li>");

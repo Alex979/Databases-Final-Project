@@ -61,7 +61,7 @@ function create_link($title, $description, $link_text, $url) {
                         create_link("Courses", "View all the courses offerred.", "Go to course list", "courses.php");
                         create_link("Transcript", "View the courses you currently are taken and have taken in the past.", "View transcript", "transcript.php");
                         create_link("Apply To Graduate", "Apply to graduate.", "Go to application", "../../ben_new_code/applyToGraduate.php");
-                        create_link("Submit Form 1", "Submit the form required to graduate.", "Go to form 1", "../../ben_new_code/form1.php");
+                        create_link("Submit Form 1", "Submit the form required to graduate.", "Go to form 1", "../../ben_new_code/form1.html");
                     }
                     if (in_array("instructor", $_SESSION["role"])) {
                         create_link("Courses", "View all the courses offerred.", "Go to course list", "courses.php");
