@@ -51,10 +51,12 @@ function create_link($title, $description, $link_text, $url) {
     include("navbar.php");
     ?>
     <div class="container-fluid mt-4">
-        <h1 class="text-dark">User Dashboard</h1>
+        <h1 class="text-dark mb-3">User Dashboard</h1>
         <div class="row">
                 <?php
-                if (!empty($_SESSION["role"])) {
+                if (empty($_SESSION["user_id"])) {
+                    create_link("Log in", "Log in to the portal.", "Go to login", "login.php");
+                } else {
                     if (in_array("student", $_SESSION["role"])) {
                         create_link("Courses", "View all the courses offerred.", "Go to course list", "courses.php");
                         create_link("Transcript", "View the courses you currently are taken and have taken in the past.", "View transcript", "transcript.php");
@@ -66,7 +68,7 @@ function create_link($title, $description, $link_text, $url) {
                         create_link("Grades", "View the courses you teach and assign grades to students.", "View courses you teach", "gradeCourses.php");
                     }
                     if (in_array("admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("instructor", $_SESSION["role"])) {
-                        create_link("Manage", "yeet", "Go to manage page", "manage.php");
+                        create_link("Manage", "Management panel for faculty and staff.", "Go to manage page", "manage.php");
                     }
                     create_link("Info", "View personal information and logout.", "Go to info page", "info.php");
                 }
