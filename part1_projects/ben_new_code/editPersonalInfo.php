@@ -18,28 +18,32 @@
         $servername="localhost";	
 	$username = "Team_Name";
 	$password = "p@ssW0RD";
-	$dbname = "Team_Name";		
+	$dbname = "Team_Name";
         $conn=mysqli_connect($servername,$username,$password, $dbname);	
 	if (!$conn){	
 		   die("Connection failed:".mysqli_connect_error());	
-	}		
-	if (isset($fname)){
-	  $query = "UPDATE user SET fname='$fname' WHERE uid='$uid'";
-	  $result=mysqli_query($conn,$query); 
 	}
-	if (isset($lname)){
-	  $query2 = "UPDATE user SET lname='$lname' WHERE uid='$uid'";
-	  $result2=mysqli_query($conn,$query2); 
+	
+	if($_SERVER['REQUEST_METHOD'] == 'POST'){
+		if (isset($fname)){
+		  $query = "UPDATE user SET fname='$fname' WHERE uid='$uid'";
+		  $result=mysqli_query($conn,$query); 
+
+		}
+		if (isset($lname)){
+		  $query2 = "UPDATE user SET lname='$lname' WHERE uid='$uid'";
+		  $result2=mysqli_query($conn,$query2); 
+		}
+		if (isset($email)){
+		  $query3 = "UPDATE user SET email='$email' WHERE uid='$uid'";
+		  $result3=mysqli_query($conn,$query3); 
+		}
+		if (isset($address)){
+		  $query4 = "UPDATE user SET city='$address' WHERE uid='$uid'";
+		  $result4=mysqli_query($conn,$query4); 
+		}
+		header("Location: ../FlatEarthSociety/public_html/info.php");
 	}
-	if (isset($email)){
-	  $query3 = "UPDATE user SET email='$email' WHERE uid='$uid'";
-	  $result3=mysqli_query($conn,$query3); 
-	}
-	if (isset($address)){
-	  $query4 = "UPDATE user SET city='$address' WHERE uid='$uid'";
-	  $result4=mysqli_query($conn,$query4); 
-	}
-	header("Location: ../FlatEarthSociety/public_html/info.php");
         mysqli_close($conn);
   ?>
 <body>
