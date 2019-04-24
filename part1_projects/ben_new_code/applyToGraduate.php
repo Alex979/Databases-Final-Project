@@ -43,7 +43,10 @@
       }
       $numformOne = mysqli_num_rows($result);
       $y = 0;
-      $queryTaken = "SELECT * FROM taken WHERE id = '$uid'";
+      $queryTaken = "SELECT uid, schedule.sid, course.cid, dept, courseNumber
+		FROM enrolls, schedule, course 
+			WHERE schedule.sid = enrolls.sid 
+				AND course.cid = schedule.cid AND enrolls.uid = '$uid'";
       $resultTaken = mysqli_query($conn, $queryTaken) or die("Bad Query: $queryTaken");
       while($row = mysqli_fetch_array($resultTaken)){
         $deptTaken[$y] = $row['dept'];
