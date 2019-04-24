@@ -1,4 +1,4 @@
-s<html>
+<html>
 <head>
  <title>GWU Advising</title>
   <link rel="stylesheet" href="style.css">
