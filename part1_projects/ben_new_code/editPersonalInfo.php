@@ -43,7 +43,7 @@
 		  $result3=mysqli_query($conn,$query3); 
 		}
 		if (isset($street)){
-		  $query4 = "UPDATE user SET city='$street' WHERE uid='$uid'";
+		  $query4 = "UPDATE user SET street='$street' WHERE uid='$uid'";
 		  $result4=mysqli_query($conn,$query4); 
 		}
 		if (isset($city)){
@@ -51,11 +51,11 @@
 		  $result4=mysqli_query($conn,$query4); 
 		}
 		if (isset($state)){
-		  $query4 = "UPDATE user SET city='$state' WHERE uid='$uid'";
+		  $query4 = "UPDATE user SET state='$state' WHERE uid='$uid'";
 		  $result4=mysqli_query($conn,$query4); 
 		}
 		if (isset($zip)){
-		  $query4 = "UPDATE user SET city='$zip' WHERE uid='$uid'";
+		  $query4 = "UPDATE user SET zip='$zip' WHERE uid='$uid'";
 		  $result4=mysqli_query($conn,$query4); 
 		}
 		header("Location: ../FlatEarthSociety/public_html/info.php");
