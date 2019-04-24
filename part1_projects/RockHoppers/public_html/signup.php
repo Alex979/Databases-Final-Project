@@ -99,7 +99,7 @@ if(isset($_POST['signup'])){
         }
 
         //make sure faculty member doesn't already use username either
-        $query = "select uname from user";
+        $query = "select username from user";
         $result = mysqli_query($conn,$query);
         if (mysqli_num_rows($result) > 0){
           while($row = mysqli_fetch_assoc($result)){

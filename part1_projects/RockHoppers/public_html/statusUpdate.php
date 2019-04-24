@@ -9,6 +9,9 @@ if(isset($_POST['admit'])){
 	$uid=$_GET['id'];
 	$update = "UPDATE application_status SET admission_status='admit' WHERE uid='$uid'";
 	$result = mysqli_query($conn,$update);
+	
+	$update = "UPDATE role SET type='student' WHERE uid='$uid'";
+	$result = mysqli_query($conn, $update);
 	header("location:displayAppStatus.php");exit;
 }else if(isset($_POST['reject'])){ 
 	$uid=$_GET['id'];
