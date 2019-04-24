@@ -20,7 +20,7 @@ th, td {
 		header('Location: permissionDenied.html');
 	}
 
-	$servername = "localhost";
+	$servername = "127.0.0.1";
 	$username = "TeamEighteen";
 	$password = "DatabasePassword1!";
 	$dbname = "TeamEighteen";

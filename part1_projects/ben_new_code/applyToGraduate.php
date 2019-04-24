@@ -12,13 +12,13 @@
         <input type="radio" name="degree" value="phd">PhD<br><br>
         <input type="submit" value="Apply"/>
   </form>
-  <br><br><br><a href="student.php">Go to Homepage</a><br>
+  <br><br><br><a href="../FlatEarthSociety/public_html/dashboard.php">Go to Homepage</a><br>
 
   <?php
-	$servername = "localhost";
+	$servername = "127.0.0.1";
 	$username = "Team_Name";
 	$password = "p@ssW0RD";
-	$dbname = "TeamEighteen";	
+	$dbname = "Team_Name";	
       // define connection variable
       $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -43,7 +43,7 @@
       }
       $numformOne = mysqli_num_rows($result);
       $y = 0;
-      $queryTaken = "SELECT * FROM taken WHERE id = '$id'";
+      $queryTaken = "SELECT * FROM taken WHERE id = '$uid'";
       $resultTaken = mysqli_query($conn, $queryTaken) or die("Bad Query: $queryTaken");
       while($row = mysqli_fetch_array($resultTaken)){
         $deptTaken[$y] = $row['dept'];
