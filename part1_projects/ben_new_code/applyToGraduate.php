@@ -6,7 +6,7 @@
 <body>
   <h1>Apply to Graduate</h1>
   <form action="applyToGraduate.php" method="post">
-        <b>Student Number</b><br><input type="text" name="id" required><br><br>
+        <b>Student Number</b><br><input type="text" name="uid" required><br><br>
         <b>Degree Type</b><br>
         <input type="radio" name="degree" value="masters">Masters<br>
         <input type="radio" name="degree" value="phd">PhD<br><br>
@@ -16,13 +16,13 @@
 
   <?php
 	$servername = "localhost";
-	$username = "TeamEighteen";
-	$password = "DatabasePassword1!";
+	$username = "Team_Name";
+	$password = "p@ssW0RD";
 	$dbname = "TeamEighteen";	
       // define connection variable
       $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-      $id = $_POST['id'];
+      $uid = $_POST['uid'];
       $deptArray = array();
       $numArray = array();
       $gradeArray = array();
@@ -34,7 +34,7 @@
       }
       // check if classes taken are equivalent to form1
       $x = 0;
-      $query = "SELECT * FROM formOne WHERE id = '$id'";
+      $query = "SELECT * FROM formOne WHERE uid = '$uid'";
       $result = mysqli_query($conn, $query) or die("Bad Query: $query");
       while($row = mysqli_fetch_array($result)) {
           $deptArray[$x] = $row['dept'];
