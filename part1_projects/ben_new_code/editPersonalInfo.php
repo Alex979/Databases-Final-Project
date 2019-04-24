@@ -8,7 +8,7 @@
 </head>
 <?php
   session_start();
-  $uid = $_SESSION["uid"];
+  $uid = $_SESSION["user_id"];
   $role = $_SESSION["role"];
   $fname = $_POST["fname"]; 
   $lname = $_POST["lname"]; 
