@@ -29,9 +29,9 @@ CREATE TABLE user (
     zip INT,
     balance float(20,2),
     reviewForm int,
-    advisorid int,
     approveThesis int,
     clearedToGrad int,
+    advisorid int,
     PRIMARY KEY (uid)
 );
 
