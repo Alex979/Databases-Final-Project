@@ -65,9 +65,9 @@ echo '<form action="editPersonalInfo.php" method="post"><b>Update: </b><br><br>'
     echo '<b>First Name: </b> <br><input type="text" ID="fname" name="fname"><br>';
     echo '<b>Last Name: </b> <br><input type="text" ID="lname" name="lname"><br>';
     echo '<b>Email: </b> <br><input type="text" ID="email" name="email"><br>';
-    echo '<b>Street: </b> <br><input type="text" ID="street" name="street" ><br><br>';
-    echo '<b>City: </b> <br><input type="text" ID="street" name="city" ><br><br>';
-    echo '<b>State: </b> <br><input type="text" ID="street" name="state" ><br><br>';
+    echo '<b>Street: </b> <br><input type="text" ID="street" name="street" ><br>';
+    echo '<b>City: </b> <br><input type="text" ID="street" name="city" ><br>';
+    echo '<b>State: </b> <br><input type="text" ID="street" name="state" ><br>';
     echo '<b>Zipcode: </b> <br><input type="text" ID="street" name="zip" ><br><br>';
     echo '<button class="button" style="vertical-align:middle"><span>Update</span></button>';
   echo '</form>';
