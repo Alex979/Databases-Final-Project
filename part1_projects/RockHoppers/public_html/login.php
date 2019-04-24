@@ -3,10 +3,10 @@ session_start();
 
 include('connect.php');
 
+
 if($_SESSION['signedin']!= 'true' && $_SESSION['signedin']!= 'false'){
 	$_SESSION['signedin'] = 'false';
 	
-	//echo 'holla';
 }
 
 
@@ -26,25 +26,25 @@ if(isset($_POST['login'])){
       
       if($unameErr=="" && $pwordErr==""){
         //begin checking to see if user is in database
-        $query = "select uname,pword,role from user";
+        $query = "select uid, username,password from user";
         $result = mysqli_query($conn,$query);
         if (mysqli_num_rows($result) > 0){
           while($row = mysqli_fetch_assoc($result)){
             
-            //if(strcasecmp($row['uname'], $_POST["username"])==0 && $row['pword']==$_POST["password"] && strcasecmp($row['role'], $_POST["userRole"])==0){
-            if(strcasecmp($row['uname'], $_POST["username"])==0 && $row['pword']==$_POST["password"]){
+           if(strcasecmp($row['username'], $_POST["username"])==0 && $row['password']==$_POST["password"]){
               $_SESSION['signedin']="true";
-              $_SESSION['username']=$row['uname'];//keep track of user
-              $uname = $row['uname'];
-              $_SESSION['role']=$row['role'];
+              $_SESSION['username']=$row['username'];//keep track of user
+              $uname = $row['username'];
+	            $uid = $row['uid'];
 
-              $query = "SELECT role FROM user WHERE uname='$uname'";
+
+              $query = "SELECT type FROM role WHERE uid='$uid'";
               $result = mysqli_query($conn,$query);
               $row = mysqli_fetch_assoc($result);
-              $role = $row['role'];
+              $role = $row['type'];
+	            $_SESSION['role']=$role;
 
               if($row['role']=='applicant'){
-                //$uname = $row['uname'];
                 $query = "SELECT uid FROM applicant WHERE uname='$uname'";
                 $result = mysqli_query($conn,$query);
                 $info = mysqli_fetch_assoc($result);
@@ -58,17 +58,8 @@ if(isset($_POST['login'])){
                 $fid = $info['fid'];
                 $_SESSION['fid']=$fid;
               }
-
-
-              
-
-
-
-
-
-
-              
-              header('location:userDashboard.php');exit;
+ 
+              header('location:../../FlatEarthSociety/public_html/dashboard.php');exit;
             }
           }
           //if we get here the user doesn't exist in database

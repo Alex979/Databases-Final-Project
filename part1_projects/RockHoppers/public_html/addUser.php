@@ -86,12 +86,12 @@ if(isset($_POST['submit'])){
 
 
 
-    	$query = "select uname from user";
+    	$query = "select username from user";
         $result = mysqli_query($conn,$query);
         if (mysqli_num_rows($result) > 0){
           while($row = mysqli_fetch_assoc($result)){
             
-            if($row['uname'] == $_POST["username"]){//user already exists
+            if($row['username'] == $_POST["username"]){//user already exists
               header('location:addUser.php?fail=uname');exit;
             }
             
@@ -103,7 +103,7 @@ if(isset($_POST['submit'])){
         $query = "INSERT INTO faculty (uname,fname,lname,department) VALUES ('$uname','$fname','$lname','$dept')";
         $result = mysqli_query($conn,$query);
 
-        $query = "INSERT INTO user (uname,pword,role) VALUES ('$uname','$pword','$role')";
+        $query = "INSERT INTO user (username,password,role) VALUES ('$uname','$pword','$role')";
         $result = mysqli_query($conn,$query);
 
         header('location:userDashboard.php');exit;
