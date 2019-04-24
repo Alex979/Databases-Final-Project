@@ -12,7 +12,8 @@ INSERT INTO user VALUES (
     100.00,
     0,
     0,
-    0
+    0,
+    NULL
 );
 
 INSERT INTO user VALUES (
@@ -28,7 +29,8 @@ INSERT INTO user VALUES (
     100.00,
     0,
     0,
-    0
+    0,
+    NULL
 );
 
 INSERT INTO user VALUES (
@@ -44,7 +46,8 @@ INSERT INTO user VALUES (
     100.00,
     0,
     0,
-    0
+    0,
+    NULL
 );
 
 INSERT INTO user VALUES (
@@ -60,7 +63,8 @@ INSERT INTO user VALUES (
     100.00,
     0,
     0,
-    0
+    0,
+    NULL
 );
 
 INSERT INTO user VALUES (
@@ -74,5 +78,5 @@ INSERT INTO user VALUES (
     'VA',
     20147,
     100.00,
-    0, 0, 0
+    0, 0, 0, NULL
 );
