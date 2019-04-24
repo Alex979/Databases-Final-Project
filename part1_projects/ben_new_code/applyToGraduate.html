@@ -3,48 +3,12 @@
   <title>ADS</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="http://www.gwrha.com/uploads/1/7/9/9/17997469/gw_atx_4cp_pos.png">
-  <style>
-.button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #000000;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 20px;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-.button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-.button:hover span {
-  padding-right: 25px;
-}
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-</style>
+ 
 </head>
 <body>
   <h1>Apply to Graduate</h1>
   <form action="applyToGraduate.php" method="post">
-        <b>Student Number</b><br><input type="text" name="id" required ><br><br>
+        <b>Student Number</b><br><input type="text" name="uid" required ><br><br>
         <b>Degree Type</b><br>
         <input type="radio" name="degree" value="masters">Masters<br>
         <input type="radio" name="degree" value="phd">PhD<br><br>
@@ -52,7 +16,7 @@
   </form>
   <br>
   <form action="student.php" method = "post">
-  <input type="hidden" name="id" value = "'.$id.'"/>
+  <input type="hidden" name="uid" value = "'.$uid.'"/>
   <input type="hidden" name="permission" value = 1/>
   <button class="button" style="vertical-align:middle"><span>Return to Student Page</span></button>
   </form>
