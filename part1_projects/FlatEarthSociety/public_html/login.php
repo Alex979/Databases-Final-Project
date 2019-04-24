@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 die("Error: Failed to get roles<br>");
             }
-            header("Location: index.php");
+            header("Location: dashboard.php");
         } else {
             $passwordError = "Invalid username or password.";
         }

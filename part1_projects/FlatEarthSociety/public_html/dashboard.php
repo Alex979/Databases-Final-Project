@@ -19,6 +19,8 @@ function create_link($title, $description, $link_text, $url) {
                 <div class=\"card-body\">
                     <h5 class=\"card-title text-primary\">$title</h5>
                     <p class=\"card-text\">$description</p>
+                </div>
+                <div class=\"card-footer\">
                     <a href=\"$url\" class=\"btn btn-primary\">$link_text</a>
                 </div>
             </div>";
@@ -44,7 +46,7 @@ function create_link($title, $description, $link_text, $url) {
 
 <body>
     <?php
-    include "navbar.php";
+    include("navbar.php");
     ?>
     <div class="container mt-3">
         <div class="row">
@@ -54,6 +56,14 @@ function create_link($title, $description, $link_text, $url) {
                     if (in_array("student", $_SESSION["role"])) {
                         create_link("Courses", "View all the courses offerred.", "Go to course list", "courses.php");
                         create_link("Transcript", "View the courses you currently are taken and have taken in the past.", "View transcript", "transcript.php");
+                        create_link("Apply To Graduate", "Apply to graduate.", "Go to application", "../../ben_new_code/applyToGraduate.php");
+                    }
+                    if (in_array("instructor", $_SESSION["role"])) {
+                        create_link("Courses", "View all the courses offerred.", "Go to course list", "courses.php");
+                        create_link("Grades", "View the courses you teach and assign grades to students.", "View courses you teach", "gradeCourses.php");
+                    }
+                    if (in_array("admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("instructor", $_SESSION["role"])) {
+                        create_link("Manage", "yeet", "Go to manage page", "manage.php");
                     }
                     create_link("Info", "View personal information and logout.", "Go to info page", "info.php");
                 }
