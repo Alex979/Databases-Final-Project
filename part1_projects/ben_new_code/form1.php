@@ -21,9 +21,9 @@ th, td {
 	}
 
 	$servername = "127.0.0.1";
-	$username = "TeamEighteen";
-	$password = "DatabasePassword1!";
-	$dbname = "TeamEighteen";
+	$username = "Team_Name";
+	$password = "p@ssW0RD";
+	$dbname = "Team_Name";
 
       $courseInt = 0;
       $creditInt = 0;
@@ -33,7 +33,7 @@ th, td {
       $alreadyBool = 1;
       $error = "Error: ";
 
-      $id = $_POST['id'];
+      $uid = $_POST['uid'];
       $deptArray = array(
         $_POST['d1'], $_POST['d2'], $_POST['d3'],
         $_POST['d4'], $_POST['d5'], $_POST['d6'],
@@ -56,7 +56,7 @@ th, td {
         die("Connection failed: " . mysqli_connect_error());
       }
 
-      $queryAlready = "SELECT * FROM formOne WHERE id = '$id'";
+      $queryAlready = "SELECT * FROM formOne WHERE uid = '$uid'";
       $alreadyResult = mysqli_query($conn, $queryAlready);
       if(mysqli_num_rows($alreadyResult) > 0){
         $alreadyBool = 0;
@@ -65,8 +65,8 @@ th, td {
 
         // add form data to testing database
         for($x = 0; $x < 12; $x++) {
-          $queryInsert = "INSERT INTO formOneValid(id, courseNumber, dept)
-            VALUES ('$id', '$numArray[$x]', '$deptArray[$x]')";
+          $queryInsert = "INSERT INTO formOneValid(uid, courseNumber, dept)
+            VALUES ('$uid', '$numArray[$x]', '$deptArray[$x]')";
           $result = mysqli_query($conn, $queryInsert);
         }
         // delete all null rows from table
@@ -102,7 +102,7 @@ th, td {
 	  $error .= "You have not submitted all of the required courses: CSCI 6212, CSCI 6221, and CSCI 6461. ";
 	}
         for($x = 0; $x < 12; $x++){
-          $queryCredits = "SELECT credits FROM courseCatalog
+          $queryCredits = "SELECT credits FROM course
             WHERE dept = '$deptArray[$x]'
               AND courseNumber = '$numArray[$x]'";
           $result4 = mysqli_query($conn, $queryCredits) or die("Bad Query: $query");
@@ -136,12 +136,12 @@ th, td {
 	echo "<p>".$error."</p>";
         // insert the data into form 1 database if all checks pass
         if($courseBool == 1 && $hoursBool == 1 && $courseOutsideBool == 1 && $alreadyBool == 1){
-          $deleteQuery = "DELETE FROM formOneValid WHERE id = $id";
+          $deleteQuery = "DELETE FROM formOneValid WHERE uid = $uid";
           $deleteResult = mysqli_query($conn, $deleteQuery);
           for($x = 0; $x < 12; $x++) {
             if($numArray[$x] != '' && $deptArray[$x] != ''){
-              $queryValid = "INSERT INTO formOne(id, courseNumber, dept)
-                VALUES ('$id', '$numArray[$x]', '$deptArray[$x]')";
+              $queryValid = "INSERT INTO formOne(uid, courseNumber, dept)
+                VALUES ('$uid', '$numArray[$x]', '$deptArray[$x]')";
               $result7 = mysqli_query($conn, $queryValid) or die("Bad Query: $queryValid");
             }
           }
@@ -149,7 +149,7 @@ th, td {
         }
 	
         else{
-	  $queryDeleteTest = "DELETE FROM formOneValid WHERE id = '$id'";
+	  $queryDeleteTest = "DELETE FROM formOneValid WHERE uid = '$uid'";
           $resultDeleteTest = mysqli_query($conn, $queryDeleteTest);
 	  session_start();
 	  $_SESSION["error"] = $error;
