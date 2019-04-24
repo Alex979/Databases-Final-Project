@@ -1,134 +1,164 @@
+<?php
+session_start();
+?>
 <html>
+
 <head>
   <title>ADS</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
+
 <body>
-  <h1>Apply to Graduate</h1>
-  <form action="applyToGraduate.php" method="post">
-        <b>Student Number</b><br><input type="text" name="uid" required><br><br>
-        <b>Degree Type</b><br>
-        <input type="radio" name="degree" value="masters">Masters<br>
-        <input type="radio" name="degree" value="phd">PhD<br><br>
-        <input type="submit" value="Apply"/>
-  </form>
-  <br><br><br><a href="../FlatEarthSociety/public_html/dashboard.php">Go to Homepage</a><br>
-
   <?php
-	$servername = "127.0.0.1";
-	$username = "Team_Name";
-	$password = "p@ssW0RD";
-	$dbname = "Team_Name";	
-      // define connection variable
-      $conn = mysqli_connect($servername, $username, $password, $dbname);
+  include('../FlatEarthSociety/public_html/navbar.php');
+  ?>
+  <div class="container mt-3">
+    <h1 class="text-primary">Apply to Graduate</h1>
+    <form action="applyToGraduate.php" method="post" style="max-width: 500px">
+      <div class="form-group">
+        <label>Student Number</label>
+        <input class="form-control" type="text" name="uid" required>
+      </div>
+      <div class="form-group">
+        <label>Degree Type</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="degree" value="masters">
+          <label class="form-check-label">Masters</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="degree" value="phd">
+          <label class="form-check-label">PhD</label>
+        </div>
+      </div>
+      <input class="btn btn-primary" type="submit" value="Apply" />
+    </form>
+    <br><br><br><a href="../FlatEarthSociety/public_html/dashboard.php">Go to Homepage</a><br>
 
-      $uid = $_POST['uid'];
-      $deptArray = array();
-      $numArray = array();
-      $gradeArray = array();
-      $creditArray = array();
-      $compBool = 0;
-      // Check connection
-      if(!$conn){
-        die("Connection failed: " . mysqli_connect_error());
-      }
-      // check if classes taken are equivalent to form1
-      $x = 0;
-      $query = "SELECT * FROM formOne WHERE uid = '$uid'";
-      $result = mysqli_query($conn, $query) or die("Bad Query: $query");
-      while($row = mysqli_fetch_array($result)) {
-          $deptArray[$x] = $row['dept'];
-          $numArray[$x] = $row['courseNumber'];
-          $x++;
-      }
-      $numformOne = mysqli_num_rows($result);
-      $y = 0;
-      $queryTaken = "SELECT uid, schedule.sid, course.cid, dept, courseNumber
+    <?php
+    $servername = "127.0.0.1";
+    $username = "Team_Name";
+    $password = "p@ssW0RD";
+    $dbname = "Team_Name";
+    // define connection variable
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+    $uid = $_POST['uid'];
+    $deptArray = array();
+    $numArray = array();
+    $gradeArray = array();
+    $creditArray = array();
+    $compBool = 0;
+    // Check connection
+    if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+    }
+    // check if classes taken are equivalent to form1
+    $x = 0;
+    $query = "SELECT * FROM formOne WHERE uid = '$uid'";
+    $result = mysqli_query($conn, $query) or die("Bad Query: $query");
+    while ($row = mysqli_fetch_array($result)) {
+      $deptArray[$x] = $row['dept'];
+      $numArray[$x] = $row['courseNumber'];
+      $x++;
+    }
+    $numformOne = mysqli_num_rows($result);
+    $y = 0;
+    $queryTaken = "SELECT uid, schedule.sid, course.cid, dept, courseNumber
 		FROM enrolls, schedule, course 
 			WHERE schedule.sid = enrolls.sid 
 				AND course.cid = schedule.cid AND enrolls.uid = '$uid'";
-      $resultTaken = mysqli_query($conn, $queryTaken) or die("Bad Query: $queryTaken");
-      while($row = mysqli_fetch_array($resultTaken)){
-        $deptTaken[$y] = $row['dept'];
-        $numTaken[$y] = $row['courseNumber'];
-        $y++;
-      }
-      sort($deptArray);
-      sort($numArray);
-      sort($deptTaken);
-      sort($numTaken);
+    $resultTaken = mysqli_query($conn, $queryTaken) or die("Bad Query: $queryTaken");
+    while ($row = mysqli_fetch_array($resultTaken)) {
+      $deptTaken[$y] = $row['dept'];
+      $numTaken[$y] = $row['courseNumber'];
+      $y++;
+    }
+    sort($deptArray);
+    sort($numArray);
+    sort($deptTaken);
+    sort($numTaken);
 
-      if($deptArray == $deptTaken && $numArray == $numTaken){
-        $compBool = 1;
-      }
-      for($x = 0; $x < 12; $x++){
-	$query2 = "SELECT uid, schedule.sid, course.cid, dept, courseNumber
+    if ($deptArray == $deptTaken && $numArray == $numTaken) {
+      $compBool = 1;
+    }
+    for ($x = 0; $x < 12; $x++) {
+      $query2 = "SELECT uid, schedule.sid, course.cid, dept, courseNumber
 		FROM enrolls, schedule, course 
 			WHERE schedule.sid=enrolls.sid 
-				AND course.cid=schedule.cid AND enrolls.uid = '$uid' AND dept = '$deptArray[$x]' AND courseNumber = '$numArray[$x]'";    
-        $result2 = mysqli_query($conn, $query2) or die("Bad Query: $query2");
-        while($row = mysqli_fetch_array($result2)){
-          $gradeArray[$x] = $row['grade'];
-          $creditArray[$x] = $row['creditHours'];
-        }
+				AND course.cid=schedule.cid AND enrolls.uid = '$uid' AND dept = '$deptArray[$x]' AND courseNumber = '$numArray[$x]'";
+      $result2 = mysqli_query($conn, $query2) or die("Bad Query: $query2");
+      while ($row = mysqli_fetch_array($result2)) {
+        $gradeArray[$x] = $row['grade'];
+        $creditArray[$x] = $row['creditHours'];
       }
-      $creditCount = 0;
-      for($x = 0; $x < 12; $x++){
-        $creditCount = $creditCount + $creditArray[$x];
+    }
+    $creditCount = 0;
+    for ($x = 0; $x < 12; $x++) {
+      $creditCount = $creditCount + $creditArray[$x];
+    }
+    $failCounter = 0;
+    $totalGPA = 0.0;
+    $error = 0;
+    for ($x = 0; $x < 12; $x++) {
+      if ($gradeArray[$x] != "A" && $gradeArray[$x] != "A-" && $gradeArray[$x] != "B+" && $gradeArray[$x] != "B") {
+        $failCounter++;
       }
-        $failCounter = 0;
-        $totalGPA = 0.0;
-        $error = 0;
-        for($x = 0; $x < 12; $x++){
-          if($gradeArray[$x] != "A" && $gradeArray[$x] != "A-" && $gradeArray[$x] != "B+" && $gradeArray[$x] != "B"){
-            $failCounter++;
-          }
-          if($gradeArray[$x] == "A"){
-            $totalGPA = $totalGPA + (4.0 * $creditArray[$x]);
-          }
-          if($gradeArray[$x] == "A-"){
-            $totalGPA = $totalGPA + (3.7 * $creditArray[$x]);
-          }
-          if($gradeArray[$x] == "B+"){
-            $totalGPA = $totalGPA + (3.3 * $creditArray[$x]);
-          }
-          if($gradeArray[$x] == "B"){
-            $totalGPA = $totalGPA + (3.0 * $creditArray[$x]);
-          }
-          if($gradeArray[$x] == "B-"){
-            $totalGPA = $totalGPA + (2.7 * $creditArray[$x]);
-          }
-          if($gradeArray[$x] == "C+"){
-            $totalGPA = $totalGPA + (2.3 * $creditArray[$x]);
-          }
-          if($gradeArray[$x] == "C"){
-            $totalGPA = $totalGPA + (2.0 * $creditArray[$x]);
-          }
-          if($gradeArray[$x] == "IP"){
-            $error = 1;
-          }
-        }
-        $numClasses = 0;
-        $query3 = "SELECT uid, schedule.sid, course.cid, dept, courseNumber
+      if ($gradeArray[$x] == "A") {
+        $totalGPA = $totalGPA + (4.0 * $creditArray[$x]);
+      }
+      if ($gradeArray[$x] == "A-") {
+        $totalGPA = $totalGPA + (3.7 * $creditArray[$x]);
+      }
+      if ($gradeArray[$x] == "B+") {
+        $totalGPA = $totalGPA + (3.3 * $creditArray[$x]);
+      }
+      if ($gradeArray[$x] == "B") {
+        $totalGPA = $totalGPA + (3.0 * $creditArray[$x]);
+      }
+      if ($gradeArray[$x] == "B-") {
+        $totalGPA = $totalGPA + (2.7 * $creditArray[$x]);
+      }
+      if ($gradeArray[$x] == "C+") {
+        $totalGPA = $totalGPA + (2.3 * $creditArray[$x]);
+      }
+      if ($gradeArray[$x] == "C") {
+        $totalGPA = $totalGPA + (2.0 * $creditArray[$x]);
+      }
+      if ($gradeArray[$x] == "IP") {
+        $error = 1;
+      }
+    }
+    $numClasses = 0;
+    $query3 = "SELECT uid, schedule.sid, course.cid, dept, courseNumber
 		FROM enrolls, schedule, course 
 			WHERE schedule.sid = enrolls.sid 
 				AND course.cid = schedule.cid AND enrolls.uid = '$uid'";
-        $result3 = mysqli_query($conn, $query3) or die("Bad Query: $query3");
-        $numClasses = mysqli_num_rows($result3);
-        $totalGPA = $totalGPA / $creditCount;
-        if($error != 1 && $totalGPA >= 3.0 && $failCounter <= 2 && $compBool == 1){
-          $query4 = "UPDATE user SET clearedToGrad = 1 WHERE uid = '$uid'";
-          $result4 = mysqli_query($conn, $query4) or die("Bad Query: $query4");
-          header("Location: graduated.php");
-        }
-        else{
-          header("Location: noGraduate.php");
-        }
+    $result3 = mysqli_query($conn, $query3) or die("Bad Query: $query3");
+    $numClasses = mysqli_num_rows($result3);
+    $totalGPA = $totalGPA / $creditCount;
+    if ($error != 1 && $totalGPA >= 3.0 && $failCounter <= 2 && $compBool == 1) {
+      $query4 = "UPDATE user SET clearedToGrad = 1 WHERE uid = '$uid'";
+      $result4 = mysqli_query($conn, $query4) or die("Bad Query: $query4");
+      header("Location: graduated.php");
+    } else {
+      header("Location: noGraduate.php");
+    }
 
 
-      //close connection
-        mysqli_close($conn);
+    //close connection
+    mysqli_close($conn);
     ?>
-</body>
-</html>
 
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
