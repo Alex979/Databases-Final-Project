@@ -41,9 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $result = mysqli_query($conn, $query);
 
             if (mysqli_num_rows($result) > 0) {
-                $_SESSION["user_role"] = array();
+                $_SESSION["role"] = array();
                 while ($row = mysqli_fetch_assoc($result)) {
-                    array_push($_SESSION["user_role"], $row["type"]);
+                    array_push($_SESSION["role"], $row["type"]);
                 }
             } else {
                 die("Error: Failed to get roles<br>");

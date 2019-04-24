@@ -76,17 +76,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <th>User Name</th>
                         <th>User ID</th>
                         <th>Address</th>
+                        <th>Balance</th>
                     </tr>";
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                 echo "<td>" . $row["fname"] . " " . $row["lname"] . " " . "</td>";
                 echo "<td>" . $row["uid"] . "</td>";
                 echo "<td>" . $row["street"] . ", " . $row["city"] . ", " . $row["state"] . " " . $row["zip"] . "</td>";
+                echo "<td>" . $row["balance"] . "</td>";
                 echo "</tr>";
             }
             echo "</table>";
         }
         ?>
+        <a href="../../ben_new_code/editPersonalInfo.php"><button class="btn btn-primary">Edit personal info</button></a>
+        <br><br>
         <h1 class="text-primary">Your Current Roles</h1>
         <?php
         $query = "SELECT * FROM role WHERE uid = '$uid'";

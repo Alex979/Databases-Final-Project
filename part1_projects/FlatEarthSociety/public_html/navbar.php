@@ -11,16 +11,16 @@
         if (empty($_SESSION["user_id"])) {
             echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"login.php\">Login</a></li>");
         } else {
-            if (in_array("student", $_SESSION["user_role"])) {
+            if (in_array("student", $_SESSION["role"])) {
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"courses.php\">Courses</a></li>");
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"transcript.php\">Transcript</a></li>");
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"gradeCourses.php\">Grades</a></li>");
             }
-            if (in_array("instructor", $_SESSION["user_role"])) {
+            if (in_array("instructor", $_SESSION["role"])) {
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"courses.php\">Courses</a></li>");
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"gradeCourses.php\">Grades</a></li>");
             }
-            if (in_array("admin", $_SESSION["user_role"]) || in_array("gs", $_SESSION["user_role"]) || in_array("instructor", $_SESSION["user_role"])) {
+            if (in_array("admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("instructor", $_SESSION["role"])) {
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"manage.php\">Manage</a></li>");
             }
             echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"info.php\">Info</a></li>");
