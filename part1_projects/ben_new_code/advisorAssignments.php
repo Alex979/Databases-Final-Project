@@ -1,4 +1,4 @@
-<html>
+s<html>
 <head>
  <title>GWU Advising</title>
   <link rel="stylesheet" href="style.css">
@@ -12,9 +12,9 @@
 	
 	/* Create connection */
 	$servername = "localhost";
-	$username = "TeamEighteen";
-	$password = "DatabasePassword1!";
-	$dbname = "TeamEighteen";	
+	$username = "Team_Name";
+	$password = "p@ssW0RD";
+	$dbname = "Team_Name";	
 	
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
 		  
