@@ -7,7 +7,6 @@ include('connect.php');
 if($_SESSION['signedin']!= 'true' && $_SESSION['signedin']!= 'false'){
 	$_SESSION['signedin'] = 'false';
 	
-	//echo 'holla';
 }
 
 
@@ -36,14 +35,14 @@ if(isset($_POST['login'])){
               $_SESSION['signedin']="true";
               $_SESSION['username']=$row['username'];//keep track of user
               $uname = $row['username'];
-	      $uid = $row['uid'];
+	            $uid = $row['uid'];
 
 
               $query = "SELECT type FROM role WHERE uid='$uid'";
               $result = mysqli_query($conn,$query);
               $row = mysqli_fetch_assoc($result);
               $role = $row['type'];
-	      $_SESSION['role']=$role;
+	            $_SESSION['role']=$role;
 
               if($row['role']=='applicant'){
                 $query = "SELECT uid FROM applicant WHERE uname='$uname'";
@@ -59,17 +58,8 @@ if(isset($_POST['login'])){
                 $fid = $info['fid'];
                 $_SESSION['fid']=$fid;
               }
-
-
-              
-
-
-
-
-
-
-              
-              header('location:userDashboard.php');exit;
+ 
+              header('location:Dashboard.php');exit;
             }
           }
           //if we get here the user doesn't exist in database
