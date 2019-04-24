@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <html>
 <head>
 
@@ -7,7 +10,7 @@
 
 </head>
 <?php
-  session_start();
+
   $uid = $_SESSION["user_id"];
   $role = $_SESSION["role"];
   $fname = $_POST["fname"]; 
@@ -19,7 +22,7 @@
   $zip = $_POST["zip"]; 
 	
 
-        $servername="localhost";	
+	$servername="127.0.0.1";	
 	$username = "Team_Name";
 	$password = "p@ssW0RD";
 	$dbname = "Team_Name";
