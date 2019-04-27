@@ -5,26 +5,26 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="/Team_Name/part1_projects/FlatEarthSociety/public_html/dashboard.php">Home</a>
+        <a class="nav-link" href="/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/dashboard.php">Home</a>
       </li>
         <?php
         if (empty($_SESSION["user_id"])) {
-            echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/Team_Name/part1_projects/FlatEarthSociety/public_html/login.php\">Login</a></li>");
+            echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/login.php\">Login</a></li>");
         } else {
             if (in_array("student", $_SESSION["role"])) {
-                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/Team_Name/part1_projects/FlatEarthSociety/public_html/courses.php\">Courses</a></li>");
-                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/Team_Name/part1_projects/FlatEarthSociety/public_html/transcript.php\">Transcript</a></li>");
-                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/Team_Name/part1_projects/ben_new_code/applyToGraduate.php\">Graduate</a></li>");
-                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/Team_Name/part1_projects/ben_new_code/form1.html\">Forms</a></li>");
+                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/courses.php\">Courses</a></li>");
+                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/transcript.php\">Transcript</a></li>");
+                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/ben_new_code/applyToGraduate.php\">Graduate</a></li>");
+                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/ben_new_code/form1.html\">Forms</a></li>");
             }
             if (in_array("instructor", $_SESSION["role"])) {
-                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/Team_Name/part1_projects/FlatEarthSociety/public_html/courses.php\">Courses</a></li>");
-                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/Team_Name/part1_projects/FlatEarthSociety/public_html/gradeCourses.php\">Grades</a></li>");
+                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/courses.php\">Courses</a></li>");
+                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/gradeCourses.php\">Grades</a></li>");
             }
             if (in_array("admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("instructor", $_SESSION["role"])) {
-                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/Team_Name/part1_projects/FlatEarthSociety/public_html/manage.php\">Manage</a></li>");
+                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/manage.php\">Manage</a></li>");
             }
-            echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/Team_Name/part1_projects/FlatEarthSociety/public_html/info.php\">Info</a></li>");
+            echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/info.php\">Info</a></li>");
         }
         ?>
     </ul>
