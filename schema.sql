@@ -14,6 +14,7 @@ DROP TABLE IF EXISTS schedule;
 DROP TABLE IF EXISTS enrolls;
 DROP TABLE IF EXISTS formOne;
 DROP TABLE IF EXISTS formOneValid;
+DROP TABLE IF EXISTS courseRegistrationForm;
 SET foreign_key_checks = 1;
 
 
@@ -33,6 +34,7 @@ CREATE TABLE user (
     approveThesis int,
     clearedToGrad int,
     advisorid int,
+    needsCourseApproval int,
     PRIMARY KEY (uid)
 );
 
@@ -100,6 +102,20 @@ create table formOneValid(
     courseNumber int,
     dept varchar(100),
     primary key(num)
+);
+
+create table courseRegistrationForm(
+    uid int,
+    c1 varchar(32),
+    c2 varchar(32),
+    c3 varchar(32),
+    c4 varchar(32),
+    c5 varchar(32),
+    c6 varchar(32),
+    c7 varchar(32),
+    c8 varchar(32),
+    foreign key(uid) references user(uid),
+    primary key(uid)
 );
 
 CREATE TABLE applicant(
