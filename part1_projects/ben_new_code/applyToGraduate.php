@@ -45,6 +45,7 @@ session_start();
     $username = "Team_Name";
     $password = "p@ssW0RD";
     $dbname = "Team_Name";
+    $errorMessage = "";
     // define connection variable
     $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -86,6 +87,7 @@ session_start();
 
     if ($deptArray == $deptTaken && $numArray == $numTaken) {
       $compBool = 1;
+      $errorMessage .= "Your Form 1 does not match your courses taken. ";
     }
     for ($x = 0; $x < 12; $x++) {
       $query2 = "SELECT uid, schedule.sid, course.cid, dept, courseNumber
@@ -132,6 +134,7 @@ session_start();
       }
       if ($gradeArray[$x] == "IP") {
         $error = 1;
+	$errorMessage .= "You currently have a class in progress (IP). ";
       }
     }
     $numClasses = 0;
@@ -142,6 +145,9 @@ session_start();
     $result3 = mysqli_query($conn, $query3) or die("Bad Query: $query3");
     $numClasses = mysqli_num_rows($result3);
     $totalGPA = $totalGPA / $creditCount;
+    if($totalGPA < 3.0){
+	$errorMessage .= "You have a GPA below 3.0. ";    
+    }
     if ($error != 1 && $totalGPA >= 3.0 && $failCounter <= 2 && $compBool == 1) {
       $query4 = "UPDATE user SET clearedToGrad = 1 WHERE uid = '$uid'";
       $result4 = mysqli_query($conn, $query4) or die("Bad Query: $query4");
