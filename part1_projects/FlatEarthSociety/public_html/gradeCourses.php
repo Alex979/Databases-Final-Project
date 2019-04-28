@@ -102,7 +102,7 @@ else{
         }
         }
         
-        if (in_array("instructor", $_SESSION["role"]))
+        if (in_array("faculty", $_SESSION["role"]))
         {
         echo "<h2>Your Courses: </h2><br/>";
         $query = "select c.cid,c.dept,c.courseNumber,c.title,s.sid from course c, schedule s where c.instructor_id='$uid' and s.cid=c.cid and s.is_current=1";

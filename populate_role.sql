@@ -5,11 +5,11 @@ INSERT INTO role VALUES (
 
 -- Make Narahari and Choi instructors
 INSERT INTO role VALUES (
-    12345678, 'instructor'
+    12345678, 'faculty'
 );
 
 INSERT INTO role VALUES (
-    12121212, 'instructor'
+    12121212, 'faculty'
 );
 
 -- Make Narahari and Choi Grad Secs

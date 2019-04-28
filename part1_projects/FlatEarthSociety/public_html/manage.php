@@ -8,7 +8,7 @@ if (empty($_SESSION["user_id"])) {
 if (
     !in_array("admin", $_SESSION["role"]) &&
     !in_array("gs", $_SESSION["role"]) &&
-    !in_array("instructor", $_SESSION["role"])
+    !in_array("faculty", $_SESSION["role"])
 ) {
     header("Location: index.php");
 }
