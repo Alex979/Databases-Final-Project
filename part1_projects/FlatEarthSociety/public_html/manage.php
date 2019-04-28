@@ -6,7 +6,7 @@ if (empty($_SESSION["user_id"])) {
 }
 
 if (
-    !in_array("admin", $_SESSION["role"]) &&
+    !in_array("system-admin", $_SESSION["role"]) &&
     !in_array("gs", $_SESSION["role"]) &&
     !in_array("faculty", $_SESSION["role"])
 ) {
@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
         </form>
         <br>
         <?php
-        if (in_array("admin", $_SESSION["role"])) {
+        if (in_array("system-admin", $_SESSION["role"])) {
                     echo "<h1 class=\"text-primary\">Add Account</h1>";
                     echo "<form method=\"post\" style=\"max-width: 500px\">";
                     echo "<div class=\"form-group\">";
@@ -151,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
                     if(isset($userAddSuccess)){echo "<p class=\"text-success\">" . $userAddSuccess . "</p>";}
                     if(isset($userAddFail)){echo "<p class=\"text-danger\">" . $userAddFail . "</p>";}
                 }
-        if (in_array("admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"])) {
+        if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"])) {
             echo "<h1 class=\"text-primary\">User List</h1>";
             $query = "SELECT * FROM user INNER JOIN role ON user.uid = role.uid";
             $result = mysqli_query($conn, $query);
@@ -174,7 +174,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
                 echo "</table>";
             }
         }
-        if (in_array("admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"])) {
+        if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"])) {
             echo "<h1 class=\"text-primary\">Change Grade</h1>";
             echo "<form method=\"post\" style=\"max-width: 500px\">";
             echo "<div class=\"form-group\">";
@@ -192,7 +192,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
             echo "<button class=\"btn btn-primary\" type=\"submit\">Change</button>";
             echo "</form><br>";
         }
-        if (in_array("admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"])) {
+        if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"])) {
             echo "<h1 class=\"text-primary\">Schedule List</h1>";
             $query = "SELECT * FROM schedule INNER JOIN course ON schedule.cid = course.cid ORDER BY schedule.sid";
             $result = mysqli_query($conn, $query);

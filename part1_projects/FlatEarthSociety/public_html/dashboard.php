@@ -67,7 +67,7 @@ function create_link($title, $description, $link_text, $url) {
                         create_link("Courses", "View all the courses offerred.", "Go to course list", "courses.php");
                         create_link("Grades", "View the courses you teach and assign grades to students.", "View courses you teach", "gradeCourses.php");
                     }
-                    if (in_array("admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("faculty", $_SESSION["role"])) {
+                    if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("faculty", $_SESSION["role"])) {
                         create_link("Manage", "Management panel for faculty and staff.", "Go to manage page", "manage.php");
                     }
                     create_link("Info", "View personal information and logout.", "Go to info page", "info.php");

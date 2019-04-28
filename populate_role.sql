@@ -1,6 +1,6 @@
 -- Make Alex Broaddus an admin
 INSERT INTO role VALUES (
-    43782859, 'admin'
+    43782859, 'system-admin'
 );
 
 -- Make Narahari and Choi instructors
