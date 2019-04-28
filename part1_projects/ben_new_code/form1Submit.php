@@ -1,12 +1,17 @@
-d>
+<?php
+session_start();
+$id = $_SESSION["id"];
+$role = $_SESSION["role"];
+?>
+<html>
+
+<head>
   <title>GWU Advising</title>
   <link rel="icon" href="http://www.gwrha.com/uploads/1/7/9/9/17997469/gw_atx_4cp_pos.png">
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -15,11 +20,8 @@ d>
 
 <body>
   <?php
-  session_start();
-  $id = $_SESSION["id"];
-  $role = $_SESSION["role"];
-
-?>
+  include('../FlatEarthSociety/public_html/navbar.php');
+  ?>
   <div class="container mt-3">
     <h1 class="text-primary">Form1: Program of Study for MS in Computer Science</h1>
     <form action="form1.php" method="post">Please enter the courses you plan to take to earn your MS degree in Computer
@@ -44,13 +46,13 @@ d>
         <tr>
           <th>1</th>
           <th><input class="form-control" type="text" ID="d1" name="d1"></th>
-      <th><input class="form-control"type=" text" ID="num1" name="num1"></th>
+          <th><input class="form-control" type=" text" ID="num1" name="num1"></th>
         </tr>
         <tr>
           <th>2</th>
           <th><input class="form-control" type="text" ID="d2" name="d2"></th>
           <th><input class="form-control" type="text" ID="num2" name="num2"></th>
-          </tr>
+        </tr>
         <tr>
           <th>3</th>
           <th><input class="form-control" type="text" ID="d3" name="d3"></th>
@@ -103,21 +105,15 @@ d>
         </tr>
       </table>
       <br><br>
-           <button class="btn btn-primary" style="vertical-align:middle"><span>Submit</span></button>
-         </form>
-         <form action="../FlatEarthSociety/public_html/dashboard.php">
-           <button class="btn btn-primary" style="vertical-align:middle"><span>Return to student page</span></button>
-         </form>
-       </div>
-       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-         crossorigin="anonymous"></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-         crossorigin="anonymous"></script>
-       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-         crossorigin="anonymous"></script>
-     </body>
+      <button class="btn btn-primary" style="vertical-align:middle"><span>Submit</span></button>
+    </form>
+    <form action="../FlatEarthSociety/public_html/dashboard.php">
+      <button class="btn btn-primary" style="vertical-align:middle"><span>Return to student page</span></button>
+    </form>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
 
-     </html>
+</html>

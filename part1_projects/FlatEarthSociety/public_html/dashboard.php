@@ -61,11 +61,19 @@ function create_link($title, $description, $link_text, $url) {
                         create_link("Courses", "View all the courses offerred.", "Go to course list", "courses.php");
                         create_link("Transcript", "View the courses you currently are taken and have taken in the past.", "View transcript", "transcript.php");
                         create_link("Apply To Graduate", "Apply to graduate.", "Go to application", "../../ben_new_code/applyToGraduate.php");
-                        create_link("Submit Form 1", "Submit the form required to graduate.", "Go to form 1", "../../ben_new_code/form1.html");
+                        create_link("Submit Form 1", "Submit the form required to graduate.", "Go to form 1", "../../ben_new_code/form1Submit.php");
+                        create_link("View Form 1", "View your form 1 submission.", "View form 1", "../../ben_new_code/viewForm1.php");
+                    }
+                    if (in_array("alumni", $_SESSION["role"])) {
+                        create_link("Transcript", "View the courses you currently are taken and have taken in the past.", "View transcript", "transcript.php");
                     }
                     if (in_array("faculty", $_SESSION["role"])) {
                         create_link("Courses", "View all the courses offerred.", "Go to course list", "courses.php");
                         create_link("Grades", "View the courses you teach and assign grades to students.", "View courses you teach", "gradeCourses.php");
+                    }
+                    if (in_array("gs", $_SESSION["role"])) {
+                        create_link("Assign advisor", "Assign advisors to students.", "Go to advisor assign page", "../../ben_new_code/assignAdvisor.php");
+                        create_link("Graduation list", "View list of students that are cleared to graduate", "Go to graduation list", "../../ben_new_code/clearedGrad.php");
                     }
                     if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("faculty", $_SESSION["role"])) {
                         create_link("Manage", "Management panel for faculty and staff.", "Go to manage page", "manage.php");
