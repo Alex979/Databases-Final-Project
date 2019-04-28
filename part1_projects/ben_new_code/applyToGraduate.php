@@ -154,7 +154,7 @@ session_start();
       header("Location: graduated.php");
     } else {
 	session_start();
-	$_SESSION["error"] = $error;
+	$_SESSION["errorMessage"] = $errorMessage;
       	header("Location: noGraduate.php");
     }
 
