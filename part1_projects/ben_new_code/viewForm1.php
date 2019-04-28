@@ -12,7 +12,7 @@
 	session_start();
 	        $uid = $_SESSION["uid"];
   		$role = $_SESSION["role"];
-	$student_id = $_POST["uid"];
+		$student_id = $_POST["uid"];
 	
 	    $servername = "localhost";
 	    $username = "Team_Name";
@@ -26,7 +26,7 @@
         die("Connection failed: " . mysqli_connect_error());
       }
       // define the sql_insert_query
-      $query = "SELECT * FROM formOne WHERE uid = '$uid'";
+      $query = "SELECT * FROM formOne WHERE uid = '$student_id'";
       $result = mysqli_query($conn, $query) or die("Bad Query: $query");
       if(mysqli_num_rows($result) > 0){
       	echo "<table border='1'>";
