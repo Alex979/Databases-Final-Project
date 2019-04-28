@@ -32,7 +32,7 @@ $uid = $_SESSION["user_id"];
     $password = "p@ssW0RD";
     $dbname = "Team_Name";
 
-    include "navbar.php";
+    include("navbar.php");
 
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     if (!$conn) {
@@ -67,7 +67,7 @@ else{
         -->
 
         <?php
-        if (in_array("student", $_SESSION["user_role"]))
+        if (in_array("student", $_SESSION["role"]))
         {
         echo "<h2>Your Grades: </h2><br/>";
         $query = "select course.dept,course.courseNumber,course.title,enrolls.grade from course,enrolls,schedule where enrolls.uid='$uid' and enrolls.sid=schedule.sid and schedule.cid=course.cid and schedule.is_current=1";
@@ -102,7 +102,7 @@ else{
         }
         }
         
-        if (in_array("instructor", $_SESSION["user_role"]))
+        if (in_array("faculty", $_SESSION["role"]))
         {
         echo "<h2>Your Courses: </h2><br/>";
         $query = "select c.cid,c.dept,c.courseNumber,c.title,s.sid from course c, schedule s where c.instructor_id='$uid' and s.cid=c.cid and s.is_current=1";

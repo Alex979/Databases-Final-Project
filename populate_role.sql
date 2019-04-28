@@ -1,15 +1,15 @@
 -- Make Alex Broaddus an admin
 INSERT INTO role VALUES (
-    43782859, 'admin'
+    43782859, 'system-admin'
 );
 
 -- Make Narahari and Choi instructors
 INSERT INTO role VALUES (
-    12345678, 'instructor'
+    12345678, 'faculty'
 );
 
 INSERT INTO role VALUES (
-    12121212, 'instructor'
+    12121212, 'faculty'
 );
 
 -- Make Narahari and Choi Grad Secs

@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST["logout"])) {
         session_destroy();
         mysqli_close($conn);
-        header("Location: index.php");
+        header("Location: dashboard.php");
         die();
     }
 

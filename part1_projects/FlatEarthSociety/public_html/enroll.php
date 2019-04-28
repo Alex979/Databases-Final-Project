@@ -18,6 +18,17 @@ if (!$conn) {
     // Redirect to user friendly error page
     die('Error: ' . mysqli_connect_error());
 }
+
+// Check that current user doesn't need course registration approval first, redirect otherwise
+$query = "SELECT needsCourseApproval FROM user WHERE uid=$uid";
+$result = mysqli_query($conn, $query);
+if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    if((int)$row["needsCourseApproval"] == 1) {
+        // If course approval is needed, redirect to form submission page
+        header("Location: courseRegistrationForm.php");
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +55,7 @@ if (!$conn) {
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 /* Make sure this course does not conflict with 
-            any other currently enrolled courses */
+                any other currently enrolled courses */
 
                 // Time allowed between classes in seconds
                 $time_buffer = 1800;  // = 30 minutes
