@@ -8,12 +8,6 @@
   <h1>View Form 1</h1>
 
 <?php
-	$permission = 0;
-	$permission = $_POST["permission"];
-	if ($permission == 0)
-	{
-		header('Location: permissionDenied.html');
-	}
 	
 	session_start();
 	        $uid = $_SESSION["uid"];
@@ -64,7 +58,7 @@
         	break;
 	}
 	
-	echo '<form action="'.$destination.'.php" method = "post">';
+	echo '<form action="dashboard.php" method = "post">';
         echo '<input type="hidden" name="id" value = "'.$uid.'"/>';
 	echo '<input type="hidden" name="permission" value = 1/>';
         echo '<button class="button" style="vertical-align:middle"><span>Return to Home Page</span></button>';
