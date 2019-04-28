@@ -153,7 +153,9 @@ session_start();
       $result4 = mysqli_query($conn, $query4) or die("Bad Query: $query4");
       header("Location: graduated.php");
     } else {
-      header("Location: noGraduate.php");
+	session_start();
+	$_SESSION["error"] = $error;
+      	header("Location: noGraduate.php");
     }
 
 
