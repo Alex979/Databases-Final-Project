@@ -7,7 +7,11 @@
 <body>
   <h1>GWU Advising</h1>
   <p>
-    You are not eligible to graduate at this time.
+     <?php 
+      session_start();
+      $errorMessage = $_SESSION["errorMessage"];
+      echo $errorMessage;
+    ?>
     <a href="../FlatEarthSociety/public_html/dashboard.php">Go Back</a><br>
   </p>
 </body>
