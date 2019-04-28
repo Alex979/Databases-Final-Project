@@ -32,32 +32,32 @@
 	}
 	
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
-		if (isset($fname)){
+		if (!empty($fname)){
 		  $query = "UPDATE user SET fname='$fname' WHERE uid='$uid'";
 		  $result=mysqli_query($conn,$query); 
 
 		}
-		if (isset($lname)){
+		if (!empty($lname)){
 		  $query2 = "UPDATE user SET lname='$lname' WHERE uid='$uid'";
 		  $result2=mysqli_query($conn,$query2); 
 		}
-		if (isset($email)){
+		if (!empty($email)){
 		  $query3 = "UPDATE user SET email='$email' WHERE uid='$uid'";
 		  $result3=mysqli_query($conn,$query3); 
 		}
-		if (isset($street)){
+		if (!empty($street)){
 		  $query4 = "UPDATE user SET street='$street' WHERE uid='$uid'";
 		  $result4=mysqli_query($conn,$query4); 
 		}
-		if (isset($city)){
+		if (!empty($city)){
 		  $query4 = "UPDATE user SET city='$city' WHERE uid='$uid'";
 		  $result4=mysqli_query($conn,$query4); 
 		}
-		if (isset($state)){
+		if (!empty($state)){
 		  $query4 = "UPDATE user SET state='$state' WHERE uid='$uid'";
 		  $result4=mysqli_query($conn,$query4); 
 		}
-		if (isset($zip)){
+		if (!empty($zip)){
 		  $query4 = "UPDATE user SET zip='$zip' WHERE uid='$uid'";
 		  $result4=mysqli_query($conn,$query4); 
 		}
