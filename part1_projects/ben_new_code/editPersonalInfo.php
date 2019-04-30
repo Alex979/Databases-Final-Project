@@ -141,12 +141,6 @@
 						$destination = sysadmin;
 						break;
 		}
-		
-		echo '<form action="../FlatEarthSociety/public_html/dashboard.php" method = "post">';
-					echo '<input type="hidden" name="uid" value = "'.$uid.'"/>';
-		echo '<input type="hidden" name="permission" value = 1/>';
-					echo '<button class="btn btn-primary" style="vertical-align:middle"><span>Return to Home Page</span></button>';
-			echo '</form>';
 			?>
 	</div>
 

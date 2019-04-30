@@ -38,7 +38,6 @@ session_start();
       </div>
       <input class="btn btn-primary" type="submit" value="Apply" />
     </form>
-    <br><br><br><a href="../FlatEarthSociety/public_html/dashboard.php">Go to Homepage</a><br>
 
     <?php
     $servername = "127.0.0.1";

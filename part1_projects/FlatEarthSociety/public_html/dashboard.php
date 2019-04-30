@@ -78,7 +78,11 @@ function create_link($title, $description, $link_text, $url) {
                     if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("faculty", $_SESSION["role"])) {
                         create_link("Manage", "Management panel for faculty and staff.", "Go to manage page", "manage.php");
                     }
-                    create_link("Info", "View personal information and logout.", "Go to info page", "info.php");
+                    if (in_array("applicant", $_SESSION["role"])) {
+                        create_link("Info", "View and edit your personal information.", "Go to info page", "../../RockHoppers/public_html/personalInfo.php");
+                    } else {
+                        create_link("Info", "View personal information and logout.", "Go to info page", "info.php");
+                    }
                 }
                 ?>
 
