@@ -32,7 +32,11 @@
             if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("faculty", $_SESSION["role"])) {
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/manage.php\">Manage</a></li>");
             }
-            echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/info.php\">Info</a></li>");
+            if (in_array("applicant", $_SESSION["role"])) {
+              echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/RockHoppers/public_html/personalInfo.php\">Info</a></li>");
+            } else {
+              echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/info.php\">Info</a></li>");
+            }
         }
         ?>
     </ul>
