@@ -84,3 +84,21 @@ INSERT INTO user VALUES (
     100.00,
     0, 0, 0, NULL, 0
 );
+
+INSERT INTO user VALUES (
+    55555555,
+    'advisor',
+    'password123',
+    'faculty',
+    'advisor',
+    '2121 I St NW',
+    'Washington',
+    'DC',
+    20052,
+    100.00,
+    0,
+    0,
+    0,
+    NULL,
+    0
+);
