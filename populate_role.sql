@@ -37,3 +37,7 @@ INSERT INTO role VALUES (
 INSERT INTO role VALUES (
     99999999, 'phd'
 );
+
+INSERT INTO role VALUES (
+    55555555, 'advisor'
+);
