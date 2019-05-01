@@ -85,7 +85,7 @@ switch ($role) {
 	}
 	
 	echo '<form action="../FlatEarthSociety/public_html/dashboard.php" method = "post">';
-        echo '<input type="hidden" name="id" value = "'$uid'"/>';
+        echo '<input type="hidden" name="uid" value = "'$uid'"/>';
 	echo '<input type="hidden" name="permission" value = 1/>';
         echo '<button class="button" style="vertical-align:middle"><span>Return to Home Page</span></button>';
   	echo '</form>';
