@@ -56,6 +56,7 @@ function create_link($title, $description, $link_text, $url) {
                 <?php
                 if (empty($_SESSION["user_id"])) {
                     create_link("Log in", "Log in to the portal.", "Go to login", "login.php");
+                    create_link("Register", "Register as a new applicant.", "Go to register", "register.php");
                 } else {
                     if (in_array("student", $_SESSION["role"])) {
                         create_link("Courses", "View all the courses offerred.", "Go to course list", "courses.php");

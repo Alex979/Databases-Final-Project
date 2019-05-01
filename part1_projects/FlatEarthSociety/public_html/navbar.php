@@ -24,6 +24,7 @@
             if (in_array("faculty", $_SESSION["role"])) {
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/courses.php\">Courses</a></li>");
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/gradeCourses.php\">Grades</a></li>");
+                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/RockHoppers/public_html/applicant_display.php\">Applicant Display</a></li>");
             }
             if (in_array("gs", $_SESSION["role"])) {
               echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/ben_new_code/assignAdvisor.php\">Assign advisors</a></li>");

@@ -31,10 +31,7 @@
   $gradeArray = array();
   $numCredits = 0;
   $role = "";
-  $query = "SELECT uid, schedule.sid, course.cid, course.credits, enrolls.grade
-		FROM enrolls, schedule, course 
-			WHERE schedule.sid = enrolls.sid 
-				AND course.cid = schedule.cid AND enrolls.uid = '$uid'";
+  $query = "SELECT uid, schedule.sid, course.cid, course.credits, enrolls.grade FROM enrolls, schedule, course WHERE schedule.sid = enrolls.sid AND course.cid = schedule.cid AND enrolls.uid=$uid";
   $result = mysqli_query($conn,$query);
   $numClasses = mysqli_num_rows($result);
   $x = 0;
