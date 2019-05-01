@@ -11,7 +11,7 @@
  <?php
 	
 	/* Create connection */
-	$servername = "localhost";
+	$servername = "127.0.0.1";
 	$username = "Team_Name";
 	$password = "p@ssW0RD";
 	$dbname = "Team_Name";	

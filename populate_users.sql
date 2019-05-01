@@ -13,7 +13,7 @@ INSERT INTO user VALUES (
     0,
     0,
     0,
-    NULL,
+    55555555,
     0
 );
 
@@ -31,7 +31,7 @@ INSERT INTO user VALUES (
     0,
     0,
     0,
-    NULL,
+    55555555,
     1
 );
 

@@ -70,15 +70,19 @@ function create_link($title, $description, $link_text, $url) {
                     if (in_array("faculty", $_SESSION["role"])) {
                         create_link("Courses", "View all the courses offerred.", "Go to course list", "courses.php");
                         create_link("Grades", "View the courses you teach and assign grades to students.", "View courses you teach", "gradeCourses.php");
+                        create_link("Applicant Display", "See a list of student applicants.", "View applicants", "../../RockHoppers/public_html/applicant_display.php");
                     }
                     if (in_array("gs", $_SESSION["role"])) {
                         create_link("Assign advisor", "Assign advisors to students.", "Go to advisor assign page", "../../ben_new_code/assignAdvisor.php");
                         create_link("Graduation list", "View list of students that are cleared to graduate", "Go to graduation list", "../../ben_new_code/clearedGrad.php");
                     }
-                    if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("faculty", $_SESSION["role"])) {
+                    if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("faculty", $_SESSION["role"]) || in_array("advisor", $_SESSION["role"])) {
                         create_link("Manage", "Management panel for faculty and staff.", "Go to manage page", "manage.php");
                     }
                     if (in_array("applicant", $_SESSION["role"])) {
+                        create_link("Academic Info", "View your academic information.", "Go to academic info", "../../RockHoppers/public_html/academicInfo.php");
+                        create_link("Recommendations", "View your letters of recommendation.", "View recommendations", "../../RockHoppers/public_html/recomendations.php");
+                        create_link("Application Status", "View the status of your application.", "View status", "../../RockHoppers/public_html/applicationStatus.php");
                         create_link("Info", "View and edit your personal information.", "Go to info page", "../../RockHoppers/public_html/personalInfo.php");
                     } else {
                         create_link("Info", "View personal information and logout.", "Go to info page", "info.php");
