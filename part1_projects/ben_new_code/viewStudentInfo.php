@@ -35,7 +35,7 @@
 	  
 	$uid = $_POST["uid"];
 
-	$student_query = "SELECT * FROM user WHERE uid LIKE '$uid'";
+	$student_query = "SELECT * FROM user WHERE uid ='$uid'";
 	$student_result = mysqli_query($conn,$student_query);
 	if (mysqli_num_rows($student_result) > 0)
 	{
