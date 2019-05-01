@@ -109,16 +109,15 @@
 			//output data of each row that query found as result	
 			while ($row = mysqli_fetch_assoc($transcript_result))
 			{	
-				$semester = $row["semester"];
-				$year = $row["year"];
+			
+				$term = $row["term"];
 				$dept = $row["dept"];
 				$courseNumber = $row["courseNumber"];
 				$title = $row["title"];
 				$grade = $row["grade"];	
 				$credits = $row["credits"];
-				
-				echo '<tr><td>'.$semester.'</td>';
-      				echo '<td>'.$year.'</td>';
+			
+      				echo '<td>'.$term.'</td>';
 				echo '<td>'.$dept.'</td>';
 				echo '<td>'.$courseNumber.'</td>';
 				echo '<td>'.$title.'</td>';
