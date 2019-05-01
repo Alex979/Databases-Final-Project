@@ -10,7 +10,6 @@
 <?php
   session_start();
   $uid = $_SESSION["uid"];
-  $role = $_SESSION["role"];
 	//check for permission
 	/* Create connection */
 	$servername = "127.0.0.1";
@@ -30,7 +29,6 @@
   $creditArray = array();
   $gradeArray = array();
   $numCredits = 0;
-  $role = "";
   $query = "SELECT uid, schedule.sid, course.cid, course.credits, enrolls.grade
 		FROM enrolls, schedule, course 
 			WHERE schedule.sid = enrolls.sid 
@@ -82,7 +80,7 @@
 	}
 	
 	
-	$transcript_query = "SELECT uid, schedule.sid, course.cid, course.credits, enrolls.grade, course.courseNumber, course.title, course.dept, course.term
+	$transcript_query = "SELECT uid, schedule.sid, course.cid, course.credits, enrolls.grade, course.courseNumber, course.title, course.dept, schedule.term
 				FROM enrolls, schedule, course 
 					WHERE schedule.sid = enrolls.sid 
 						AND course.cid = schedule.cid AND enrolls.uid = '$uid'";
