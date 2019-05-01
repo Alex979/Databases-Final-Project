@@ -43,7 +43,6 @@
 		{
 			$firstname = $student_row["fname"];
 			$lastname = $student_row["lname"];
-      			$email = $student_row["email"];
       			$city = $student_row["city"];
 			$state = $student_row["state"];
 			$zip = $student_row["zip"];
@@ -54,7 +53,6 @@
 	
   echo 'Name: '.$firstname.' '.$lastname.'<br>';
   echo 'University ID: '.$uid.'<br>';
-  echo 'Email: '.$email.'<br>';
   echo 'State: '.$state.'<br>';
   echo 'City: '.$city.'<br>';
   echo 'Street: '.$street.'<br>';
