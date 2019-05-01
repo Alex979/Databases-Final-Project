@@ -2,52 +2,6 @@
 <head>
   <title>GWU Advising</title>
 	<link rel="icon" href="http://www.gwrha.com/uploads/1/7/9/9/17997469/gw_atx_4cp_pos.png">
-<style>
-.button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #000000;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 20px;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-.button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-.button:hover span {
-  padding-right: 25px;
-}
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-th, td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-</style>
   <link rel="stylesheet" href="style.css">
 </head>
 <h1>Transcripts</h1>
@@ -55,20 +9,14 @@ th, td {
 
 <?php
   session_start();
-  $id = $_SESSION["id"];
+  $uid = $_SESSION["uid"];
   $role = $_SESSION["role"];
 	//check for permission
-	$permission = 0;
-	$permission = $_POST["permission"];
-	if ($permission == 0)
-	{
-		header('Location: permissionDenied.html');
-	}
 	/* Create connection */
-	$servername = "localhost";
-	$username = "TeamEighteen";
-	$password = "DatabasePassword1!";
-	$dbname = "TeamEighteen";	
+	$servername = "127.0.0.1";
+	$username = "Team_Name";
+	$password = "p@ssW0RD";
+	$dbname = "Team_Name";	
 	
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
 		  
@@ -77,18 +25,21 @@ th, td {
 		die("Connection failed: ".mysqli_connect_error());
 	}
 	  
-  $id = $_POST["id"];
+  $uid = $_POST["uid"];
   $totalGPA = 0.0;
   $creditArray = array();
   $gradeArray = array();
   $numCredits = 0;
   $role = "";
-  $query = "SELECT * FROM taken WHERE id = '$id'";
+  $query = "SELECT uid, schedule.sid, course.cid, course.credits, enrolls.grade
+		FROM enrolls, schedule, course 
+			WHERE schedule.sid = enrolls.sid 
+				AND course.cid = schedule.cid AND enrolls.uid = '$uid'";
   $result = mysqli_query($conn,$query);
   $numClasses = mysqli_num_rows($result);
   $x = 0;
   while($row = mysqli_fetch_array($result)){
-    $creditArray[$x] = $row['creditHours'];
+    $creditArray[$x] = $row['credits'];
     $gradeArray[$x] = $row['grade'];
     $numCredits = $numCredits + $creditArray[$x];
     $x++;
@@ -118,10 +69,8 @@ th, td {
     }
   }
   $totalGPA = $totalGPA / $numCredits;
-  $query2 = "UPDATE taken SET gpa = '$totalGPA' WHERE id = '$id'";
-  $result2 = mysqli_query($conn,$query2);
   
-	$name_query = "SELECT * FROM users WHERE id LIKE '%".$id."%'";
+	$name_query = "SELECT * FROM user WHERE uid = '$uid'";
 	$name_result = mysqli_query($conn,$name_query);
 	if (mysqli_num_rows($name_result) > 0)
 	{
@@ -133,7 +82,10 @@ th, td {
 	}
 	
 	
-	$transcript_query = "SELECT * FROM taken WHERE id LIKE '%".$id."%'";
+	$transcript_query = "SELECT uid, schedule.sid, course.cid, course.credits, enrolls.grade, course.courseNumber, course.title, course.dept, course.term
+				FROM enrolls, schedule, course 
+					WHERE schedule.sid = enrolls.sid 
+						AND course.cid = schedule.cid AND enrolls.uid = '$uid'";
 	$transcript_result = mysqli_query($conn,$transcript_query);	
 		if (mysqli_num_rows($transcript_result) > 0)
 		{
@@ -163,30 +115,29 @@ th, td {
 				$year = $row["year"];
 				$dept = $row["dept"];
 				$courseNumber = $row["courseNumber"];
-				$courseTitle = $row["courseTitle"];
+				$title = $row["title"];
 				$grade = $row["grade"];	
-				$creditHours = $row["creditHours"];
-				$gpa = $row["gpa"];
+				$credits = $row["credits"];
 				
 				echo '<tr><td>'.$semester.'</td>';
       				echo '<td>'.$year.'</td>';
 				echo '<td>'.$dept.'</td>';
 				echo '<td>'.$courseNumber.'</td>';
-				echo '<td>'.$courseTitle.'</td>';
+				echo '<td>'.$title.'</td>';
 				echo '<td>'.$grade.'</td>';
-      				echo '<td>'.$creditHours.'</td></tr>';
+      				echo '<td>'.$credits.'</td></tr>';
 			}	
 			echo '</table>';
 			echo '<br>';
 			echo 'Cumulative GPA: ';
-			echo $gpa;
+			echo $totalGPA;
 				
 		}	
 		else	
 		{	
 			echo "No transcript found";		
 		}
-  $id = $_SESSION["id"];
+  $uid = $_SESSION["uid"];
   $role = $_SESSION["role"];
 	switch ($role) {
     	case "student":
@@ -206,8 +157,8 @@ th, td {
         	break;
 	}
 	
-	echo '<form action="'.$destination.'.php" method = "post">';
-        echo '<input type="hidden" name="id" value = "'.$id.'"/>';
+	echo '<form action="../FlatEarthSociety/public_html/dashboard.php" method = "post">';
+        echo '<input type="hidden" name="uid" value = "$uid"/>';
 	echo '<input type="hidden" name="permission" value = 1/>';
         echo '<button class="button" style="vertical-align:middle"><span>Return to Home Page</span></button>';
   	echo '</form>';
