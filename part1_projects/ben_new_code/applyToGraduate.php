@@ -105,10 +105,12 @@ session_start();
     for ($x = 0; $x < 12; $x++) {
       $creditCount = $creditCount + $creditArray[$x];
     }
+    $gradeLength = sizeof($gradeArray);
+    echo "<p>Grade Length: ". $gradeLength . " </p><br>";
     $failCounter = 0;
     $totalGPA = 0.0;
     $error = 0;
-    for ($x = 0; $x < count($gradeArray); $x++) {
+    for ($x = 0; $x < $gradeLength; $x++) {
       if ($gradeArray[$x] != "A" && $gradeArray[$x] != "A-" && $gradeArray[$x] != "B+" && $gradeArray[$x] != "B") {
         $failCounter++;
       }
