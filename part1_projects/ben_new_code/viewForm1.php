@@ -4,7 +4,7 @@ $uid = $_SESSION["uid"];
 $role = $_SESSION["role"];
 $student_id = "";
 if(empty($_POST["uid"])){
-	$student_id = $_SESSION["user_id"];
+	$student_id = $_SESSION["uid"];
 }
 $student_id = $_POST["uid"];
 
