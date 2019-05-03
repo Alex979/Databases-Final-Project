@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 <head>
   <title>Error</title>
@@ -17,7 +20,6 @@
     <h1 class="text-primary">GWU Advising</h1>
     <p>
       <?php 
-        session_start();
         $errorMessage = $_SESSION["errorMessage"];
         echo $errorMessage;
       ?>
