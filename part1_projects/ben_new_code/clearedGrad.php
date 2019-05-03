@@ -17,13 +17,6 @@ session_start();
 	<div class="container mt-3">
 		<h2 class="text-primary">Students cleared for graduation</h2>
 		<?php
-			//check for permission
-			$permission = 0;
-			$permission = $_POST["permission"];
-			if ($permission == 0)
-			{
-				header('Location: permissionDenied.html');
-			}
 			
 			
 			/* Create connection */
