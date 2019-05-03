@@ -6,7 +6,7 @@ $student_id = "";
 if(empty($_POST["uid"])){
 	$student_id = $_SESSION["uid"];
 }
-//$student_id = $_POST["uid"];
+$student_id = $_POST["uid"];
 
 
 $servername = "127.0.0.1";
