@@ -24,11 +24,17 @@
             if (in_array("faculty", $_SESSION["role"])) {
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/courses.php\">Courses</a></li>");
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/gradeCourses.php\">Grades</a></li>");
-                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/RockHoppers/public_html/applicant_display.php\">Applicant Display</a></li>");
+                echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/RockHoppers/public_html/applicant_display.php\">Applicant Review</a></li>");
             }
             if (in_array("gs", $_SESSION["role"])) {
               echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/ben_new_code/assignAdvisor.php\">Assign advisors</a></li>");
               echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/ben_new_code/clearedGrad.php\">Graduation list</a></li>");
+              echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/RockHoppers/public_html/displayAppStatus.php\">Application Statuses</a></li>");
+              echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/RockHoppers/public_html/updateTranscript.php\">Update Transcript</a></li>");
+            }
+            if (in_array("system-admin", $_SESSION["role"])) {
+              echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/RockHoppers/public_html/viewApps.php\">Applicant List</a></li>");
+              echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/RockHoppers/public_html/viewFac.php\">Faculty List</a></li>");
             }
             if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("faculty", $_SESSION["role"])) {
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/manage.php\">Manage</a></li>");

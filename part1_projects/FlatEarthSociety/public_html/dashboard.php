@@ -56,7 +56,6 @@ function create_link($title, $description, $link_text, $url) {
                 <?php
                 if (empty($_SESSION["user_id"])) {
                     create_link("Log in", "Log in to the portal.", "Go to login", "login.php");
-                    create_link("Register", "Register as a new applicant.", "Go to register", "register.php");
                 } else {
                     if (in_array("student", $_SESSION["role"])) {
                         create_link("Courses", "View all the courses offerred.", "Go to course list", "courses.php");
@@ -71,11 +70,17 @@ function create_link($title, $description, $link_text, $url) {
                     if (in_array("faculty", $_SESSION["role"])) {
                         create_link("Courses", "View all the courses offerred.", "Go to course list", "courses.php");
                         create_link("Grades", "View the courses you teach and assign grades to students.", "View courses you teach", "gradeCourses.php");
-                        create_link("Applicant Display", "See a list of student applicants.", "View applicants", "../../RockHoppers/public_html/applicant_display.php");
+                        create_link("Applicant Review", "See a list of student applicants and review them.", "View applicants", "../../RockHoppers/public_html/applicant_display.php");
                     }
                     if (in_array("gs", $_SESSION["role"])) {
                         create_link("Assign advisor", "Assign advisors to students.", "Go to advisor assign page", "../../ben_new_code/assignAdvisor.php");
-                        create_link("Graduation list", "View list of students that are cleared to graduate", "Go to graduation list", "../../ben_new_code/clearedGrad.php");
+                        create_link("Graduation list", "View list of students that are cleared to graduate.", "Go to graduation list", "../../ben_new_code/clearedGrad.php");
+                        create_link("Application Statuses", "View the application status of all current applicants.", "View application statuses", "../../RockHoppers/public_html/displayAppStatus.php");
+                        create_link("Update Transcript", "Update transcript.", "Update transcript", "../../RockHoppers/public_html/updateTranscript.php");
+                    }
+                    if (in_array("system-admin", $_SESSION["role"])) {
+                        create_link("Applicant List", "See a list of all current applicants.", "View applicants", "../../RockHoppers/public_html/viewApps.php");
+                        create_link("Faculty List", "See a list of all current faculty.", "View faculty", "../../RockHoppers/public_html/viewFac.php");
                     }
                     if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("faculty", $_SESSION["role"]) || in_array("advisor", $_SESSION["role"])) {
                         create_link("Manage", "Management panel for faculty and staff.", "Go to manage page", "manage.php");
