@@ -91,14 +91,14 @@ session_start();
       $errorMessage .= "Your Form 1 does not match your courses taken. ";
     }
     for ($x = 0; $x < 12; $x++) {
-      $query2 = "SELECT uid, schedule.sid, course.cid, dept, courseNumber, enrolls.grade
+      $query2 = "SELECT uid, schedule.sid, course.cid, dept, courseNumber, enrolls.grade, course.credits
 		FROM enrolls, schedule, course 
 			WHERE schedule.sid=enrolls.sid 
 				AND course.cid=schedule.cid AND enrolls.uid = '$uid' AND dept = '$deptArray[$x]' AND courseNumber = '$numArray[$x]'";
       $result2 = mysqli_query($conn, $query2) or die("Bad Query: $query2");
       while ($row = mysqli_fetch_array($result2)) {
         $gradeArray[$x] = $row['grade'];
-        $creditArray[$x] = $row['creditHours'];
+        $creditArray[$x] = $row['credits'];
       }
     }
     $creditCount = 0;
