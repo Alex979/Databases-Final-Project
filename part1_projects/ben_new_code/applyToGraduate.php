@@ -153,7 +153,7 @@ session_start();
     echo "<p>Error = " . $error . "</p><br>";
     echo "<p>failCounter = " . $failCounter . "</p><br>";
     echo "<p>compBool = " . $compBool . "</p><br>";
-    for ($x = 0; $x < 12; $x++) {
+    for ($x = 0; $x < 10; $x++) {
       echo "<p>grade:" . $gradeArray[$x] . "</p><br>";
     }
     if ($error != 1 && $totalGPA >= 3.0 && $failCounter <= 2 && $compBool == 1) {
