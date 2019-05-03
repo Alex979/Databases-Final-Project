@@ -153,6 +153,9 @@ session_start();
     echo "<p>Error = " . $error . "</p><br>";
     echo "<p>failCounter = " . $failCounter . "</p><br>";
     echo "<p>compBool = " . $compBool . "</p><br>";
+    for ($x = 0; $x < 12; $x++) {
+      echo "<p>grade:" . $gradeArray[$x] . "</p><br>";
+    }
     if ($error != 1 && $totalGPA >= 3.0 && $failCounter <= 2 && $compBool == 1) {
       $query4 = "UPDATE user SET clearedToGrad = 1 WHERE uid = '$uid'";
       $result4 = mysqli_query($conn, $query4) or die("Bad Query: $query4");
