@@ -86,6 +86,8 @@ session_start();
 
     if ($deptArray == $deptTaken && $numArray == $numTaken) {
       $compBool = 1;
+    }
+    else{
       $errorMessage .= "Your Form 1 does not match your courses taken. ";
     }
     for ($x = 0; $x < 12; $x++) {
