@@ -108,7 +108,6 @@ session_start();
 			echo '<table class="table">';
    
        			echo '<tr><th>Semester</th>';
-      			echo '<th>Year</th>';
 			echo '<th>Department</th>';
 			echo '<th>Course Number</th>';
 			echo '<th>Course Title</th>';
