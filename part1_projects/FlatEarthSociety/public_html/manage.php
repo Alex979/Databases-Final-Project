@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (empty($_SESSION["user_id"])) {
+if (empty($_SESSION["uid"])) {
     header("Location: dashboard.php");
 }
 
@@ -14,7 +14,7 @@ if (
     header("Location: dashboard.php");
 }
 
-$uid = $_SESSION["user_id"];
+$uid = $_SESSION["uid"];
 
 $servername = "127.0.0.1";
 $username = "Team_Name";

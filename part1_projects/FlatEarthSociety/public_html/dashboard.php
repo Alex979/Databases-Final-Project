@@ -54,7 +54,7 @@ function create_link($title, $description, $link_text, $url) {
         <h1 class="text-dark mb-3">User Dashboard</h1>
         <div class="row">
                 <?php
-                if (empty($_SESSION["user_id"])) {
+                if (empty($_SESSION["uid"])) {
                     create_link("Log in", "Log in to the portal.", "Go to login", "login.php");
                 } else {
                     if (in_array("student", $_SESSION["role"])) {

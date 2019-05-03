@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user_name = $row["name"];
 
             $_SESSION["user_name"] = $user_name;
-            $_SESSION["user_id"] = $user_id;
+            $_SESSION["uid"] = $user_id;
 
             $query = "SELECT type FROM role WHERE uid = '$user_id'";
             $result = mysqli_query($conn, $query);

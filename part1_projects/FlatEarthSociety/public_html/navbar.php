@@ -8,7 +8,7 @@
         <a class="nav-link" href="/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/dashboard.php">Home</a>
       </li>
         <?php
-        if (empty($_SESSION["user_id"])) {
+        if (empty($_SESSION["uid"])) {
             echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/login.php\">Login</a></li>");
         } else {
             if (in_array("student", $_SESSION["role"])) {

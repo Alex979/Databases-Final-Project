@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-if (empty($_SESSION["user_id"])) {
+if (empty($_SESSION["uid"])) {
     header("Location: index.php");
 }
-$uid = $_SESSION["user_id"];
+$uid = $_SESSION["uid"];
 ?>
 <!DOCTYPE html>
 <head>

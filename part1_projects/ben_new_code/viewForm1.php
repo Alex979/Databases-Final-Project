@@ -2,7 +2,12 @@
 session_start();
 $uid = $_SESSION["uid"];
 $role = $_SESSION["role"];
+$student_id = "";
+if(empty($_POST["uid"])){
+	$student_id = $_SESSION["user_id"];
+}
 $student_id = $_POST["uid"];
+
 
 $servername = "127.0.0.1";
 $username = "Team_Name";
