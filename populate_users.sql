@@ -18,6 +18,24 @@ INSERT INTO user VALUES (
 );
 
 INSERT INTO user VALUES (
+    10101010,
+    'bgiangrasso',
+    'password123',
+    'Ben',
+    'Giangrasso',
+    '2121 I St NW',
+    'Washington',
+    'DC',
+    20052,
+    100.00,
+    0,
+    0,
+    0,
+    55555555,
+    0
+);
+
+INSERT INTO user VALUES (
     99999999,
     'dkrall',
     'password123',
