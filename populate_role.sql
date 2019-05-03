@@ -27,6 +27,10 @@ INSERT INTO role VALUES (
 );
 
 INSERT INTO role VALUES (
+    10101010, 'student'
+);
+
+INSERT INTO role VALUES (
     88888888, 'master'
 );
 
