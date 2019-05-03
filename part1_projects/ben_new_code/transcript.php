@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 <head>
   <title>GWU Advising</title>
@@ -16,7 +19,6 @@
 	<div class="container mt-3">
 	<h1 class="text-primary">Transcripts</h1>
 <?php
-  session_start();
   $uid = $_SESSION["uid"];
 	//check for permission
 	/* Create connection */
@@ -161,13 +163,6 @@
         	$destination = sysadmin;
         	break;
 	}
-	
-	echo '<form action="../FlatEarthSociety/public_html/dashboard.php" method = "post">';
-        echo '<input type="hidden" name="uid" value = "$uid"/>';
-	echo '<input type="hidden" name="permission" value = 1/>';
-        echo '<button class="btn btn-primary" style="vertical-align:middle"><span>Return to Home Page</span></button>';
-  	echo '</form>';
-	
  ?>
 	</div>
  	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
