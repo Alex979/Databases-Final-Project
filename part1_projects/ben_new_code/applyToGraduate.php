@@ -91,7 +91,7 @@ session_start();
       $errorMessage .= "Your Form 1 does not match your courses taken. ";
     }
     for ($x = 0; $x < 12; $x++) {
-      $query2 = "SELECT uid, schedule.sid, course.cid, dept, courseNumber
+      $query2 = "SELECT uid, schedule.sid, course.cid, dept, courseNumber, enrolls.grade
 		FROM enrolls, schedule, course 
 			WHERE schedule.sid=enrolls.sid 
 				AND course.cid=schedule.cid AND enrolls.uid = '$uid' AND dept = '$deptArray[$x]' AND courseNumber = '$numArray[$x]'";
