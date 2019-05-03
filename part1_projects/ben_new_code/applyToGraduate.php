@@ -133,7 +133,7 @@ session_start();
       if ($gradeArray[$x] == "C") {
         $totalGPA = $totalGPA + (2.0 * $creditArray[$x]);
       }
-      if ($gradeArray[$x] == "IP") {
+      if ($gradeArray[$x] == "") {
         $error = 1;
 	$errorMessage .= "You currently have a class in progress (IP). ";
       }
@@ -149,14 +149,18 @@ session_start();
     if($totalGPA < 3.0){
 	$errorMessage .= "You have a GPA below 3.0. ";    
     }
+    echo "<p>Total GPA = " . $totalGPA . "</p><br>";
+    echo "<p>Error = " . $error . "</p><br>";
+    echo "<p>failCounter = " . $failCounter . "</p><br>";
+    echo "<p>compBool = " . $compBool . "</p><br>";
     if ($error != 1 && $totalGPA >= 3.0 && $failCounter <= 2 && $compBool == 1) {
       $query4 = "UPDATE user SET clearedToGrad = 1 WHERE uid = '$uid'";
       $result4 = mysqli_query($conn, $query4) or die("Bad Query: $query4");
-      header("Location: graduated.php");
+      //header("Location: graduated.php");
     } else {
 	session_start();
 	$_SESSION["errorMessage"] = $errorMessage;
-      	header("Location: noGraduate.php");
+      	//header("Location: noGraduate.php");
     }
 
 
