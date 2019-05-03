@@ -108,7 +108,7 @@ session_start();
     $failCounter = 0;
     $totalGPA = 0.0;
     $error = 0;
-    for ($x = 0; $x < 12; $x++) {
+    for ($x = 0; $x < count($gradeArray); $x++) {
       if ($gradeArray[$x] != "A" && $gradeArray[$x] != "A-" && $gradeArray[$x] != "B+" && $gradeArray[$x] != "B") {
         $failCounter++;
       }
