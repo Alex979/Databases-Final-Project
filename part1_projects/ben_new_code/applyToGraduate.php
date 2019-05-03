@@ -161,11 +161,11 @@ session_start();
     if ($error != 1 && $totalGPA >= 3.0 && $failCounter <= 2 && $compBool == 1) {
       $query4 = "UPDATE user SET clearedToGrad = 1 WHERE uid = '$uid'";
       $result4 = mysqli_query($conn, $query4) or die("Bad Query: $query4");
-      //header("Location: graduated.php");
+      header("Location: graduated.php");
     } else {
 	session_start();
 	$_SESSION["errorMessage"] = $errorMessage;
-      	//header("Location: noGraduate.php");
+      	header("Location: noGraduate.php");
     }
 
 
