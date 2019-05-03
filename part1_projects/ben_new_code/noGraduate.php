@@ -10,6 +10,9 @@
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 <body>
+  <?php
+  include('../FlatEarthSociety/public_html/navbar.php');
+  ?>
   <div class="container mt-3">
     <h1 class="text-primary">GWU Advising</h1>
     <p>
