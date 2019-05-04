@@ -16,9 +16,12 @@
 	$newGrad = $_POST["newGrad"];
 	if ($newGrad == 1)
 	{
-		$studentid = $_POST["id"];
+		$studentid = $_POST["uid"];
 		
 		$query = "UPDATE role SET type = 'alumni' WHERE uid = '$studentid' AND type = 'student'";
+		 $result = mysqli_query($conn,$query);
+		
+		$query = "UPDATE user SET advisorid = '' AND clearedToGrad = '0' WHERE uid = '$studentid'";
 		 $result = mysqli_query($conn,$query);
      
      		$query2 = "DELETE FROM formOne WHERE uid = '$studentid'";
