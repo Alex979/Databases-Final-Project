@@ -14,7 +14,8 @@ INSERT INTO user VALUES (
     0,
     0,
     55555555,
-    0
+    0,
+    'Fall', 2018
 );
 
 INSERT INTO user VALUES (
@@ -32,7 +33,8 @@ INSERT INTO user VALUES (
     0,
     0,
     55555555,
-    0
+    0,
+    NULL, NULL
 );
 
 INSERT INTO user VALUES (
@@ -50,7 +52,8 @@ INSERT INTO user VALUES (
     0,
     0,
     55555555,
-    1
+    0,
+    'Fall', 2019
 );
 
 INSERT INTO user VALUES (
@@ -68,7 +71,8 @@ INSERT INTO user VALUES (
     0,
     0,
     NULL,
-    0
+    0,
+    NULL, NULL
 );
 
 INSERT INTO user VALUES (
@@ -86,7 +90,8 @@ INSERT INTO user VALUES (
     0,
     0,
     NULL,
-    0
+    0,
+    NULL, NULL
 );
 
 INSERT INTO user VALUES (
@@ -100,7 +105,8 @@ INSERT INTO user VALUES (
     'VA',
     20147,
     100.00,
-    0, 0, 0, NULL, 0
+    0, 0, 0, NULL, 0,
+    NULL, NULL
 );
 
 INSERT INTO user VALUES (
@@ -118,5 +124,40 @@ INSERT INTO user VALUES (
     0,
     0,
     NULL,
-    0
+    0,
+    NULL, NULL
+);
+
+INSERT INTO user VALUES (
+    23456789,
+    'efitzgerald',
+    'password123',
+    'Ella',
+    'Fitzgerald',
+    '961 Mayflower Lane',
+    'Oviedo',
+    'FL',
+    32765,
+    0,
+    0, 0, 0,
+    NULL,
+    1,
+    'Fall', 2019
+);
+
+INSERT INTO user VALUES (
+    87654321,
+    'ecassidy',
+    'password123',
+    'Eva',
+    'Cassidy',
+    '923 Briarwood Ave',
+    'Elmhurst',
+    'NY',
+    11373,
+    0.0,
+    0, 0, 0,
+    55555555,
+    0,
+    'Fall', 2017
 );

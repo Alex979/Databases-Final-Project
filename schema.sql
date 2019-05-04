@@ -1,5 +1,5 @@
 SET foreign_key_checks = 0;
-DROP TABLE IF EXISTS  applicant;
+DROP TABLE IF EXISTS applicant;
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS application_info;
 DROP TABLE IF EXISTS subject_score;
@@ -35,6 +35,8 @@ CREATE TABLE user (
     clearedToGrad int,
     advisorid int,
     needsCourseApproval int,
+    admitTerm VARCHAR(8), -- Spring/Summer/Fall
+    admitYear YEAR(4),
     PRIMARY KEY (uid)
 );
 
@@ -57,9 +59,9 @@ CREATE TABLE course (
     prereq2_id INT,
     PRIMARY KEY (cid),
     --  Uncomment when 'user' table is created
-     FOREIGN KEY (instructor_id) REFERENCES user(uid),
-     FOREIGN KEY (prereq1_id) REFERENCES course(cid),
-     FOREIGN KEY (prereq2_id) REFERENCES course(cid),
+    FOREIGN KEY (instructor_id) REFERENCES user(uid),
+    FOREIGN KEY (prereq1_id) REFERENCES course(cid),
+    FOREIGN KEY (prereq2_id) REFERENCES course(cid),
     CONSTRAINT unique_course UNIQUE(dept, courseNumber)
 );
 
@@ -222,4 +224,4 @@ source populate_role.sql;
 source populate_courses.sql;
 source populate_schedule.sql;
 source populate_enrolls.sql;
-
+source populate_formOne.sql;

@@ -1,12 +1,12 @@
 <?php
 session_start();
 $uid = $_SESSION["uid"];
-$role = $_SESSION["role"];
 $student_id = "";
 if(empty($_POST["uid"])){
 	$student_id = $_SESSION["uid"];
+} else {
+	$student_id = $_POST["uid"];
 }
-$student_id = $_POST["uid"];
 
 
 $servername = "127.0.0.1";
@@ -40,10 +40,10 @@ if(!$conn){
   <h1 class="text-primary">View Form 1</h1>
 
 <?php
-      echo "<p>Student ID: " . $student_id . "</p><br>";    
+      echo "<h4>Student ID: " . $student_id . "</h4>";    
       $querySubmit = "SELECT * FROM user WHERE uid = '$student_id' AND clearedToGrad = 1";
       $resultSubmit = mysqli_query($conn, $querySubmit) or die("Bad Query: $querySubmit");
-      if(mysqli_num_rows($result) > 0){
+      if(mysqli_num_rows($resultSubmit) > 0){
 	      echo "<p>You have already submitted your Form 1.</p>";  
       }
       else{
@@ -51,8 +51,8 @@ if(!$conn){
       	$query = "SELECT * FROM formOne WHERE uid = '$student_id'";
       	$result = mysqli_query($conn, $query) or die("Bad Query: $query");
       	if(mysqli_num_rows($result) > 0){
-      	  echo "<table border='1' class=\"table\">";
-      	  echo "<tr><td>Number</td><td>Department</td><td>Course Number</td><tr>";
+      	  echo "<table class=\"table\">";
+      	  echo "<tr><th>Number</th><th>Department</th><th>Course Number</th><tr>";
       	  while($row = mysqli_fetch_assoc($result)) {
       	    echo "<tr><td>{$row['num']}</td><td>{$row['dept']}</td><td>{$row['courseNumber']}</td><tr>";
       	  }
@@ -62,23 +62,6 @@ if(!$conn){
 	  echo "<p>A Form 1 has not been submitted</p>";     
         }
       }
-	switch ($role) {
-    	case "student":
-		$destination = student;
-       		 break;
-    	case "advisor":
-		$destination = advisor;
-        	break;
-   	case "gradSec":
-        	$destination =  gradsec;
-        	break;
-	case "alumni":
-        	$destination =  alumni;
-        	break;
-	case "sysAdmin":
-        	$destination = sysadmin;
-        	break;
-	}
 	
       //close connection
         mysqli_close($conn);

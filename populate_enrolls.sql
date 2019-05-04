@@ -47,3 +47,43 @@ INSERT INTO enrolls VALUES (
 INSERT INTO enrolls VALUES (
     10101010, 30, 'A'
 );
+
+INSERT INTO enrolls VALUES (
+    87654321, 21, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    87654321, 23, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    87654321, 22, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    87654321, 24, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    87654321, 25, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    87654321, 34, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    87654321, 35, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    87654321, 37, 'C'
+);
+
+INSERT INTO enrolls VALUES (
+    87654321, 28, 'C'
+);
+
+INSERT INTO enrolls VALUES (
+    87654321, 32, 'C'
+);

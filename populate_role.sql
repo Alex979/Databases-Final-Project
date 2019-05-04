@@ -45,3 +45,19 @@ INSERT INTO role VALUES (
 INSERT INTO role VALUES (
     55555555, 'advisor'
 );
+
+INSERT INTO role VALUES (
+    23456789, 'student'
+);
+
+INSERT INTO role VALUES (
+    23456789, 'phd'
+);
+
+INSERT INTO role VALUES (
+    87654321, 'student'
+);
+
+INSERT INTO role VALUES (
+    87654321, 'master'
+);
