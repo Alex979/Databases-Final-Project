@@ -87,7 +87,8 @@ by	the	student.
 * For	a	faculty	advisor,	generate	list	of	all	advisees. This	query	can	be	submitted	by	the	
 GS	or	the	faculty	advisor.
 
-**This is done for the faculty advisor. For the GS, they can use the query: \nSELECT user.id, fname, lname, approveThesis, clearedToGrad, needsCourseApproval, advisorid FROM user, role WHERE user.advisorid = $advisorid;**
+**This is done for the faculty advisor. For the GS, they can use the query: 
+SELECT user.id, fname, lname, approveThesis, clearedToGrad, needsCourseApproval, advisorid FROM user, role WHERE user.advisorid = $advisorid;**
 
 * For	a	faculty	instructor,	generate	their	course	roster	(i.e.,	list	of	students	enrolled	in	
 their	class)	given	a	specific	course	they	are	teaching.
