@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 <head>
   <title>GWU Advising</title>
@@ -38,7 +41,6 @@ include('../FlatEarthSociety/public_html/navbar.php');
     <button class="button" style="vertical-align:middle"><span>Return to HomePage</span></button>
   </form>
 <?php
-	session_start();
   	$sessRole = $_SESSION["role"];
 	if ($sessRole != "sysAdmin")
 	{
