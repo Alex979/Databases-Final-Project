@@ -62,25 +62,6 @@
   echo '<br><br><br>';
 
   $uid = $_SESSION["uid"];
-  $role = $_SESSION["role"];
-
-switch ($role) {
-    	case "student":
-		$destination = student;
-       		 break;
-    	case "advisor":
-		$destination = advisor;
-        	break;
-   	case "gradSec":
-        	$destination =  gradsec;
-        	break;
-	case "alumni":
-        	$destination =  alumni;
-        	break;
-	case "sysAdmin":
-        	$destination = sysadmin;
-        	break;
-	}
 
 mysqli_close($conn);
  ?>
