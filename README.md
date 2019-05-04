@@ -45,13 +45,13 @@ submitted	by	the	GS	or	by	a	faculty	reviewer.
 update	their	information	at	any	time.	This	can	be	simplified	by	having	only	the	GS	
 perform	this	but	this	is	not	an	ideal	solution.	
 
-**Add editPersonalInfo.php to GS website.**
+  * **Add editPersonalInfo.php to GS website.**
 
 * An	applicant	or	current	student	or	Alumni	should	be	able	to	update	their	personal	
 information at	any	time.		Think	of	which	other	types	of	users	you	want to	give	this	
 privilege	to.
 
-**Done**
+  * **Done**
 
 * Given	the	Semester,	or	Year	or	Degree	program,	generate	the	list	of	graduate	
 applicants.	This	query	can	be	submitted	by	the	GS.
