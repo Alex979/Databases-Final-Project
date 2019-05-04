@@ -11,11 +11,6 @@
 	{	
 		die("Connection failed: ".mysqli_connect_error());
 	}
-	
-	$newGrad = 0;
-	$newGrad = $_POST["newGrad"];
-	if ($newGrad == 1)
-	{
 		$studentid = $_POST["uid"];
 		
 		$query = "UPDATE role SET type = 'alumni' WHERE uid = '$studentid' AND type = 'student'";
@@ -28,5 +23,4 @@
 		 $result2 = mysqli_query($conn,$query2);
     
     header("Location: ../FlatEarthSociety/public_html/dashboard.php");
-	}
 ?>
