@@ -77,7 +77,7 @@ submitted	by	the	GS.
 
 * Change	the	advisor	for	a	student,	given	the	student’s	student	number.	This	query	can	
 be	submitted	by	the	GS.
-
+  * **UPDATE user SET advisorid = '$advisorid' WHERE uid = '$uid';
 * Given	a	student’s	student	number,	generate	the	transcript	(list	of	courses,	credits,	and	
 the	current	GPA). This	query	can	be	submitted	by	the	GS	or	by	the	faculty	advisor	or	
 by	the	student.
