@@ -40,6 +40,7 @@ if(!$conn){
   <h1 class="text-primary">View Form 1</h1>
 
 <?php
+      echo "<p>student_id: " . $student_id . "</p><br>";    
       $querySubmit = "SELECT * FROM user WHERE uid = '$student_id' AND clearedToGrad = 1";
       $resultSubmit = mysqli_query($conn, $querySubmit) or die("Bad Query: $querySubmit");
       if(mysqli_num_rows($result) > 0){
