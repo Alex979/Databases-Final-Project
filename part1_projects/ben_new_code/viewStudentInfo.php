@@ -10,8 +10,6 @@
 	<!-- Custom styles for this template -->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
-<h1>Student Information</h1>
-
 <body>
 <?php
   include('../FlatEarthSociety/public_html/navbar.php');
@@ -83,12 +81,6 @@ switch ($role) {
         	$destination = sysadmin;
         	break;
 	}
-	
-	echo '<form action="../FlatEarthSociety/public_html/dashboard.php" method = "post">';
-        echo '<input type="hidden" name="uid" value = "' . $uid . '"/>';
-	echo '<input type="hidden" name="permission" value = 1/>';
-        echo '<button class="button" style="vertical-align:middle"><span>Return to Home Page</span></button>';
-  	echo '</form>';
 
 mysqli_close($conn);
  ?>
