@@ -5,6 +5,9 @@ if (empty($_SESSION["uid"])) {
     header("Location: index.php");
 }
 $uid = $_SESSION["uid"];
+if(!empty($_GET["uid"])){
+    $uid = $_GET["uid"];
+}
 
 $servername = "127.0.0.1";
 $username = "Team_Name";
@@ -22,23 +25,33 @@ if (!$conn) {
 $c1 = $c2 = $c3 = $c4 = $c5 = $c6 = $c7 = $c8 = "";
 $success = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $c1 = $_POST["c1"];
-    $c2 = $_POST["c2"];
-    $c3 = $_POST["c3"];
-    $c4 = $_POST["c4"];
-    $c5 = $_POST["c5"];
-    $c6 = $_POST["c6"];
-    $c7 = $_POST["c7"];
-    $c8 = $_POST["c8"];
+    if(in_array("student", $_SESSION["role"])){
+        $c1 = $_POST["c1"];
+        $c2 = $_POST["c2"];
+        $c3 = $_POST["c3"];
+        $c4 = $_POST["c4"];
+        $c5 = $_POST["c5"];
+        $c6 = $_POST["c6"];
+        $c7 = $_POST["c7"];
+        $c8 = $_POST["c8"];
 
-    // Delete the existing form if it exists
-    $query = "DELETE FROM courseRegistrationForm WHERE uid=$uid";
-    mysqli_query($conn, $query);
+        // Delete the existing form if it exists
+        $query = "DELETE FROM courseRegistrationForm WHERE uid=$uid";
+        mysqli_query($conn, $query);
 
-    // Insert the new form
-    $query = "INSERT INTO courseRegistrationForm (uid, c1, c2, c3, c4, c5, c6, c7, c8) VALUES($uid, '$c1', '$c2', '$c3', '$c4', '$c5', '$c6', '$c7', '$c8')";
-    $result = mysqli_query($conn, $query);
-    $success = $result;
+        // Insert the new form
+        $query = "INSERT INTO courseRegistrationForm (uid, c1, c2, c3, c4, c5, c6, c7, c8) VALUES($uid, '$c1', '$c2', '$c3', '$c4', '$c5', '$c6', '$c7', '$c8')";
+        $result = mysqli_query($conn, $query);
+        $success = $result;
+    } else if(in_array("advisor", $_SESSION["role"])){
+        // Approve form by deleting it and setting needs_approval to false in user
+        $query = "DELETE FROM courseRegistrationForm WHERE uid=$uid";
+        mysqli_query($conn, $query);
+
+        $query = "UPDATE user SET needsCourseApproval=0 WHERE uid=" . $_POST["uid"];
+        mysqli_query($conn, $query);
+        header("Location: manage.php");
+    }
 } else {
     // Get values from already submitted form if it exists
     $query = "SELECT * FROM courseRegistrationForm WHERE uid=$uid";
@@ -79,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
     <div class="container mt-3">
         <?php 
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if($_SERVER["REQUEST_METHOD"] == "POST" && in_array("student", $_SESSION["role"])){
             if($success){
                 echo "
                 <div class=\"alert alert-success\" role=\"alert\">
@@ -132,8 +145,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label>Course 8</label>
                 <input type="text" class="form-control" name="c8" value="<?php echo $c8; ?>">
             </div>
-            <button type="submit" class="btn btn-primary">Submit Form</button>
+            <?php
+                if(in_array("student", $_SESSION["role"])){
+                    echo '
+                    <button type="submit" class="btn btn-primary">Submit Form</button>
+                    ';
+                }
+            ?>
         </form>
+        <?php
+            if(in_array("advisor", $_SESSION["role"])){
+                echo '
+                <form method="post">
+                    <input type="hidden" name="uid" value="'. $uid .'" />
+                    <button type="submit" class="btn btn-success">Approve Form</button>
+                </form>
+                ';
+            }
+        ?>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

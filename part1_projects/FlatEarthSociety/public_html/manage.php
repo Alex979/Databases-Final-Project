@@ -148,7 +148,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
             echo '
             </table>
             <br>
+            <h1 class="text-primary">Course Registration Forms</h1>
             ';
+            $query = "select u.uid, fname, lname from user u, courseRegistrationForm c where u.advisorid=$uid and u.uid=c.uid";
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) {
+                echo '
+                <table class="table">
+                    <tr>
+                        <th>UID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th></th>
+                    </tr>
+                ';
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '
+                    <tr>
+                        <td>' . $row["uid"] . '</td>
+                        <td>' . $row["fname"] . '</td>
+                        <td>' . $row["lname"] . '</td>
+                        <td>
+                            <form class="d-inline" method="get" action="courseRegistrationForm.php">
+                                <input type="hidden" name="uid" value="' . $row["uid"] . '" />
+                                <button type="submit" class="btn btn-primary">View Form</button>
+                            </form>
+                        </td>
+                    </tr>
+                    ';
+                }
+                echo '</table>';
+            } else {
+                echo '<p>There are no registration forms that require your approval.</p>';
+            }
         }
         ?>
         <?php
