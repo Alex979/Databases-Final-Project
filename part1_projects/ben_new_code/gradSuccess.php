@@ -18,10 +18,10 @@
 	{
 		$studentid = $_POST["id"];
 		
-		$query = "UPDATE roles SET role = 'alumni' WHERE id = '$studentid'";
+		$query = "UPDATE role SET type = 'alumni' WHERE uid = '$studentid' AND type = 'student'";
 		 $result = mysqli_query($conn,$query);
      
-     		$query2 = "DELETE FROM formOne WHERE id = '$studentid'";
+     		$query2 = "DELETE FROM formOne WHERE uid = '$studentid'";
 		 $result2 = mysqli_query($conn,$query2);
     
     header("Location: ../FlatEarthSociety/public_html/dashboard.php");
