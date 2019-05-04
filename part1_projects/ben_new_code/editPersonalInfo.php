@@ -123,24 +123,6 @@
 			';
 			echo '<button class="btn btn-primary" style="vertical-align:middle"><span>Update</span></button>';
 		echo '</form>';
-
-		switch ($role) {
-				case "student":
-			$destination = student;
-						break;
-				case "advisor":
-			$destination = advisor;
-						break;
-			case "gradSec":
-						$destination =  gradsec;
-						break;
-		case "alumni":
-						$destination =  alumni;
-						break;
-		case "sysAdmin":
-						$destination = sysadmin;
-						break;
-		}
 			?>
 	</div>
 
