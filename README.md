@@ -36,35 +36,46 @@
 
 # Phase 2 Queries
 
-• Search	for	an	applicant	using	their	last	name	or	student	number.	This	query	can	be	
+* Search	for	an	applicant	using	their	last	name	or	student	number.	This	query	can	be	
 submitted	by	the	GS	or	by	a	faculty	reviewer.
-• Update	applicant’s	academic	and	personal	information	– an	applicant	may	choose	to	
+
+* Update	applicant’s	academic	and	personal	information	– an	applicant	may	choose	to	
 update	their	information	at	any	time.	This	can	be	simplified	by	having	only	the	GS	
 perform	this	but	this	is	not	an	ideal	solution.	
-• An	applicant	or	current	student	or	Alumni	should	be	able	to	update	their	personal	
+
+* An	applicant	or	current	student	or	Alumni	should	be	able	to	update	their	personal	
 information at	any	time.		Think	of	which	other	types	of	users	you	want to	give	this	
 privilege	to.
-• Given	the	Semester,	or	Year	or	Degree	program,	generate	the	list	of	graduate	
+* Given	the	Semester,	or	Year	or	Degree	program,	generate	the	list	of	graduate	
 applicants.	This	query	can	be	submitted	by	the	GS.
-• Given	the	semester	or	year	or	degree	program,	generate	the	list	of	admitted	students.	
+
+* Given	the	semester	or	year	or	degree	program,	generate	the	list	of	admitted	students.	
 This	query	can be	submitted	by	the	GS.
-• Given	the	semester	or	year	or	degree	program,	generate	statistics	such	as	total	
+
+* Given	the	semester	or	year	or	degree	program,	generate	statistics	such	as	total	
 number	of	applicants,	total	number	admitted,	total	number	rejected,	average	GRE	
 score	for	admitted	applicants,	etc.	This	query	can	be	submitted	by	the GS.
-• Given	the	semester	or	year	or	degree	program,	generate	the	list	of	graduating	
+
+* Given	the	semester	or	year	or	degree	program,	generate	the	list	of	graduating	
 students	(i.e.,	those	cleared	for	graduation).	This	query	can	be	submitted	by	the	GS.
-• Given	the	semester	or	year	or	degree	program,	generate	the	list	of	alumni	and	their	
+
+* Given	the	semester	or	year	or	degree	program,	generate	the	list	of	alumni	and	their	
 email	address. This	query	can	be	submitted	by	the	GS.
-• Generate	total	list	of	current	students	(by	degree	or	by	admit	year). This	query	can	be	
+
+* Generate	total	list	of	current	students	(by	degree	or	by	admit	year). This	query	can	be	
 submitted	by	the	GS.
-• Change	the	advisor	for	a	student,	given	the	student’s	student	number.	This	query	can	
+
+* Change	the	advisor	for	a	student,	given	the	student’s	student	number.	This	query	can	
 be	submitted	by	the	GS.
-• Given	a	student’s	student	number,	generate	the	transcript	(list	of	courses,	credits,	and	
+
+* Given	a	student’s	student	number,	generate	the	transcript	(list	of	courses,	credits,	and	
 the	current	GPA). This	query	can	be	submitted	by	the	GS	or	by	the	faculty	advisor	or	
 by	the	student.
-• For	a	faculty	advisor,	generate	list	of	all	advisees. This	query	can	be	submitted	by	the	
+
+* For	a	faculty	advisor,	generate	list	of	all	advisees. This	query	can	be	submitted	by	the	
 GS	or	the	faculty	advisor.
-• For	a	faculty	instructor,	generate	their	course	roster	(i.e.,	list	of	students	enrolled	in	
+
+* For	a	faculty	instructor,	generate	their	course	roster	(i.e.,	list	of	students	enrolled	in	
 their	class)	given	a	specific	course	they	are	teaching.
 
 # Dashboard Items
