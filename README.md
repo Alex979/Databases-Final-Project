@@ -67,7 +67,7 @@ score	for	admitted	applicants,	etc.	This	query	can	be	submitted	by	the GS.
 * Given	the	semester	or	year	or	degree	program,	generate	the	list	of	graduating	
 students	(i.e.,	those	cleared	for	graduation).	This	query	can	be	submitted	by	the	GS.
 
-**SELECT user.uid, fname, lname, approveThesis, clearedToGrad, needsCourseApproval, advisorid FROM user, role WHERE clearedToGrad = 1 AND (role.uid = user.uid AND role.type = '$degree') OR (**
+  * **SELECT user.uid, fname, lname, approveThesis, clearedToGrad, needsCourseApproval, advisorid FROM user, role WHERE clearedToGrad = 1 AND (role.uid = user.uid AND role.type = '$degree') OR (**
 
 * Given	the	semester	or	year	or	degree	program,	generate	the	list	of	alumni	and	their	
 email	address. This	query	can	be	submitted	by	the	GS.
@@ -82,14 +82,14 @@ be	submitted	by	the	GS.
 the	current	GPA). This	query	can	be	submitted	by	the	GS	or	by	the	faculty	advisor	or	
 by	the	student.
 
-**Done within transcript.php**
+  * **Done within transcript.php**
 
 * For	a	faculty	advisor,	generate	list	of	all	advisees. This	query	can	be	submitted	by	the	
 GS	or	the	faculty	advisor.
 
-**This is done for the faculty advisor. For the GS, they can use the query:**
+  * **This is done for the faculty advisor. For the GS, they can use the query:**
 
-**SELECT user.id, fname, lname, approveThesis, clearedToGrad, needsCourseApproval, advisorid FROM user, role WHERE user.advisorid = $advisorid;**
+  * **SELECT user.id, fname, lname, approveThesis, clearedToGrad, needsCourseApproval, advisorid FROM user, role WHERE user.advisorid = $advisorid;**
 
 * For	a	faculty	instructor,	generate	their	course	roster	(i.e.,	list	of	students	enrolled	in	
 their	class)	given	a	specific	course	they	are	teaching.
