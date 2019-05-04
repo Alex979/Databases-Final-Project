@@ -42,10 +42,10 @@ session_start();
 					
 					echo '<table class="table">';
 		
-						echo '<tr><th>Student Name</th>';
+					echo '<tr><th>Student Name</th>';
 					echo '<th>Student ID</th>';
-				echo '<th>Enrollment Information</th>';
-				echo '<th>Personal Information</th>';
+					echo '<th>Enrollment Information</th>';
+					echo '<th>Personal Information</th>';
 					echo '<th>Action</th></tr>';
 					
 			
@@ -59,21 +59,21 @@ session_start();
 				
 						echo '<tr><td>'.$student_fname.' '.$student_lname.'</td>';
 				
-							echo '<td>';
+						echo '<td>';
 						echo $student_id;
 						echo '</td>';
 						
-						echo '<td><form action="enrollInfo.php" method = "post">';
+						echo '<td><form action="transcript.php" method = "post">';
 						echo '<input type="hidden" name="uid" value = "'.$student_id.'">';
 						echo '<input type="hidden" name="permission" value = 1/>';
-							echo '<button class="btn btn-primary" type="submit">View </button>';
+						echo '<button class="btn btn-primary" type="submit">View </button>';
 						echo '</form>';
 						echo '</td>';
 						
 						echo '<td><form action="viewStudentInfo.php" method = "post">';
 						echo '<input type="hidden" name="uid" value = "'.$student_id.'">';
 						echo '<input type="hidden" name="permission" value = 1/>';
-							echo '<button class="btn btn-primary" type="submit">View</button>';
+						echo '<button class="btn btn-primary" type="submit">View</button>';
 						echo '</form>';
 						echo '</td>';
 						
@@ -82,7 +82,7 @@ session_start();
 						echo '<input type="hidden" name="uid" value = "'.$student_id.'">';
 						echo '<input type="hidden" name="permission" value = 1/>';
 						echo '<input type="hidden" name="newGrad" value = 1/>';
-							echo '<button class="btn btn-primary" type="submit">Graduate</button>';
+						echo '<button class="btn btn-primary" type="submit">Graduate</button>';
 						echo '</form>';
 						echo '</td></tr>';
 					}	
