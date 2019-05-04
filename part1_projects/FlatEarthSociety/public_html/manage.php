@@ -1,19 +1,20 @@
 <?php
 session_start();
 
-if (empty($_SESSION["user_id"])) {
-    header("Location: index.php");
+if (empty($_SESSION["uid"])) {
+    header("Location: dashboard.php");
 }
 
 if (
     !in_array("system-admin", $_SESSION["role"]) &&
     !in_array("gs", $_SESSION["role"]) &&
-    !in_array("faculty", $_SESSION["role"])
+    !in_array("faculty", $_SESSION["role"]) &&
+    !in_array("advisor", $_SESSION["role"])
 ) {
-    header("Location: index.php");
+    header("Location: dashboard.php");
 }
 
-$uid = $_SESSION["user_id"];
+$uid = $_SESSION["uid"];
 
 $servername = "127.0.0.1";
 $username = "Team_Name";
@@ -91,15 +92,97 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
     include("navbar.php");
     ?>
     <div class="container pt-3">
-        <h1 class="text-primary">View Transcript</h1>
-        <form action="viewTranscript.php" method="post" style="max-width: 500px">
-            <div class="form-group">
-                <label>Student ID</label>
-                <input class="form-control" ype="text" name="uid" id="uid">
-            </div>
-            <button class="btn btn-primary" type="submit">View</button>
-        </form>
-        <br>
+        <?php
+        if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("faculty", $_SESSION["role"])) {
+            echo '
+            <h1 class="text-primary">View Transcript</h1>
+            <form action="viewTranscript.php" method="post" style="max-width: 500px">
+                <div class="form-group">
+                    <label>Student ID</label>
+                    <input class="form-control" ype="text" name="uid" id="uid">
+                </div>
+                <button class="btn btn-primary" type="submit">View</button>
+            </form>
+            <br>
+            ';
+        }
+        ?>
+        <?php
+        if (in_array("advisor", $_SESSION["role"])) {
+            echo '
+            <h1 class="text-primary">Students you advise</h1>
+            <table class="table">
+                <tr>
+                    <th>UID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th></th>
+                </tr>';
+            $query = "select uid, fname, lname from user where advisorid=$uid";
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '
+                    <tr>
+                        <td>' . $row["uid"] . '</td>
+                        <td>' . $row["fname"] . '</td>
+                        <td>' . $row["lname"] . '</td>
+                        <td>
+                            <form class="d-inline" method="post" action="../../ben_new_code/viewForm1.php">
+                                <input type="hidden" name="uid" value="' . $row["uid"] . '" />
+                                <button type="submit" class="btn btn-primary">View Form 1</button>
+                            </form>
+                            <form class="d-inline" method="post" action="../../ben_new_code/transcript.php">
+                                <input type="hidden" name="uid" value="' . $row["uid"] . '" />
+                                <button type="submit" class="btn btn-primary">View Transcript</button>
+                            </form>
+                            <form class="d-inline" method="post" action="../../ben_new_code/viewStudentInfo.php">
+                                <input type="hidden" name="uid" value="' . $row["uid"] . '" />
+                                <button type="submit" class="btn btn-primary">View Info</button>
+                            </form>
+                        </td>
+                    </tr>
+                    ';
+                }
+            }
+            echo '
+            </table>
+            <br>
+            <h1 class="text-primary">Course Registration Forms</h1>
+            ';
+            $query = "select u.uid, fname, lname from user u, courseRegistrationForm c where u.advisorid=$uid and u.uid=c.uid";
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) {
+                echo '
+                <table class="table">
+                    <tr>
+                        <th>UID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th></th>
+                    </tr>
+                ';
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '
+                    <tr>
+                        <td>' . $row["uid"] . '</td>
+                        <td>' . $row["fname"] . '</td>
+                        <td>' . $row["lname"] . '</td>
+                        <td>
+                            <form class="d-inline" method="get" action="courseRegistrationForm.php">
+                                <input type="hidden" name="uid" value="' . $row["uid"] . '" />
+                                <button type="submit" class="btn btn-primary">View Form</button>
+                            </form>
+                        </td>
+                    </tr>
+                    ';
+                }
+                echo '</table>';
+            } else {
+                echo '<p>There are no registration forms that require your approval.</p>';
+            }
+        }
+        ?>
         <?php
         if (in_array("system-admin", $_SESSION["role"])) {
                     echo "<h1 class=\"text-primary\">Add Account</h1>";

@@ -2,7 +2,12 @@
 session_start();
 $uid = $_SESSION["uid"];
 $role = $_SESSION["role"];
+$student_id = "";
+if(empty($_POST["uid"])){
+	$student_id = $_SESSION["uid"];
+}
 $student_id = $_POST["uid"];
+
 
 $servername = "127.0.0.1";
 $username = "Team_Name";
@@ -35,21 +40,28 @@ if(!$conn){
   <h1 class="text-primary">View Form 1</h1>
 
 <?php
-      // define the sql_insert_query
-      $query = "SELECT * FROM formOne WHERE uid = '$student_id'";
-      $result = mysqli_query($conn, $query) or die("Bad Query: $query");
+      echo "<p>Student ID: " . $student_id . "</p><br>";    
+      $querySubmit = "SELECT * FROM user WHERE uid = '$student_id' AND clearedToGrad = 1";
+      $resultSubmit = mysqli_query($conn, $querySubmit) or die("Bad Query: $querySubmit");
       if(mysqli_num_rows($result) > 0){
-      	echo "<table border='1' class=\"table\">";
-      	echo "<tr><td>Number</td><td>Department</td><td>Course Number</td><tr>";
-      	while($row = mysqli_fetch_assoc($result)) {
-      	  echo "<tr><td>{$row['num']}</td><td>{$row['dept']}</td><td>{$row['courseNumber']}</td><tr>";
-      	}
-      	echo "</table>";
+	      echo "<p>You have already submitted your Form 1.</p>";  
       }
       else{
-	echo "<p>A Form 1 has not been submitted</p>";     
+      	// define the sql_insert_query
+      	$query = "SELECT * FROM formOne WHERE uid = '$student_id'";
+      	$result = mysqli_query($conn, $query) or die("Bad Query: $query");
+      	if(mysqli_num_rows($result) > 0){
+      	  echo "<table border='1' class=\"table\">";
+      	  echo "<tr><td>Number</td><td>Department</td><td>Course Number</td><tr>";
+      	  while($row = mysqli_fetch_assoc($result)) {
+      	    echo "<tr><td>{$row['num']}</td><td>{$row['dept']}</td><td>{$row['courseNumber']}</td><tr>";
+      	  }
+      	  echo "</table>";
+        }
+        else{
+	  echo "<p>A Form 1 has not been submitted</p>";     
+        }
       }
-	
 	switch ($role) {
     	case "student":
 		$destination = student;

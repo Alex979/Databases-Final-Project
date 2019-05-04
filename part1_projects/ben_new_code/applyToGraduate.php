@@ -86,27 +86,31 @@ session_start();
 
     if ($deptArray == $deptTaken && $numArray == $numTaken) {
       $compBool = 1;
+    }
+    else{
       $errorMessage .= "Your Form 1 does not match your courses taken. ";
     }
     for ($x = 0; $x < 12; $x++) {
-      $query2 = "SELECT uid, schedule.sid, course.cid, dept, courseNumber
+      $query2 = "SELECT uid, schedule.sid, course.cid, dept, courseNumber, enrolls.grade, course.credits
 		FROM enrolls, schedule, course 
 			WHERE schedule.sid=enrolls.sid 
 				AND course.cid=schedule.cid AND enrolls.uid = '$uid' AND dept = '$deptArray[$x]' AND courseNumber = '$numArray[$x]'";
       $result2 = mysqli_query($conn, $query2) or die("Bad Query: $query2");
       while ($row = mysqli_fetch_array($result2)) {
         $gradeArray[$x] = $row['grade'];
-        $creditArray[$x] = $row['creditHours'];
+        $creditArray[$x] = $row['credits'];
       }
     }
     $creditCount = 0;
     for ($x = 0; $x < 12; $x++) {
       $creditCount = $creditCount + $creditArray[$x];
     }
+    $gradeLength = sizeof($gradeArray);
+    echo "<p>Grade Length: ". $gradeLength . " </p><br>";
     $failCounter = 0;
     $totalGPA = 0.0;
     $error = 0;
-    for ($x = 0; $x < 12; $x++) {
+    for ($x = 0; $x < $gradeLength; $x++) {
       if ($gradeArray[$x] != "A" && $gradeArray[$x] != "A-" && $gradeArray[$x] != "B+" && $gradeArray[$x] != "B") {
         $failCounter++;
       }
@@ -131,7 +135,7 @@ session_start();
       if ($gradeArray[$x] == "C") {
         $totalGPA = $totalGPA + (2.0 * $creditArray[$x]);
       }
-      if ($gradeArray[$x] == "IP") {
+      if ($gradeArray[$x] == "") {
         $error = 1;
 	$errorMessage .= "You currently have a class in progress (IP). ";
       }
@@ -146,6 +150,13 @@ session_start();
     $totalGPA = $totalGPA / $creditCount;
     if($totalGPA < 3.0){
 	$errorMessage .= "You have a GPA below 3.0. ";    
+    }
+    echo "<p>Total GPA = " . $totalGPA . "</p><br>";
+    echo "<p>Error = " . $error . "</p><br>";
+    echo "<p>failCounter = " . $failCounter . "</p><br>";
+    echo "<p>compBool = " . $compBool . "</p><br>";
+    for ($x = 0; $x < 10; $x++) {
+      echo "<p>grade:" . $gradeArray[$x] . "</p><br>";
     }
     if ($error != 1 && $totalGPA >= 3.0 && $failCounter <= 2 && $compBool == 1) {
       $query4 = "UPDATE user SET clearedToGrad = 1 WHERE uid = '$uid'";

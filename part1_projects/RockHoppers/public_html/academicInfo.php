@@ -336,7 +336,7 @@
     //Perform an insert query to place data into the databse
 		$query = "select * from application_info where uid='$uid'";
 		$result = mysqli_query($conn, $query);
-		if($result) { //this means there is already information – We need to update it
+		if(mysqli_num_rows($result)>0) { //this means there is already information – We need to update it
 			 $query = "UPDATE application_info SET degree_sought='$degName', major='$major', start_year='$admitYear', start_semester='$admitSemester', b_degree='$bachTitle', b_university='$bachUni', b_gpa='$bachGPA', b_date='$bachGrad', m_degree='$mastTitle', m_university='$mastUni', m_gpa='$mastGPA', m_date='$mastGrad', gre_date='$greDate', toeffel_date='$toeffelDate', area_of_interest='$interest', work_experience='$priorWork' WHERE uid='$uid'";
 			$ret = mysqli_query($conn, $query);
 			$successMessage = " *Your Information was updated";
@@ -346,11 +346,11 @@
 			$successMessage = " *Your Information was processed";
 		}	
 	
-  //  		if($ret){
-			//echo "New record created successfully <br/>";
-//		} else {
-//			echo "Error: " .$query . "<br/>" . mysqli_error($conn);
-//		}
+    		if($ret){
+			echo "New record created successfully <br/>";
+		} else {
+			echo "Error: " .$query . "<br/>" . mysqli_error($conn);
+		}
 
 		$greScores = array($_POST["greBio"], $_POST["greChem"], $_POST["greEng"], $_POST["greMath"], $_POST["grePhysics"], $_POST["grePsych"], $_POST["greTot"], $_POST["greVerb"], $_POST["greQuant"], $_POST["toeffel"]);
     		$greSubjects = array("Biology", "Chemistry", "English", "Math", "Physics", "Psychology", "GRE Total", "GRE Verbal", "GRE Quantitative", "Toefl");

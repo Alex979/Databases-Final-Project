@@ -126,6 +126,14 @@ if(isset($_POST['submit'])){
 		echo "Error: " .$query . "<br/>" . mysqli_error($conn);
 		}
 
+		$query = "UPDATE user SET street='$street', city='$city', state='$state', zip='$zip' WHERE uid='$uid'";
+                $ret = mysqli_query($conn, $query);
+                if($ret){
+                //echo "New Record created successfully";
+                } else {
+                echo "Error: " .$query . "<br/>" . mysqli_error($conn);
+                }
+
 		$successMessage = " *Your Information was processed";
 	}
 }

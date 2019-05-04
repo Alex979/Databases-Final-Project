@@ -13,7 +13,25 @@ INSERT INTO user VALUES (
     0,
     0,
     0,
-    NULL,
+    55555555,
+    0
+);
+
+INSERT INTO user VALUES (
+    10101010,
+    'bgiangrasso',
+    'password123',
+    'Ben',
+    'Giangrasso',
+    '2121 I St NW',
+    'Washington',
+    'DC',
+    20052,
+    100.00,
+    0,
+    0,
+    0,
+    55555555,
     0
 );
 
@@ -31,7 +49,7 @@ INSERT INTO user VALUES (
     0,
     0,
     0,
-    NULL,
+    55555555,
     1
 );
 
@@ -83,4 +101,22 @@ INSERT INTO user VALUES (
     20147,
     100.00,
     0, 0, 0, NULL, 0
+);
+
+INSERT INTO user VALUES (
+    55555555,
+    'advisor',
+    'password123',
+    'faculty',
+    'advisor',
+    '2121 I St NW',
+    'Washington',
+    'DC',
+    20052,
+    100.00,
+    0,
+    0,
+    0,
+    NULL,
+    0
 );
