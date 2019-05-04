@@ -64,28 +64,8 @@
   echo '<br><br><br>';
 
   $uid = $_SESSION["uid"];
-  $role = $_SESSION["role"];
-
-switch ($role) {
-    	case "student":
-		$destination = student;
-       		 break;
-    	case "advisor":
-		$destination = advisor;
-        	break;
-   	case "gradSec":
-        	$destination =  gradsec;
-        	break;
-	case "alumni":
-        	$destination =  alumni;
-        	break;
-	case "sysAdmin":
-        	$destination = sysadmin;
-        	break;
-	}
-	
 	echo '<form action="../FlatEarthSociety/public_html/dashboard.php" method = "post">';
-        echo '<input type="hidden" name="uid" value = "' . $uid . '"/>';
+        echo '<input type="hidden" name="uid" value = "'$uid'"/>';
 	echo '<input type="hidden" name="permission" value = 1/>';
         echo '<button class="button" style="vertical-align:middle"><span>Return to Home Page</span></button>';
   	echo '</form>';
