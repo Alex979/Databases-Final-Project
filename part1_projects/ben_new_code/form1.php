@@ -31,8 +31,13 @@ session_start();
       $courseOutsideBool = 1;
       $alreadyBool = 1;
       $error = "Error: ";
-
+      $uidSession = $_SESSION["uid"];
       $uid = $_POST['uid'];
+      if ($uid != $uidSession){
+        $error .= " Your credentials are invalid.";
+	$_SESSION["error"] = $error;
+        header("Location: form1Error.php");
+      }
       $deptArray = array(
         $_POST['d1'], $_POST['d2'], $_POST['d3'],
         $_POST['d4'], $_POST['d5'], $_POST['d6'],
