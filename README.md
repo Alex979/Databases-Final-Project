@@ -39,7 +39,7 @@
 * Search	for	an	applicant	using	their	last	name	or	student	number.	This	query	can	be	
 submitted	by	the	GS	or	by	a	faculty	reviewer.
 
-  * **SELECT user.uid, role.type, fname, lname, approveThesis, clearedToGrad, needsCourseApproval, advisorid FROM user, role WHERE role.uid = user.uid AND role.type = 'student' AND (user.lname = '$lname' OR user.uid = '$uid');**
+  * **SELECT user.uid, role.type, fname, lname, approveThesis, clearedToGrad, needsCourseApproval, advisorid FROM user, role WHERE role.uid = user.uid AND role.type = 'applicant' AND (user.lname = '$lname' OR user.uid = '$uid');**
 
 * Update	applicant’s	academic	and	personal	information	– an	applicant	may	choose	to	
 update	their	information	at	any	time.	This	can	be	simplified	by	having	only	the	GS	
