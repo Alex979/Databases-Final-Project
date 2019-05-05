@@ -138,7 +138,7 @@ if(isset($_POST['signup'])){
        	 	$ret = mail($email, $subject, $msg);
         	echo $ret;
         	if($ret){
-                	header('http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/dashboard.php');exit;
+		//	header('Location: http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/dashboard.php');exit;
         	}
 	} else {
 		echo "Error: " .$query . "<br/>" . mysqli_error($conn);
@@ -149,8 +149,9 @@ if(isset($_POST['signup'])){
         // $result = mysqli_query($conn,$query);
         $_SESSION['signedin']="true";
         $_SESSION['username']=$uname;
-        $_SESSION['uid']=$uid;
-        $_SESSION['role']='applicant';
+	$_SESSION['uid']=$uid;
+	$userRole = array('applicant');
+        $_SESSION['role']= $userRole;
 
 
         $query = "INSERT INTO transcript VALUES ('$uid',false)";
@@ -159,7 +160,7 @@ if(isset($_POST['signup'])){
           echo "Error: " .$query . "<br/>" . mysqli_error($conn);
         }
         
-
+	header('Location: http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/dashboard.php');exit;
 
       }
 }

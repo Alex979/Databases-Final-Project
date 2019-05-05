@@ -36,7 +36,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php include('facTopbar.php');?>
+        <?php include('../../FlatEarthSociety/public_html/navbar.php');?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -45,20 +45,20 @@
         if(isset($_POST['orderBy'])){
             if($_POST['orderBy']=='name')
             {
-              $query = "SELECT a.uid, a.fname, a.lname, s.decision, s.admission_status, s.date_completed, s.num_evaluations FROM applicant as a, application_status as s WHERE a.uid=s.uid AND s.admission_status='complete' ORDER BY lname";
+              $query = "SELECT a.uid, a.fname, a.lname, s.decision, s.admission_status, s.date_completed, s.num_evaluations FROM applicant as a, application_status as s WHERE a.uid=s.uid AND s.admission_status=' Application Recieved and Decision Pending' ORDER BY lname";
             }
             else if($_POST['orderBy']=='uid')
             {
-              $query = "SELECT a.uid, a.fname, a.lname, s.decision, s.admission_status, s.date_completed, s.num_evaluations FROM applicant as a, application_status as s WHERE a.uid=s.uid AND s.admission_status='complete' ORDER BY uid";
+              $query = "SELECT a.uid, a.fname, a.lname, s.decision, s.admission_status, s.date_completed, s.num_evaluations FROM applicant as a, application_status as s WHERE a.uid=s.uid AND s.admission_status=' Application Recieved and Decision Pending' ORDER BY uid";
             }
             else if($_POST['orderBy']=='date')
             {
-              $query = "SELECT a.uid, a.fname, a.lname, s.decision, s.admission_status, s.date_completed, s.num_evaluations FROM applicant as a, application_status as s WHERE a.uid=s.uid AND s.admission_status='complete' ORDER BY date_completed";
+              $query = "SELECT a.uid, a.fname, a.lname, s.decision, s.admission_status, s.date_completed, s.num_evaluations FROM applicant as a, application_status as s WHERE a.uid=s.uid AND s.admission_status=' Application Recieved and Decision Pending' ORDER BY date_completed";
             }
         }
         else
         {
-          $query = "SELECT a.uid, a.fname, a.lname, s.decision, s.admission_status, s.date_completed, s.num_evaluations FROM applicant as a, application_status as s WHERE a.uid=s.uid AND s.admission_status='complete' ORDER BY uid";
+          $query = "SELECT a.uid, a.fname, a.lname, s.decision, s.admission_status, s.date_completed, s.num_evaluations FROM applicant as a, application_status as s WHERE a.uid=s.uid AND s.admission_status='Application Recieved and Decision Pending' ORDER BY uid";
         }
 
       

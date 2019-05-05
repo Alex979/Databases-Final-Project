@@ -43,7 +43,7 @@ table, th, td {
       <div id="content">
 
         <!-- Topbar -->
-       <?php include('facTopbar.php');?>
+       <?php include('../../FlatEarthSociety/public_html/navbar.php');?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
