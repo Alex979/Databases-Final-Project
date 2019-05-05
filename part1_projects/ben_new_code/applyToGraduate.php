@@ -74,6 +74,9 @@ session_start();
       while ($row = mysqli_fetch_array($resultThesis)){
         $thesis = $row['approveThesis'];
       }
+      if ($thesis != 1){
+        $errorMessage .= " Your thesis has not been approved.";     
+      }
     }
     $x = 0;
     $query = "SELECT * FROM formOne WHERE uid = '$uid'";
