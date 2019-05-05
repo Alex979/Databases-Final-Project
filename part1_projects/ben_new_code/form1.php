@@ -34,9 +34,10 @@ session_start();
       $uidSession = $_SESSION["uid"];
       $uid = $_POST['uid'];
       if ($uid != $uidSession){
-        $error .= " Your credentials are invalid.";
+        $error .= " Your credentials are invalid. ";
 	$_SESSION["error"] = $error;
         header("Location: form1Error.php");
+	exit();
       }
       $deptArray = array(
         $_POST['d1'], $_POST['d2'], $_POST['d3'],
