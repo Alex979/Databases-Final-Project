@@ -91,7 +91,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <p class="text-danger"><?php if(isset($passwordError)){echo $passwordError;} ?></p>
             <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
-        </form>
+	    <div class="text-center">
+              <a class="small" href="http://gwupyterhub.seas.gwu.edu/~sp19DBp1-TheRockhoppers/TheRockhoppers/public_html/signup.php">Create an Account!</a>
+            </div>
+	</form>
         <br>
     </div>
 
