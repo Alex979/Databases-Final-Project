@@ -175,8 +175,9 @@ session_start();
     echo "<p>Error = " . $error . "</p><br>";
     echo "<p>failCounter = " . $failCounter . "</p><br>";
     echo "<p>compBool = " . $compBool . "</p><br>";
+    echo "<p>creditCount = " . $creditCount . "</p><br>";
     for ($x = 0; $x < 10; $x++) {
-      echo "<p>grade:" . $gradeArray[$x] . "dept: ".$deptArray[$x]."</p><br>";
+      echo "<p>grade:" . $gradeArray[$x] . "   dept: ".$deptArray[$x]."</p><br>";
     }
     if ($error != 1 && $totalGPA >= 3.0 && $failCounter <= 2 && $compBool == 1 && $creditCount >= 30 && $degree == 'masters') {
       $query4 = "UPDATE user SET clearedToGrad = 1 WHERE uid = '$uid'";
