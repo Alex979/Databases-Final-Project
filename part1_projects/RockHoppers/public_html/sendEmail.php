@@ -15,7 +15,7 @@
         // $msgB = '   Please go to: https://bit.ly/2K26ajj to enter your recomendation. Use UID:';
         // $msgC = 
 
-        $msg = 'Hello, '.$fName.' '.$lName.'   Please go to: https://bit.ly/2K26ajj to enter your recomendation. Use UID:'.$_SESSION['uid'];
+        $msg = 'Hello, '.$fName.' '.$lName.'   Please go to: https://bit.ly/2H1PGnZ to enter your recomendation. Use UID:'.$_SESSION['uid'];
         
         $msg = wordwrap($msg, 70);
         $ret = mail($email, $subject, $msg);
