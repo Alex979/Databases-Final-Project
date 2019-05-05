@@ -110,8 +110,17 @@ session_start();
       }
     }
     $creditCount = 0;
-    for ($x = 0; $x < 12; $x++) {
-      $creditCount = $creditCount + $creditArray[$x];
+    if ($degree = 'masters'){
+      for ($x = 0; $x < 12; $x++) {
+        $creditCount = $creditCount + $creditArray[$x];
+      }
+    }
+    if ($degree = 'phd') {
+      for ($x = 0; $x < 12; $x++) {
+        if ($deptArray[$x] = 'CSCI') {
+	  $creditCount = $creditCount + $creditArray[$x];	
+	}
+      }
     }
     $gradeLength = sizeof($gradeArray);
     echo "<p>Grade Length: ". $gradeLength . " </p><br>";
@@ -174,7 +183,7 @@ session_start();
       $result4 = mysqli_query($conn, $query4) or die("Bad Query: $query4");
       //header("Location: graduated.php");
     } 
-    else if ($error != 1 && $totalGPA >= 3.5 && $thesis == 1 && $degree == 'phd' && $creditCount >= 36 && $failCounter <= 1){
+    else if ($error != 1 && $totalGPA >= 3.5 && $thesis == 1 && $degree == 'phd' && $creditCount >= 30 && $failCounter <= 1){
       $query5 = "UPDATE user SET clearedToGrad = 1 WHERE uid = '$uid'";
       $result5 = mysqli_query($conn, $query5) or die("Bad Query: $query5");
       //header("Location: graduated.php");
