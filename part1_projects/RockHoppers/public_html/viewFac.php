@@ -34,7 +34,7 @@ include('connect.php');
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
-    	<?php include('saTopbar.php'); ?>
+    	 <?php include('../../FlatEarthSociety/public_html/navbar.php');?>
       <!-- Main Content -->
       <?php 
       //$query = "SELECT a.uid, a.fname, a.lname, s.decision, s.admission_status, s.date_completed, s.num_evaluations FROM applicant as a, application_status as s WHERE a.uid=s.uid";
@@ -42,7 +42,7 @@ include('connect.php');
 
       if(isset($_POST['Update'])){
       	if($_POST['displayFac']=='all'){
-      		$query = "SELECT * FROM faculty";
+      		$query = "SELECT  r.uid, r.type, u.uid, u.fname, u.lname FROM role as r, user as u WHERE r.uid =u.uid AND r.type='Faculty'";
       	}else{
           $dept = $_POST['dept'];
       		$query = "SELECT * FROM faculty WHERE department='$dept'";
@@ -50,7 +50,7 @@ include('connect.php');
 
 
       }else{
-      	$query = "SELECT * FROM faculty";
+      	$query = "SELECT  r.uid, r.type, u.uid, u.fname, u.lname FROM role as r, user as u WHERE r.uid =u.uid AND r.type='Faculty'";
 
       }
 
@@ -368,7 +368,7 @@ include('connect.php');
           ?>
           <tr>
                     
-                    <td> <?php echo $row['fid']; ?></td>
+                    <td> <?php echo $row['uid']; ?></td>
                     <td> <?php echo $row['fname'];  ?></td>
                     <td> <?php echo $row['lname']; ?></td>   
                     <td> <?php echo $row['department']; ?></td>   
