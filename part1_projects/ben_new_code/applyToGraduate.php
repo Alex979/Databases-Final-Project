@@ -115,7 +115,7 @@ session_start();
         $creditCount = $creditCount + $creditArray[$x];
       }
     }
-    if ($degree = 'phd') {
+    else if ($degree = 'phd') {
       for ($x = 0; $x < 12; $x++) {
         if ($deptArray[$x] = 'CSCI') {
 	  $creditCount = $creditCount + $creditArray[$x];	
