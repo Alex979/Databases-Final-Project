@@ -198,7 +198,7 @@ session_start();
     else {
       session_start();
       $_SESSION["errorMessage"] = $errorMessage;
-      //header("Location: noGraduate.php");
+      header("Location: noGraduate.php");
     }
 
 
