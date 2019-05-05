@@ -50,6 +50,7 @@ session_start();
     $degree = $_POST['degree'];
     echo "<p>Degree: ".$degree."</p><br>";
     $uid = $_POST['uid'];
+    $uidSession = $_SESSION["uid"];
     $deptArray = array();
     $numArray = array();
     $gradeArray = array();
@@ -58,6 +59,12 @@ session_start();
     // Check connection
     if (!$conn) {
       die("Connection failed: " . mysqli_connect_error());
+    }
+    // check credentials are correct
+    if ($uid != $uidSession){
+      $errorMessage .= " You have entered invalid credentials.";
+      $_SESSION["errorMessage"] = $errorMessage;
+      header("Location: noGraduate.php");
     }
     // check if classes taken are equivalent to form1
     if($degree == 'phd'){
