@@ -805,6 +805,21 @@
                         </div>
                       </div>
                     </div>
+                    <!-- TRANSCRIPT OPTIONS-->
+                    <h6 class="m-0 font-weight-bold text-primary">Transcript</h6>
+                    <div class="form-row">
+                      <div class="form-group col-md-8">
+                      <label for="admitSemester">Transcript Submission</label><span class="text-danger"><?php echo  $admitSemErr;?></span>
+                        <select class="form-control" id="admitSemester" name="admitSemester">
+                          <option>Online</option>
+                          <option>Mail</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <input type="file" name="transcript" id="transcript">
+                        <input type="submit" value="Upload Image" name="enter">
+                      </div>
+                    </div>
                     <!--SUPPLEMENTAL-->
                     <h6 class="m-0 font-weight-bold text-primary">Supplemental</h6>
                     <div class="form-group">
