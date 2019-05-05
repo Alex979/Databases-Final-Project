@@ -188,17 +188,17 @@ session_start();
     if ($error != 1 && $totalGPA >= 3.0 && $failCounter <= 2 && $compBool == 1 && $creditCount >= 30 && $degree == 'masters') {
       $query4 = "UPDATE user SET clearedToGrad = 1 WHERE uid = '$uid'";
       $result4 = mysqli_query($conn, $query4) or die("Bad Query: $query4");
-      header("Location: graduated.php");
+      //header("Location: graduated.php");
     } 
     else if ($error != 1 && $totalGPA >= 3.5 && $thesis == 1 && $degree == 'phd' && $creditCount >= 30 && $failCounter <= 1){
       $query5 = "UPDATE user SET clearedToGrad = 1 WHERE uid = '$uid'";
       $result5 = mysqli_query($conn, $query5) or die("Bad Query: $query5");
-      header("Location: graduated.php");
+      //header("Location: graduated.php");
     }
     else {
       session_start();
       $_SESSION["errorMessage"] = $errorMessage;
-      header("Location: noGraduate.php");
+      //header("Location: noGraduate.php");
     }
 
 
