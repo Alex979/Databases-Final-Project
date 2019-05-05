@@ -60,7 +60,7 @@ session_start();
       die("Connection failed: " . mysqli_connect_error());
     }
     // check if classes taken are equivalent to form1
-    if($degree = 'phd'){
+    if($degree == 'phd'){
       $queryThesis = "SELECT approveThesis FROM user WHERE uid = '$uid'";
       $resultThesis = mysqli_query($conn, $queryThesis) or die("Bad Query: $queryThesis");
       while ($row = mysqli_fetch_array($resultThesis)){
@@ -73,6 +73,7 @@ session_start();
     while ($row = mysqli_fetch_array($result)) {
       $deptArray[$x] = $row['dept'];
       $numArray[$x] = $row['courseNumber'];
+      //$formOneArray[$x] = $row['dept'] . ' ' . $row['courseNumber'];
       $x++;
     }
     $numformOne = mysqli_num_rows($result);
@@ -85,12 +86,15 @@ session_start();
     while ($row = mysqli_fetch_array($resultTaken)) {
       $deptTaken[$y] = $row['dept'];
       $numTaken[$y] = $row['courseNumber'];
+      //$coursesTaken[$y] = $row['dept'] . ' ' . $row['courseNumber'];
       $y++;
     }
     sort($deptArray);
     sort($numArray);
     sort($deptTaken);
     sort($numTaken);
+    // sort($coursesTaken);
+    // sort($formOneArray);
 
     if ($deptArray == $deptTaken && $numArray == $numTaken) {
       $compBool = 1;
@@ -110,7 +114,7 @@ session_start();
       }
     }
     $creditCount = 0;
-    if ($degree = 'masters'){
+    if ($degree == 'masters'){
       for ($x = 0; $x < 12; $x++) {
         $creditCount = $creditCount + $creditArray[$x];
       }
@@ -118,9 +122,9 @@ session_start();
         $errorMessage .= " You have taken less than 30 credits.";
       }
     }
-    else if ($degree = 'phd') {
+    else if ($degree == 'phd') {
       for ($x = 0; $x < 12; $x++) {
-        if ($deptArray[$x] = 'CSCI') {
+        if ($deptArray[$x] == 'CSCI') {
 	  $creditCount = $creditCount + $creditArray[$x];	
 	}
       }
