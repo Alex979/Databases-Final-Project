@@ -47,19 +47,16 @@ perform	this	but	this	is	not	an	ideal	solution.
 
   * **Add editPersonalInfo.php to GS website.**
 
-* An	applicant	or	current	student	or	Alumni	should	be	able	to	update	their	personal	
-information at	any	time.		Think	of	which	other	types	of	users	you	want to	give	this	
-privilege	to.
-
-  * **Done**
 
 * Given	the	Semester,	or	Year	or	Degree	program,	generate	the	list	of	graduate	
 applicants.	This	query	can	be	submitted	by	the	GS.
 
+  * **ALEX DO THIS**
 
 * Given	the	semester	or	year	or	degree	program,	generate	the	list	of	admitted	students.	
 This	query	can be	submitted	by	the	GS.
 
+  * **SELECT * FROM **
 * Given	the	semester	or	year	or	degree	program,	generate	statistics	such	as	total	
 number	of	applicants,	total	number	admitted,	total	number	rejected,	average	GRE	
 score	for	admitted	applicants,	etc.	This	query	can	be	submitted	by	the GS.
