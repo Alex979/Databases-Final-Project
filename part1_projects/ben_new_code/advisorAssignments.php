@@ -38,11 +38,11 @@ include('../FlatEarthSociety/public_html/navbar.php');
 	$newAssignment = $_POST["newAssignment"];
 	if ($newAssignment == 1)
 	{
-		$studentid = $_POST["id"];
+		$studentid = $_POST["uid"];
 		$advisorid = $_POST["advisorid"];
 		
 		
-		$assign_query = "UPDATE users SET advisorid = ".$advisorid." WHERE id = ".$studentid."";
+		$assign_query = "UPDATE user SET advisorid = '$advisorid' WHERE uid = '$studentid'";
 		if(mysqli_query($conn,$assign_query))
 		{
 			echo "Advisor assignment successful!<br>";
@@ -53,7 +53,7 @@ include('../FlatEarthSociety/public_html/navbar.php');
 		}
 	}
 	
-	$query = "SELECT * FROM roles r, users s WHERE r.id = s.id AND r.role = 'student' AND s.advisorid IS NOT NULL";
+	$query = "SELECT * FROM role, user WHERE role.uid = user.uid AND role.type = 'student' AND user.advisorid IS NOT NULL";
 	$result = mysqli_query($conn,$query);
 	if (mysqli_num_rows($result) > 0)
 	{
@@ -77,7 +77,7 @@ include('../FlatEarthSociety/public_html/navbar.php');
 				$student_id = $row["uid"];
 				$advisor_id = $row["advisorid"];
 			 
-				$innerquery = "SELECT * FROM user WHERE uid = ".$advisor_id."";
+				$innerquery = "SELECT * FROM user WHERE uid = '$advisor_id'";
 				$innerresult = mysqli_query($conn,$innerquery);
 				if (mysqli_num_rows($result) > 0)
 				{
@@ -88,13 +88,13 @@ include('../FlatEarthSociety/public_html/navbar.php');
 					}
 				}
         
-				echo '<tr><td>'.$student_fname.' '.$student_lname.'</td>';
+				echo '<tr><td>'$student_fname' '$student_lname'</td>';
         
        				 echo '<td>';
 				echo $student_id;
 				echo '</td>';
 				
-       				 echo '<td>'.$advisor_fname.' '.$advisor_lname.'</td>';
+       				 echo '<td>'$advisor_fname' '$advisor_lname'</td>';
         
         			echo '<td>';
 				echo $advisor_id;
