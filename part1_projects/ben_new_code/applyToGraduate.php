@@ -73,7 +73,7 @@ session_start();
     while ($row = mysqli_fetch_array($result)) {
       $deptArray[$x] = $row['dept'];
       $numArray[$x] = $row['courseNumber'];
-      //$formOneArray[$x] = $row['dept'] . ' ' . $row['courseNumber'];
+      $formOneArray[$x] = $row['dept'] . ' ' . $row['courseNumber'];
       $x++;
     }
     $numformOne = mysqli_num_rows($result);
@@ -84,19 +84,22 @@ session_start();
 				AND course.cid = schedule.cid AND enrolls.uid = '$uid'";
     $resultTaken = mysqli_query($conn, $queryTaken) or die("Bad Query: $queryTaken");
     while ($row = mysqli_fetch_array($resultTaken)) {
-      $deptTaken[$y] = $row['dept'];
-      $numTaken[$y] = $row['courseNumber'];
-      //$coursesTaken[$y] = $row['dept'] . ' ' . $row['courseNumber'];
+      // $deptTaken[$y] = $row['dept'];
+      // $numTaken[$y] = $row['courseNumber'];
+      $coursesTaken[$y] = $row['dept'] . ' ' . $row['courseNumber'];
       $y++;
     }
-    sort($deptArray);
-    sort($numArray);
-    sort($deptTaken);
-    sort($numTaken);
-    // sort($coursesTaken);
-    // sort($formOneArray);
+    // sort($deptArray);
+    // sort($numArray);
+    // sort($deptTaken);
+    // sort($numTaken);
+    sort($coursesTaken);
+    sort($formOneArray);
 
-    if ($deptArray == $deptTaken && $numArray == $numTaken) {
+    // if ($deptArray == $deptTaken && $numArray == $numTaken) {
+    //   $compBool = 1;
+    // }
+    if ($coursesTaken == $formOneArray) {
       $compBool = 1;
     }
     else{
