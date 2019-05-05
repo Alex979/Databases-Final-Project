@@ -44,7 +44,7 @@ if(!$conn){
       $querySubmit = "SELECT * FROM user WHERE uid = '$student_id' AND clearedToGrad = 1";
       $resultSubmit = mysqli_query($conn, $querySubmit) or die("Bad Query: $querySubmit");
       if(mysqli_num_rows($resultSubmit) > 0){
-	      echo "<p>You have already submitted your Form 1.</p>";  
+	      echo "<p>You have already submitted your Form 1 and applied to graduate.</p>";  
       }
       else{
       	// define the sql_insert_query
