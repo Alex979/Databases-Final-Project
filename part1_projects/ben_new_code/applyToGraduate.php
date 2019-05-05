@@ -62,7 +62,7 @@ session_start();
     }
     // check credentials are correct
     if ($uid != $uidSession){
-      $errorMessage .= " You have entered invalid credentials.";
+      $errorMessage .= "You have entered invalid credentials. ";
       $_SESSION["errorMessage"] = $errorMessage;
       header("Location: noGraduate.php");
       exit();
@@ -75,7 +75,7 @@ session_start();
         $thesis = $row['approveThesis'];
       }
       if ($thesis != 1){
-        $errorMessage .= " Your thesis has not been approved.";     
+        $errorMessage .= "Your thesis has not been approved. ";     
       }
     }
     $x = 0;
