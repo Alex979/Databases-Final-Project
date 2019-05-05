@@ -5,6 +5,7 @@
 
   $personalComplete = $academicComplete = $recComplete = $transcriptComplete = "";
   $admitDecision = $readyForEval = ""; 
+  $applicantStatus = true;
   //Use Query to obtain personalComplete
               $query = "select * from applicant where uid='$uid'";
               $result = mysqli_query($conn,$query);
@@ -52,14 +53,15 @@
               }
 
 //Use Query to obtain admitDecision
-              $query = "select * from application_status where uid='$uid'";
-              $result = mysqli_query($conn,$query);
+              $query = "select admission_status from application_status where uid='$uid'";
+	      $result = mysqli_query($conn,$query);
+	      
               if (mysqli_num_rows($result) > 0){
                       $row = mysqli_fetch_assoc($result);
                       $admitDecision = $row['admission_status'];                    
               }
 
-//Use Query to obtain admitDecision
+//Use Query to obtain ready for evalaution status
               $query = "select * from application_status where uid='$uid'";
               $result = mysqli_query($conn,$query);
               if (mysqli_num_rows($result) > 0){
@@ -72,6 +74,7 @@
    if($personalComplete == 1){
 	$personalComplete = "Complete";
    }else{
+	
 	$personalComplete = "Incomplete";
    } 
 

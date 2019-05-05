@@ -11,13 +11,19 @@
 		$file_path  = $_POST["transUpload"];
 		$blob = fopen($file_path, 'rb');
 
-		$sqll = "INSERT INTO files(mime,data) VALUES(:mime,:data)";
+//		$sqll = "INSERT INTO files(mime,data) VALUES(:mime,:data)";
 		$sql = "INSERT INTO transcript(uid, data, submitted) VALUES($uid, $blob, 1)";
+		$ret = mysqli_query($conn, $query);
+		if($ret){
+			echo "New record created successfully <br/>";
+		} else {
+			echo "Error: " .$query . "<br/>" . mysqli_error($conn);
+		}
 
-	        $stmt = $this->pdo->prepare($sql);
-        	$stmt->bindParam(':data', $blob, PDO::PARAM_LOB);
+	       // $stmt = $this->pdo->prepare($sql);
+        	//$stmt->bindParam(':data', $blob, PDO::PARAM_LOB);
  
-        	$stmt->execute();
+        	//$stmt->execute();
 	//	$stmt->bindParam('$data', $blob, PDO::PARAM_LOB);
 
 			

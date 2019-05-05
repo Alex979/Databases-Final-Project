@@ -2,7 +2,7 @@
 
   session_start();
   include('connect.php');
-  $uname = $_SESSION['username'];
+  $uid = $_SESSION['uid'];
 
 
   //Define Error Messages
@@ -83,16 +83,18 @@
         $_SESSION['recEmail'] = $email;
         
         //Send the Email 
-        $msg = 'Hello, '.$fName.' '.$lName.'   Please go to: https://bit.ly/2H1PGnZ to enter your recomendation. Use UID:'.$uid;
+        $msg = "Hello, ".$fName." ".$lName."   Please go to: https://bit.ly/2H1PGnZ to enter your recomendation. Use UID:" .$uid." ";
         $subject = 'Letter of Recomendation';
         
         $msg = wordwrap($msg, 70);
         $ret = mail($email, $subject, $msg);
         echo $ret;
         if($ret){
-                echo 'yeet';
+               
         }
-    }
+    }else {
+        $successMessage = "Please Enter All The Information";
+      }
 
   }
 
@@ -173,12 +175,14 @@
          $ret = mail($email, $subject, $msg);
          echo $ret;
          if($ret){
-                 echo 'yeet';
-         }
-    }
+        
+	}
+      } else {
+      	$successMessageT = "Please Enter All The Information";
+      }
   }
 
-  if(isset($_POST['recLetterT'])){
+  if(isset($_POST['recLetterTh'])){
     //check the degree name requirements
     if (empty($_POST["recFName"])) {
       $recFNameThErr = " *Required Field"; //name field was empty so change the error message
@@ -255,9 +259,11 @@
         $ret = mail($email, $subject, $msg);
         echo $ret;
         if($ret){
-                echo 'yeet';
+               
         }
-    }
+    }else {
+        $successMessageTh = "Please Enter All The Information";
+      }
 
   }
 

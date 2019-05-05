@@ -30,7 +30,7 @@
      
                  $complete = true;
                // $query = "INSERT INTO rec_letters(uid,rec_fname,rec_lname,rec_email,rec_title,rec_affiliation,reccomendation, complete) VALUES ('$uid','$recFName', '$recLName','$recEmail','$recTitle','$recAffiliation', '$recLetter', 1)";
-               $query = "UPDATE rec_letters SET reccomendation='$recLetter', complete=1 WHERE rec_email='$recEmail'";
+               $query = "UPDATE rec_letters SET rec_fname='$recFName',rec_lname='$recLName',rec_email='$recEmail', rec_affiliation='$recAffiliation', reccomendation='$recLetter', complete=1 WHERE rec_email='$recEmail'";
                 $ret = mysqli_query($conn, $query);
                 if($ret){
                 //echo "New record created successfully <br/>";

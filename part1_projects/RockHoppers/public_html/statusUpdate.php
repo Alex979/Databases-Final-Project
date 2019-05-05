@@ -12,7 +12,25 @@ if(isset($_POST['Admit'])){
 	
 	$update = "UPDATE role SET type='student' WHERE uid='$uid'";
 	$result = mysqli_query($conn, $update);
-	header("location:displayAppStatus.php");exit;
+
+	//Get Student Info 
+	$query = "select fname, lname, email from applicant where uid=$uid";
+	$result = mysqli_query($conn,$query);
+	$info = mysqli_fetch_assoc($result);
+	$firstNameText = $info['fname'];
+	$lastNameText = $info['lname'];
+	$emailText = $info['email'];
+	
+	//Send an Email 
+	$msg = "Congraulations! You have recently been accepted to ARGS under your desired Program! Your UID is: ".$uid." . Please use your uid and the following link to accept your admission";
+	$subject = "ARGS Application Decision"; 
+
+	$msg = wordwrap($msg, 70);
+        $ret = mail($emailText, $subject, $msg);
+        echo $ret;
+        if($ret){
+		header("location:displayAppStatus.php");exit;        
+	}
 }else if(isset($_POST['Reject'])){ 
 	$uid=$_GET['id'];
 	$update = "UPDATE application_status SET admission_status='Reject' WHERE uid='$uid'";
