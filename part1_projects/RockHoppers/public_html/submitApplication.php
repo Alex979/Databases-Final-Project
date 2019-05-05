@@ -47,7 +47,7 @@ $submitApplication = false;
    if(($personalComplete == 1) && ($academicComplete == 1) && ($recComplete == 1) && ($transcriptComplete == 1)){
 		$submitApplication = true;
 		$date = date("Y-m-d");
-		$update = "UPDATE application_status SET ready_for_evaluation='yes', admission_status='complete', date_completed='$date' WHERE uid='$uid'";
+		$update = "UPDATE application_status SET ready_for_evaluation='yes', admission_status='Application Recieved and Decision Pending', date_completed='$date' WHERE uid='$uid'";
         $result = mysqli_query($conn,$update);
    }
 

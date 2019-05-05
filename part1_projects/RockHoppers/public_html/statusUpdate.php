@@ -4,18 +4,36 @@ session_start();
 include('connect.php');
 
 
-if(isset($_POST['admit'])){
+if(isset($_POST['Admit'])){
 
 	$uid=$_GET['id'];
-	$update = "UPDATE application_status SET admission_status='admit' WHERE uid='$uid'";
+	$update = "UPDATE application_status SET admission_status='Admit' WHERE uid='$uid'";
 	$result = mysqli_query($conn,$update);
 	
 	$update = "UPDATE role SET type='student' WHERE uid='$uid'";
 	$result = mysqli_query($conn, $update);
-	header("location:displayAppStatus.php");exit;
-}else if(isset($_POST['reject'])){ 
+
+	//Get Student Info 
+	$query = "select fname, lname, email from applicant where uid=$uid";
+	$result = mysqli_query($conn,$query);
+	$info = mysqli_fetch_assoc($result);
+	$firstNameText = $info['fname'];
+	$lastNameText = $info['lname'];
+	$emailText = $info['email'];
+	
+	//Send an Email 
+	$msg = "Congraulations! You have recently been accepted to ARGS under your desired Program! Your UID is: ".$uid." . Please use your uid and the following link to accept your admission";
+	$subject = "ARGS Application Decision"; 
+
+	$msg = wordwrap($msg, 70);
+        $ret = mail($emailText, $subject, $msg);
+        echo $ret;
+        if($ret){
+		header("location:displayAppStatus.php");exit;        
+	}
+}else if(isset($_POST['Reject'])){ 
 	$uid=$_GET['id'];
-	$update = "UPDATE application_status SET admission_status='reject' WHERE uid='$uid'";
+	$update = "UPDATE application_status SET admission_status='Reject' WHERE uid='$uid'";
 	$result = mysqli_query($conn,$update);
 	header("location:displayAppStatus.php");exit;
 }
@@ -415,9 +433,9 @@ if(isset($_POST['admit'])){
                   	
                     <div class="row">
                     	<form method="post" action="statusUpdate.php?id=<?php echo $uid?>">
-                			<input type="submit" name="admit" value="Admit" align="right">
-                			<input type="submit" name="admitwithaid" value="Admit With Aid" align="right">
-                      <input type="submit" name="reject" value="Reject" align="right">
+                			<input type="submit" name="Admit" value="Admit" align="right">
+                			<input type="submit" name="Admit with Aid" value="Admit With Aid" align="right">
+                      <input type="submit" name="Reject" value="Reject" align="right">
                 		</form>
                     </div>
                 	<?php  } ?>

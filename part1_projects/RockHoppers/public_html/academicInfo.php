@@ -8,7 +8,7 @@
   $bachGradErr = $bachUniErr = $bachGPAErr = "";
   $mastTitleErr = $mastGradErr = $mastUniErr = $mastGPAErr = $bachErr = "";
   $greTotErr = $greVerbErr = $greQuantErr = $toeffelErr = "";
-  $interestErr = $priorWorkErr = $majorErr = "";
+  $interestErr = $priorWorkErr = $majorErr = $transMethodErr = $transUploadErr = "";
   $successMessage = "";
   $completeForm = true;
   
@@ -296,6 +296,7 @@
       $completeForm = false;
     }
   }
+  
   if($completeForm == true){
     //define variables
 		$degName = $_POST["degName"];

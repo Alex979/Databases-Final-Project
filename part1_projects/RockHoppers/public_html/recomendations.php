@@ -2,78 +2,271 @@
 
   session_start();
   include('connect.php');
-  $uname = $_SESSION['username'];
+  $uid = $_SESSION['uid'];
 
 
   //Define Error Messages
-  $recFNameErr= $recLNameErr = $recEmailErr = $recTitleErr = $recAffErr = "";
+  $recFNameOErr= $recLNameOErr = $recEmailOErr = $recTitleOErr = $recAffOErr = "";
+  $recFNameTErr= $recLNameTErr = $recEmailTErr = $recTitleTErr = $recAffTErr = "";
+  $recFNameThErr= $recLNameThErr = $recEmailThErr = $recTitleThErr = $recAffThErr = "";
 
-  $successMessage = "";
+  $successMessage = $successMessageT = $successMessageTh = "";
   $completeForm = true;
 
+  if(isset($_POST['recLetterO'])){
+    //check the degree name requirements
+    if (empty($_POST["recFName"])) {
+      $recFNameErr = " *Required Field"; //name field was empty so change the error message
+      $completeForm = false;
+    } else {
+      if(!preg_match("/^[a-zA-Z ]*$/",$_POST["recFName"])){
+        $recFNameErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+        $completeForm = false;
+      }
+    }
 
     //check the degree name requirements
-  if (empty($_POST["recFName"])) {
-    $recFNameErr = " *Required Field"; //name field was empty so change the error message
-    $completeForm = false;
-  } else {
-    if(!preg_match("/^[a-zA-Z ]*$/",$_POST["recFName"])){
-      $recFNameErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+    if (empty($_POST["recLName"])) {
+      $recLNameErr = " *Required Field"; //name field was empty so change the error message
       $completeForm = false;
+    } else {
+      if(!preg_match("/^[a-zA-Z ]*$/",$_POST["recLName"])){
+        $recLNameErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+        $completeForm = false;
+      }
     }
+
+    //check the rec email requirements
+    if (empty($_POST["recEmail"])) {
+      $recEmailErr = " *Required Field"; //name field was empty so change the error message
+      $completeForm = false;
+    } else {
+      if(!filter_var($_POST["recEmail"], FILTER_VALIDATE_EMAIL)){
+        $recEmailErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+        $completeForm = false;
+      }
+    }
+
+    //check the Rec title requirements
+    if (empty($_POST["recTitle"])) {
+      $recTitleErr = " *Required Field"; //name field was empty so change the error message
+      $completeForm = false;
+    } else {
+      if(!preg_match("/^[a-zA-Z ]*$/",$_POST["recTitle"])){
+        $recTitleErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+        $completeForm = false;
+      }
+    }
+
+    //check the degree name requirements
+    if (empty($_POST["recAffiliation"])) {
+      $recAffErr = " *Required Field"; //name field was empty so change the error message
+      $completeForm = false;
+    } else {
+      if(!preg_match("/^[a-zA-Z ]*$/",$_POST["recAffiliation"])){
+        $recAffErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+        $completeForm = false;
+      }
+    }
+
+      if($completeForm == true){
+        $fname = $_POST["recFname"];
+        $lname = $_POST["recLname"];
+        $email = $_POST["recEmail"];
+        $title = $_POST["recTitle"];
+        $affliation = $_POST["recAffiliation"];
+        $recomendation = "Letter has been Requested";
+
+        $query = "INSERT INTO rec_letters(uid, rec_fname, rec_lname, rec_email, rec_title, rec_affiliation, reccomendation, complete) VALUES ('$uid', '$fname', '$lname', '$email', '$title', '$affliation','$recomendation', 0)";
+        $result = mysqli_query($conn,$query);
+        $successMessage = "Letter Requested";
+        $_SESSION['recEmail'] = $email;
+        
+        //Send the Email 
+        $msg = "Hello, ".$fName." ".$lName."   Please go to: https://bit.ly/2H1PGnZ to enter your recomendation. Use UID:" .$uid." ";
+        $subject = 'Letter of Recomendation';
+        
+        $msg = wordwrap($msg, 70);
+        $ret = mail($email, $subject, $msg);
+        echo $ret;
+        if($ret){
+               
+        }
+    }else {
+        $successMessage = "Please Enter All The Information";
+      }
+
   }
 
-  //check the degree name requirements
-  if (empty($_POST["recLName"])) {
-    $recLNameErr = " *Required Field"; //name field was empty so change the error message
-    $completeForm = false;
-  } else {
-    if(!preg_match("/^[a-zA-Z ]*$/",$_POST["recLName"])){
-      $recLNameErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+  if(isset($_POST['recLetterT'])){
+    //check the degree name requirements
+    if (empty($_POST["recFName"])) {
+      $recFNameTErr = " *Required Field"; //name field was empty so change the error message
       $completeForm = false;
+    } else {
+      if(!preg_match("/^[a-zA-Z ]*$/",$_POST["recFName"])){
+        $recFNameTErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+        $completeForm = false;
+      }
     }
+
+    //check the degree name requirements
+    if (empty($_POST["recLName"])) {
+      $recLNameTErr = " *Required Field"; //name field was empty so change the error message
+      $completeForm = false;
+    } else {
+      if(!preg_match("/^[a-zA-Z ]*$/",$_POST["recLName"])){
+        $recLNameTErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+        $completeForm = false;
+      }
+    }
+
+    //check the rec email requirements
+    if (empty($_POST["recEmail"])) {
+      $recEmailTErr = " *Required Field"; //name field was empty so change the error message
+      $completeForm = false;
+    } else {
+      if(!filter_var($_POST["recEmail"], FILTER_VALIDATE_EMAIL)){
+        $recEmailTErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+        $completeForm = false;
+      }
+    }
+
+    //check the Rec title requirements
+    if (empty($_POST["recTitle"])) {
+      $recTitleTErr = " *Required Field"; //name field was empty so change the error message
+      $completeForm = false;
+    } else {
+      if(!preg_match("/^[a-zA-Z ]*$/",$_POST["recTitle"])){
+        $recTitleTErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+        $completeForm = false;
+      }
+    }
+
+    //check the degree name requirements
+    if (empty($_POST["recAffiliation"])) {
+      $recAffTErr = " *Required Field"; //name field was empty so change the error message
+      $completeForm = false;
+    } else {
+      if(!preg_match("/^[a-zA-Z ]*$/",$_POST["recAffiliation"])){
+        $recAffTErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+        $completeForm = false;
+      }
+    }
+
+      if($completeForm == true){
+        $fname = $_POST["recFname"];
+        $lname = $_POST["recLname"];
+        $email = $_POST["recEmail"];
+        $title = $_POST["recTitle"];
+        $affliation = $_POST["recAffiliation"];
+        $recomendation = "Letter has been Requested";
+
+        $query = "INSERT INTO rec_letters(uid, rec_fname, rec_lname, rec_email, rec_title, rec_affiliation, reccomendation, complete) VALUES ('$uid', '$fname', '$lname', '$email', '$title', '$affliation','$recomendation', 0)";
+        $result = mysqli_query($conn,$query);
+        $successMessageT = "Letter Requested";
+        $_SESSION['recEmail'] = $email;
+
+         //Send the Email 
+         $msg = 'Hello, '.$fName.' '.$lName.'   Please go to: https://bit.ly/2H1PGnZ to enter your recomendation. Use UID:'.$uid;
+         $subject = 'Letter of Recomendation';
+         
+         $msg = wordwrap($msg, 70);
+         $ret = mail($email, $subject, $msg);
+         echo $ret;
+         if($ret){
+        
+	}
+      } else {
+      	$successMessageT = "Please Enter All The Information";
+      }
   }
 
-  //check the rec email requirements
-  if (empty($_POST["recEmail"])) {
-    $recEmailErr = " *Required Field"; //name field was empty so change the error message
-    $completeForm = false;
-  } else {
-    if(!filter_var($_POST["recEmail"], FILTER_VALIDATE_EMAIL)){
-      $recEmailErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+  if(isset($_POST['recLetterTh'])){
+    //check the degree name requirements
+    if (empty($_POST["recFName"])) {
+      $recFNameThErr = " *Required Field"; //name field was empty so change the error message
       $completeForm = false;
+    } else {
+      if(!preg_match("/^[a-zA-Z ]*$/",$_POST["recFName"])){
+        $recFNameThErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+        $completeForm = false;
+      }
     }
+
+    //check the degree name requirements
+    if (empty($_POST["recLName"])) {
+      $recLNameThErr = " *Required Field"; //name field was empty so change the error message
+      $completeForm = false;
+    } else {
+      if(!preg_match("/^[a-zA-Z ]*$/",$_POST["recLName"])){
+        $recLNameThErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+        $completeForm = false;
+      }
+    }
+
+    //check the rec email requirements
+    if (empty($_POST["recEmail"])) {
+      $recEmailThErr = " *Required Field"; //name field was empty so change the error message
+      $completeForm = false;
+    } else {
+      if(!filter_var($_POST["recEmail"], FILTER_VALIDATE_EMAIL)){
+        $recEmailThErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+        $completeForm = false;
+      }
+    }
+
+    //check the Rec title requirements
+    if (empty($_POST["recTitle"])) {
+      $recTitleThErr = " *Required Field"; //name field was empty so change the error message
+      $completeForm = false;
+    } else {
+      if(!preg_match("/^[a-zA-Z ]*$/",$_POST["recTitle"])){
+        $recTitleThErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+        $completeForm = false;
+      }
+    }
+
+    //check the degree name requirements
+    if (empty($_POST["recAffiliation"])) {
+      $recAffThErr = " *Required Field"; //name field was empty so change the error message
+      $completeForm = false;
+    } else {
+      if(!preg_match("/^[a-zA-Z ]*$/",$_POST["recAffiliation"])){
+        $recAffThErr = " *Invalid Entry"; //name field was entered but not valid so change error message
+        $completeForm = false;
+      }
+    }
+
+      if($completeForm == true){
+        $fname = $_POST["recFname"];
+        $lname = $_POST["recLname"];
+        $email = $_POST["recEmail"];
+        $title = $_POST["recTitle"];
+        $affliation = $_POST["recAffiliation"];
+        $recomendation = "Letter has been Requested";
+
+        $query = "INSERT INTO rec_letters(uid, rec_fname, rec_lname, rec_email, rec_title, rec_affiliation, reccomendation, complete) VALUES ('$uid', '$fname', '$lname', '$email', '$title', '$affliation','$recomendation', 0)";
+        $result = mysqli_query($conn,$query);
+        $successMessageTh = "Letter Requested";
+        $_SESSION['recEmail'] = $email;
+
+        //Send the Email 
+        $msg = 'Hello, '.$fName.' '.$lName.'   Please go to: https://bit.ly/2H1PGnZ to enter your recomendation. Use UID:'.$uid;
+        $subject = 'Letter of Recomendation';
+        
+        $msg = wordwrap($msg, 70);
+        $ret = mail($email, $subject, $msg);
+        echo $ret;
+        if($ret){
+               
+        }
+    }else {
+        $successMessageTh = "Please Enter All The Information";
+      }
+
   }
 
-  //check the Rec title requirements
-  if (empty($_POST["recTitle"])) {
-    $recTitleErr = " *Required Field"; //name field was empty so change the error message
-    $completeForm = false;
-  } else {
-    if(!preg_match("/^[a-zA-Z ]*$/",$_POST["recTitle"])){
-      $recTitleErr = " *Invalid Entry"; //name field was entered but not valid so change error message
-      $completeForm = false;
-    }
-  }
-
-  //check the degree name requirements
-  if (empty($_POST["recAffiliation"])) {
-    $recAffErr = " *Required Field"; //name field was empty so change the error message
-    $completeForm = false;
-  } else {
-    if(!preg_match("/^[a-zA-Z ]*$/",$_POST["recAffiliation"])){
-      $recAffErr = " *Invalid Entry"; //name field was entered but not valid so change error message
-      $completeForm = false;
-    }
-  }
-
-    if($completeForm == true){
-//    	$successMessage = " *Letter Successfully Requested";
-//	echo $successMessage;
-	$email = $_POST["recEmail"];
-	$_SESSION['recEmail'] = $email;
-	include('sendEmail.php');
-  }
 
 
 
@@ -168,7 +361,7 @@
                           <input type="text" class="form-control" id="recAffiliation" name="recAffiliation">
                         </div>
                       </div>
-                      <button type="submit" class="btn btn-primary">Request Letter</button>
+                      <button type="submit" name="recLetterO" class="btn btn-primary">Request Letter</button>
                     </form>
                   </div>
                   <!-- END CARD BODY -->
@@ -180,7 +373,7 @@
 	      <!-- Collapsable Card Example -->
               <div class="card shadow mb-4 w-100 p-3">
                 <a href="#recTwo" class="d-block card-header py-3 w-100 p-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="recTwo">
-                  <h6 class="m-0 font-weight-bold text-primary">Recomender Two</h6><span class="text-success"><?php echo  $successMessage;?></span>
+                  <h6 class="m-0 font-weight-bold text-primary">Recomender Two</h6><span class="text-success"><?php echo  $successMessageT;?></span>
                 </a>
 
                 <!-- Card Content - Collapse -->
@@ -191,29 +384,29 @@
                       <h6 class="m-0 font-weight-bold text-primary">Contact Information</h6>
                       <div class="form-row">
                         <div class="form-group col-md-6">
-                          <label for="recFName">First Name</label><span class="text-danger"><?php echo  $recFNameErr;?></span>
+                          <label for="recFName">First Name</label><span class="text-danger"><?php echo  $recFNameTErr;?></span>
                           <input type="text" class="form-control" id="recFName" name="recFName">
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="recLName1">Last Name</label><span class="text-danger"><?php echo  $recLNameErr;?></span>
+                          <label for="recLName1">Last Name</label><span class="text-danger"><?php echo  $recLNameTErr;?></span>
                           <input type="text" class="form-control" id="recLName" name="recLName">
                         </div>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-4">
-                          <label for="recEmail">Email</label><span class="text-danger"><?php echo  $recEmailErr;?></span>
+                          <label for="recEmail">Email</label><span class="text-danger"><?php echo  $recEmailTErr;?></span>
                           <input type="text" class="form-control" id="recEmail" name="recEmail">
                         </div>
                         <div class="form-group col-md-4">
-                          <label for="recTitle">Title</label><span class="text-danger"><?php echo  $recTitleErr;?></span>
+                          <label for="recTitle">Title</label><span class="text-danger"><?php echo  $recTitleTErr;?></span>
                           <input type="text" class="form-control" id="recTitle" name="recTitle">
                         </div>
                         <div class="form-group col-md-4">
-                          <label for="recAffiliation">Affiliation</label><span class="text-danger"><?php echo  $recAffErr;?></span>
+                          <label for="recAffiliation">Affiliation</label><span class="text-danger"><?php echo  $recAffTErr;?></span>
                           <input type="text" class="form-control" id="recAffiliation" name="recAffiliation">
                         </div>
                       </div>
-                      <button type="submit" class="btn btn-primary">Request Letter</button>
+                      <button type="submit" name="recLetterT" class="btn btn-primary">Request Letter</button>
                     </form>
                   </div>
                   <!-- END CARD BODY -->
@@ -225,7 +418,7 @@
  	      <!-- Collapsable Card Example -->
               <div class="card shadow mb-4 w-100 p-3">
                 <a href="#recThree" class="d-block card-header py-3 w-100 p-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="recThree">
-                  <h6 class="m-0 font-weight-bold text-primary">Recomender Three</h6><span class="text-success"><?php echo  $successMessage;?></span>
+                  <h6 class="m-0 font-weight-bold text-primary">Recomender Three</h6><span class="text-success"><?php echo  $successMessageTh;?></span>
                 </a>
 
                 <!-- Card Content - Collapse -->
@@ -236,29 +429,29 @@
                       <h6 class="m-0 font-weight-bold text-primary">Contact Information</h6>
                       <div class="form-row">
                         <div class="form-group col-md-6">
-                          <label for="recFName">First Name</label><span class="text-danger"><?php echo  $recFNameErr;?></span>
+                          <label for="recFName">First Name</label><span class="text-danger"><?php echo  $recFNameThErr;?></span>
                           <input type="text" class="form-control" id="recFName" name="recFName">
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="recLName1">Last Name</label><span class="text-danger"><?php echo  $recLNameErr;?></span>
+                          <label for="recLName1">Last Name</label><span class="text-danger"><?php echo  $recLNameThErr;?></span>
                           <input type="text" class="form-control" id="recLName" name="recLName">
                         </div>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-4">
-                          <label for="recEmail">Email</label><span class="text-danger"><?php echo  $recEmailErr;?></span>
+                          <label for="recEmail">Email</label><span class="text-danger"><?php echo  $recEmailThErr;?></span>
                           <input type="text" class="form-control" id="recEmail" name="recEmail">
                         </div>
                         <div class="form-group col-md-4">
-                          <label for="recTitle">Title</label><span class="text-danger"><?php echo  $recTitleErr;?></span>
+                          <label for="recTitle">Title</label><span class="text-danger"><?php echo  $recTitleThErr;?></span>
                           <input type="text" class="form-control" id="recTitle" name="recTitle">
                         </div>
                         <div class="form-group col-md-4">
-                          <label for="recAffiliation">Affiliation</label><span class="text-danger"><?php echo  $recAffErr;?></span>
+                          <label for="recAffiliation">Affiliation</label><span class="text-danger"><?php echo  $recAffThErr;?></span>
                           <input type="text" class="form-control" id="recAffiliation" name="recAffiliation">
                         </div>
                       </div>
-                      <button type="submit" class="btn btn-primary">Request Letter</button>
+                      <button type="submit" name="recLetterTh" class="btn btn-primary">Request Letter</button>
                     </form>
                   </div>
                   <!-- END CARD BODY -->
