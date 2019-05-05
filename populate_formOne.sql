@@ -27,7 +27,7 @@ INSERT INTO formOne VALUES (
 );
 
 INSERT INTO formOne VALUES (
-    8, 87654321, 6241, 'CSCI'
+    8, 87654321, 6241, 'ECE'
 );
 
 INSERT INTO formOne VALUES (
