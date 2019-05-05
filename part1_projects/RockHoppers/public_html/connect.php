@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	$server = "127.0.0.1";
+    $server = "localhost";
     $username = "Team_Name";
     $password = "p@ssW0RD";
     $dbname = "Team_Name";

@@ -406,7 +406,7 @@
       <div id="content">
 
         <!-- Topbar -->
-       <?php include('applicantTopbar.php'); ?>
+       <?php include('../../FlatEarthSociety/public_html/navbar.php'); ?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
