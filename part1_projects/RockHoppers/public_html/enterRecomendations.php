@@ -26,17 +26,20 @@
  		 $recTitle = $_POST["recTitle"];
  		 $recAffiliation = $_POST["recAffiliation"];
  		 $recLetter = $_POST["recLetter"];
-		 $uid = $_POST["sUID"];
+     $uid = $_POST["sUID"];
+     
                  $complete = true;
-                $query = "INSERT INTO rec_letters(uid,rec_fname,rec_lname,rec_email,rec_title,rec_affiliation,reccomendation, complete) VALUES ('$uid','$recFName', '$recLName','$recEmail','$recTitle','$recAffiliation', '$recLetter', 1)";
+               // $query = "INSERT INTO rec_letters(uid,rec_fname,rec_lname,rec_email,rec_title,rec_affiliation,reccomendation, complete) VALUES ('$uid','$recFName', '$recLName','$recEmail','$recTitle','$recAffiliation', '$recLetter', 1)";
+               $query = "UPDATE rec_letters SET reccomendation='$recLetter', complete=1 WHERE rec_email='$recEmail'";
                 $ret = mysqli_query($conn, $query);
                 if($ret){
                 //echo "New record created successfully <br/>";
+                  $successMessage = " *Your Information was processed";
                 } else {
                 echo "Error: " .$query . "<br/>" . mysqli_error($conn);
                 }
 
-                $successMessage = " *Your Information was processed";
+                
         }
 
 

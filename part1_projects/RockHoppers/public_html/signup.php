@@ -128,7 +128,7 @@ if(isset($_POST['signup'])){
         $result = mysqli_query($conn,$query);
 
         
-        $query = "INSERT INTO application_status (uid,ready_for_evaluation,admission_status,num_evaluations) VALUES ('$uid','no','incomplete',0)";
+        $query = "INSERT INTO application_status (uid,ready_for_evaluation,admission_status,num_evaluations) VALUES ('$uid','no','Application Materials Missing. Please View Above',0)";
         $result = mysqli_query($conn,$query);
 
 

@@ -4,18 +4,18 @@ session_start();
 include('connect.php');
 
 
-if(isset($_POST['admit'])){
+if(isset($_POST['Admit'])){
 
 	$uid=$_GET['id'];
-	$update = "UPDATE application_status SET admission_status='admit' WHERE uid='$uid'";
+	$update = "UPDATE application_status SET admission_status='Admit' WHERE uid='$uid'";
 	$result = mysqli_query($conn,$update);
 	
 	$update = "UPDATE role SET type='student' WHERE uid='$uid'";
 	$result = mysqli_query($conn, $update);
 	header("location:displayAppStatus.php");exit;
-}else if(isset($_POST['reject'])){ 
+}else if(isset($_POST['Reject'])){ 
 	$uid=$_GET['id'];
-	$update = "UPDATE application_status SET admission_status='reject' WHERE uid='$uid'";
+	$update = "UPDATE application_status SET admission_status='Reject' WHERE uid='$uid'";
 	$result = mysqli_query($conn,$update);
 	header("location:displayAppStatus.php");exit;
 }
@@ -415,9 +415,9 @@ if(isset($_POST['admit'])){
                   	
                     <div class="row">
                     	<form method="post" action="statusUpdate.php?id=<?php echo $uid?>">
-                			<input type="submit" name="admit" value="Admit" align="right">
-                			<input type="submit" name="admitwithaid" value="Admit With Aid" align="right">
-                      <input type="submit" name="reject" value="Reject" align="right">
+                			<input type="submit" name="Admit" value="Admit" align="right">
+                			<input type="submit" name="Admit with Aid" value="Admit With Aid" align="right">
+                      <input type="submit" name="Reject" value="Reject" align="right">
                 		</form>
                     </div>
                 	<?php  } ?>
