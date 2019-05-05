@@ -172,7 +172,7 @@ CREATE TABLE subject_score(
 CREATE TABLE application_status(
     uid int(8) not null,
     ready_for_evaluation varchar(3) not null,
-    admission_status varchar(20) not null,
+    admission_status varchar(70) not null,
     decision varchar(20),
     date_completed date,
     avg_rank float(3,2),
