@@ -88,13 +88,13 @@ include('../FlatEarthSociety/public_html/navbar.php');
 					}
 				}
         
-				echo '<tr><td>'$student_fname' '$student_lname'</td>';
+				echo '<tr><td>$student_fname $student_lname</td>';
         
        				 echo '<td>';
 				echo $student_id;
 				echo '</td>';
 				
-       				 echo '<td>'$advisor_fname' '$advisor_lname'</td>';
+       				 echo '<td>$advisor_fname $advisor_lname</td>';
         
         			echo '<td>';
 				echo $advisor_id;
