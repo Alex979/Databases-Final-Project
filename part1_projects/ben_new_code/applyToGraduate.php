@@ -62,9 +62,10 @@ session_start();
     }
     // check credentials are correct
     if ($uid != $uidSession){
-      $errorMessage .= " You have entered invalid credentials.";
+      $errorMessage .= "You have entered invalid credentials. ";
       $_SESSION["errorMessage"] = $errorMessage;
       header("Location: noGraduate.php");
+      exit();
     }
     // check if classes taken are equivalent to form1
     if($degree == 'phd'){
@@ -72,6 +73,9 @@ session_start();
       $resultThesis = mysqli_query($conn, $queryThesis) or die("Bad Query: $queryThesis");
       while ($row = mysqli_fetch_array($resultThesis)){
         $thesis = $row['approveThesis'];
+      }
+      if ($thesis != 1){
+        $errorMessage .= "Your thesis has not been approved. ";     
       }
     }
     $x = 0;
@@ -129,7 +133,10 @@ session_start();
         $creditCount = $creditCount + $creditArray[$x];
       }
       if($creditCount < 30){
-        $errorMessage .= " You have taken less than 30 credits.";
+        $errorMessage .= " You have taken less than 30 credits. ";
+	$_SESSION["errorMessage"] = $errorMessage;
+        header("Location: noGraduate.php");
+        exit();
       }
     }
     else if ($degree == 'phd') {
@@ -139,7 +146,20 @@ session_start();
 	}
       }
       if($creditCount < 30){
-        $errorMessage .= " You have taken less than 30 credits in the CSCI department.";
+        $errorMessage .= " You have taken less than 30 credits in the CSCI department. ";
+	$_SESSION["errorMessage"] = $errorMessage;
+        header("Location: noGraduate.php");
+        exit();
+      }
+      $creditCount = 0;
+      for ($x = 0; $x < 12; $x++) {
+        $creditCount = $creditCount + $creditArray[$x];	
+      } 
+      if($creditCount < 36){
+        $errorMessage .= " You have taken less than 36 credits. ";
+	$_SESSION["errorMessage"] = $errorMessage;
+        header("Location: noGraduate.php");
+        exit();
       }
     }
     $gradeLength = sizeof($gradeArray);
@@ -207,16 +227,19 @@ session_start();
       $query4 = "UPDATE user SET clearedToGrad = 1 WHERE uid = '$uid'";
       $result4 = mysqli_query($conn, $query4) or die("Bad Query: $query4");
       header("Location: graduated.php");
+      exit();
     } 
     else if ($error != 1 && $totalGPA >= 3.5 && $thesis == 1 && $degree == 'phd' && $creditCount >= 30 && $failCounter <= 1){
       $query5 = "UPDATE user SET clearedToGrad = 1 WHERE uid = '$uid'";
       $result5 = mysqli_query($conn, $query5) or die("Bad Query: $query5");
       header("Location: graduated.php");
+      exit();
     }
     else {
       session_start();
       $_SESSION["errorMessage"] = $errorMessage;
       header("Location: noGraduate.php");
+      exit();
     }
 
 
