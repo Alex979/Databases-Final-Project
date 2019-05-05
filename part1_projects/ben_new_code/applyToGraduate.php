@@ -47,7 +47,8 @@ session_start();
     $errorMessage = "";
     // define connection variable
     $conn = mysqli_connect($servername, $username, $password, $dbname);
-
+    $degree = $_POST['degree'];
+    echo "<p>Degree: ".$degree."</p><br>";
     $uid = $_POST['uid'];
     $deptArray = array();
     $numArray = array();
@@ -161,11 +162,11 @@ session_start();
     if ($error != 1 && $totalGPA >= 3.0 && $failCounter <= 2 && $compBool == 1) {
       $query4 = "UPDATE user SET clearedToGrad = 1 WHERE uid = '$uid'";
       $result4 = mysqli_query($conn, $query4) or die("Bad Query: $query4");
-      header("Location: graduated.php");
+      //header("Location: graduated.php");
     } else {
 	session_start();
 	$_SESSION["errorMessage"] = $errorMessage;
-      	header("Location: noGraduate.php");
+      	//header("Location: noGraduate.php");
     }
 
 
