@@ -8,7 +8,7 @@
   $bachGradErr = $bachUniErr = $bachGPAErr = "";
   $mastTitleErr = $mastGradErr = $mastUniErr = $mastGPAErr = $bachErr = "";
   $greTotErr = $greVerbErr = $greQuantErr = $toeffelErr = "";
-  $interestErr = $priorWorkErr = $majorErr = "";
+  $interestErr = $priorWorkErr = $majorErr = $transMethodErr = $transUploadErr = "";
   $successMessage = "";
   $completeForm = true;
   
@@ -296,6 +296,7 @@
       $completeForm = false;
     }
   }
+  
   if($completeForm == true){
     //define variables
 		$degName = $_POST["degName"];
@@ -803,21 +804,6 @@
                           <label for="GREQuant">GRE Psychology</label><span class="text-danger"><?php echo  $grePsychErr;?></span>
                           <input type="text" class="form-control" id="grePsych" name="grePsych">
                         </div>
-                      </div>
-                    </div>
-                    <!-- TRANSCRIPT OPTIONS-->
-                    <h6 class="m-0 font-weight-bold text-primary">Transcript</h6>
-                    <div class="form-row">
-                      <div class="form-group col-md-8">
-                      <label for="admitSemester">Transcript Submission</label><span class="text-danger"><?php echo  $admitSemErr;?></span>
-                        <select class="form-control" id="admitSemester" name="admitSemester">
-                          <option>Online</option>
-                          <option>Mail</option>
-                        </select>
-                      </div>
-                      <div class="form-group col-md-4">
-                        <input type="file" name="transcript" id="transcript">
-                        <input type="submit" value="Upload Image" name="enter">
                       </div>
                     </div>
                     <!--SUPPLEMENTAL-->
