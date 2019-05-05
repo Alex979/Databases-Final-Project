@@ -59,7 +59,10 @@ session_start();
       $alreadyResult = mysqli_query($conn, $queryAlready);
       if(mysqli_num_rows($alreadyResult) > 0){
         $alreadyBool = 0;
-	$error .= "You have already submitted a Form 1. ";
+      }
+      if($alreadyBool == 0){
+        $queryDeleteForm = "DELETE FROM formOne WHERE uid = '$uid'";
+        $resultDeleteForm = mysqli_query($conn, $queryDeleteForm);
       }
 
         // add form data to testing database
@@ -134,7 +137,7 @@ session_start();
         echo "<p>alreadyBool = ".$alreadyBool."</p>";
 	echo "<p>".$error."</p>";
         // insert the data into form 1 database if all checks pass
-        if($courseBool == 1 && $hoursBool == 1 && $courseOutsideBool == 1 && $alreadyBool == 1){
+        if($courseBool == 1 && $hoursBool == 1 && $courseOutsideBool == 1){
           $deleteQuery = "DELETE FROM formOneValid WHERE uid = $uid";
           $deleteResult = mysqli_query($conn, $deleteQuery);
           for($x = 0; $x < 12; $x++) {
