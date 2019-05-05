@@ -133,7 +133,10 @@ session_start();
         $creditCount = $creditCount + $creditArray[$x];
       }
       if($creditCount < 30){
-        $errorMessage .= " You have taken less than 30 credits.";
+        $errorMessage .= " You have taken less than 30 credits. ";
+	$_SESSION["errorMessage"] = $errorMessage;
+        header("Location: noGraduate.php");
+        exit();
       }
     }
     else if ($degree == 'phd') {
@@ -143,7 +146,20 @@ session_start();
 	}
       }
       if($creditCount < 30){
-        $errorMessage .= " You have taken less than 30 credits in the CSCI department.";
+        $errorMessage .= " You have taken less than 30 credits in the CSCI department. ";
+	$_SESSION["errorMessage"] = $errorMessage;
+        header("Location: noGraduate.php");
+        exit();
+      }
+      $creditCount = 0;
+      for ($x = 0; $x < 12; $x++) {
+        $creditCount = $creditCount + $creditArray[$x];	
+      } 
+      if($creditCount < 36){
+        $errorMessage .= " You have taken less than 36 credits. ";
+	$_SESSION["errorMessage"] = $errorMessage;
+        header("Location: noGraduate.php");
+        exit();
       }
     }
     $gradeLength = sizeof($gradeArray);
