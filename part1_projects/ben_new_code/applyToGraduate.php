@@ -178,10 +178,10 @@ session_start();
     $result3 = mysqli_query($conn, $query3) or die("Bad Query: $query3");
     $numClasses = mysqli_num_rows($result3);
     $totalGPA = $totalGPA / $creditCount;
-    if($totalGPA < 3.0 && $degree = 'masters'){
+    if($totalGPA < 3.0 && $degree == 'masters'){
 	$errorMessage .= "You have a GPA below 3.0. ";    
     }
-    if($totalGPA < 3.5 && $degree = 'phd'){
+    if($totalGPA < 3.5 && $degree == 'phd'){
 	$errorMessage .= "You have a GPA below 3.5. ";    
     }
     echo "<p>Total GPA = " . $totalGPA . "</p><br>";
