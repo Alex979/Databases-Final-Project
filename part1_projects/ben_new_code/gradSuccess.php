@@ -1,5 +1,9 @@
 <?php
-
+	$role = $_SESSION['role'];
+	if($role != 'student'){
+	  header("Location: ../FlatEarthSociety/public_html/dashboard.php");
+          exit();
+	}
 	$servername = "localhost";
 	$username = "Team_Name";
 	$password = "p@ssW0RD";
