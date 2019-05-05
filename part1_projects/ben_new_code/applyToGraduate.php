@@ -170,6 +170,10 @@ session_start();
 	$errorMessage .= "You currently have a class in progress (IP). ";
       }
     }
+    if($failCounter > 2 && $degree == "masters")
+	$errorMessage .= "You currently have more than two classes below a B. ";
+     if($failCounter > 1 && $degree == "phd")
+	$errorMessage .= "You currently have more than 1 class below a B. ";
     $numClasses = 0;
     $query3 = "SELECT uid, schedule.sid, course.cid, dept, courseNumber
 		FROM enrolls, schedule, course 
