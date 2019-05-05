@@ -114,12 +114,18 @@ session_start();
       for ($x = 0; $x < 12; $x++) {
         $creditCount = $creditCount + $creditArray[$x];
       }
+      if($creditCount < 30){
+        $errorMessage .= " You have taken less than 30 credits.";
+      }
     }
     else if ($degree = 'phd') {
       for ($x = 0; $x < 12; $x++) {
         if ($deptArray[$x] = 'CSCI') {
 	  $creditCount = $creditCount + $creditArray[$x];	
 	}
+      }
+      if($creditCount < 30){
+        $errorMessage .= " You have taken less than 30 credits in the CSCI department.";
       }
     }
     $gradeLength = sizeof($gradeArray);
