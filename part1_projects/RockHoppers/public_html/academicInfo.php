@@ -133,7 +133,7 @@
     }
   }
   //IF APPLICANT IS PhD they must enter values else make them neter NA
-  if($_POST["degName"] == 'PhD') {
+  if($_POST["degName"] == 'phd') {
     //check the GRE Total requirements
     if (empty($_POST["greTot"])) {
       $greTotErr  = " *Required Field for PhD Applicants"; //name field was empty so change the error message
@@ -437,8 +437,8 @@
                       <div class="form-group col-md-3">
                         <label for="degName">Degree Name</label><span class="text-danger"><?php echo  $degNameErr;?></span>
                         <select class="form-control" id="degName" name="degName">
-                          <option>Masters</option>
-                          <option>PhD</option>
+                          <option>MS</option>
+                          <option>phd</option>
                         </select>
                       </div>
 		       <div class="form-group col-md-3">

@@ -19,12 +19,35 @@
     $query = "UPDATE role SET type='student' WHERE UID='$uid'";
     $result = mysqli_query($conn, $query);
 
+    //add degree_sought to role
+    $query = "SELECT degree_sought from application_info WHERE uid='$uid'";
+    $result = mysqli_query($conn, $query);
+    $degree_sought = mysqli_fetch_assoc($result)["degree_sought"];
+
+    if($degree_sought == 'MS'){
+    $query = "INSERT role(uid, type) VALUES ('$uid', 'master')";
+    $result = mysqli_query($conn, $query);
+    } else {
+    $query = "INSERT role(uid, type) VALUES ('$uid', 'phd')";
+    $result = mysqli_query($conn, $query);
+    } 
+
     //update course approval
     $query = "UPDATE user SET  needsCourseApproval=1 WHERE UID='$uid'";
     $result = mysqli_query($conn, $query);
 
    $query = "UPDATE user SET email='$email' WHERE uid='$uid'";
-   $result = mysqli_query($conn, $query); 
+    $result = mysqli_query($conn, $query); 
+
+    //update user table with email, admitYear, and admitSemester
+    $query = "SELECT start_year, start_semester from application_info WHERE uid='$uid'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    $start_year = $row['start_year'];
+    $start_semester = $row['start_semester'];
+
+    $query = "UPDATE user SET email='$email', admitTerm='$start_semester', admitYear='$start_year' WHERE uid='$uid'";
+    $result = mysqli_query($conn, $query);
 
 
     header('Location: http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/login.php');
