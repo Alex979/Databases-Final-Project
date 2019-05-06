@@ -12,15 +12,17 @@ INSERT INTO role VALUES (
     12121212, 'faculty'
 );
 
--- Make Narahari and Choi Grad Secs
 INSERT INTO role VALUES (
     10101010, 'advisor'
 );
 
 INSERT INTO role VALUES (
-    12121212, 'gs'
+    16161616, 'advisor'
 );
 
+INSERT INTO role VALUES (
+    13131313, 'gs'
+);
 -- Make Billie Holiday and Diana Krall students
 INSERT INTO role VALUES (
     88888888, 'student'

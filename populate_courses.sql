@@ -1,7 +1,7 @@
 -- Populate course table
 INSERT INTO course VALUES (
     1, 'CSCI', 6221, 'SW Paradigms', 3,
-    10101010, NULL, NULL
+    12121212, NULL, NULL
 );
 
 INSERT INTO course VALUES (
@@ -26,7 +26,7 @@ INSERT INTO course VALUES (
 
 INSERT INTO course VALUES (
     6, 'CSCI', 6233, 'Networks 2', 3,
-    12121212, 5, NULL
+    14141414, 5, NULL
 );
 
 INSERT INTO course VALUES (
@@ -36,7 +36,7 @@ INSERT INTO course VALUES (
 
 INSERT INTO course VALUES (
     8, 'CSCI', 6242, 'Database 2', 3,
-    12121212, 7, NULL
+    14141414, 7, NULL
 );
 
 INSERT INTO course VALUES (

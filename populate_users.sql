@@ -60,6 +60,26 @@ INSERT INTO user VALUES (
 );
 
 INSERT INTO user VALUES (
+    16161616,
+    'gparmer',
+    'password123',
+    'Gabe',
+    'Parmer',
+    '2121 I St NW',
+    'Washington',
+    'DC',
+    20052,
+    100.00,
+    0,
+    0,
+    0,
+    NULL,
+    0,
+    NULL, NULL,
+    'gparmer@gmail.com'
+);
+
+INSERT INTO user VALUES (
     12121212,
     'hchoi',
     'password123',
@@ -111,6 +131,24 @@ INSERT INTO user VALUES (
     1,
     'Fall', 2019,
     'efitzgerald@gmail.com'
+);
+
+INSERT INTO user VALUES (
+    13131313,
+    'avijay',
+    'password123',
+    'Arjun',
+    'Vijay',
+    '961 Mayflower Lane',
+    'Oviedo',
+    'FL',
+    32765,
+    0,
+    0, 0, 0,
+    NULL,
+    1,
+    NULL, NULL,
+    'avijay@gmail.com'
 );
 
 INSERT INTO user VALUES (
@@ -179,7 +217,7 @@ INSERT INTO user VALUES (
     56301,
     100.0,
     0, 0, 0,
-    NULL,
+    16161616,
     0,
     'Fall', 2016,
     'gharrison@gmail.com'

@@ -253,9 +253,9 @@ CREATE TABLE ratingReport (
 
 source populate_users.sql;
 source populate_role.sql;
+source populate_applicant.sql;
 source populate_courses.sql;
 source populate_schedule.sql;
 source populate_enrolls.sql;
 source populate_formOne.sql;
 source populate_courseRatings.sql;
-source populate_applicant.sql;
