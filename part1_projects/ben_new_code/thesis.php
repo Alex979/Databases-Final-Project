@@ -25,7 +25,6 @@ session_start();
 	if (!$conn){
 		   die("Connection failed:".mysqli_connect_error());
 	}
-  if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	  if (!empty($paper)){
 	    $query = "SELECT * FROM thesis WHERE uid = '$uid'";
 	    $result=mysqli_query($conn,$query);
@@ -39,7 +38,7 @@ session_start();
         exit();
       }
 	  }
-  }
+  
   mysqli_close($conn);
   ?>
 <body>
