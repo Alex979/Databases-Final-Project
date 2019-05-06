@@ -17,27 +17,28 @@ session_start();
   session_start();
   $paper = $_POST["paper"];
   $uid = $_SESSION["user_id"];
+  echo "<p>uid: ".$uid."   paper: ".$paper."</p>";
   $servername="localhost";
-	$username = "Team_Name";
-	$password = "p@ssW0RD";
-	$dbname = "Team_Name";
+  $username = "Team_Name";
+  $password = "p@ssW0RD";
+  $dbname = "Team_Name";
   $conn=mysqli_connect($servername,$username,$password, $dbname);
-	if (!$conn){
-		   die("Connection failed:".mysqli_connect_error());
-	}
-	  if (!empty($paper)){
-	    $query = "SELECT * FROM thesis WHERE uid = '$uid'";
-	    $result=mysqli_query($conn,$query);
-      if(mysqli_num_rows($result) > 0){
-        echo "<p>You already submitted a thesis.</p>";
-      }
-      else{
-        $query2 = "INSERT INTO thesis(uid, paper) VALUES ('$uid', '$paper')";
-  	    $result=mysqli_query($conn,$query);
-        header("Location: ../FlatEarthSociety/public_html/dashboard.php");
-        exit();
-      }
-	  }
+  if (!$conn){
+    die("Connection failed:".mysqli_connect_error());
+  }
+  if (!empty($paper)){
+    $query = "SELECT * FROM thesis WHERE uid = '$uid'";
+    $result=mysqli_query($conn,$query);
+    if(mysqli_num_rows($result) > 0){
+      echo "<p>You already submitted a thesis.</p>";
+    }
+    else{
+      $query2 = "INSERT INTO thesis(uid, paper) VALUES ('$uid', '$paper')";
+      $result=mysqli_query($conn,$query);
+      //header("Location: ../FlatEarthSociety/public_html/dashboard.php");
+      //exit();
+    }
+  }
   
   mysqli_close($conn);
   ?>
