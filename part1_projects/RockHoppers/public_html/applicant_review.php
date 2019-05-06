@@ -1,6 +1,5 @@
-<?php session_start(); 
-
-  
+<?php  
+session_start(); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,9 +53,8 @@ table, th, td {
           <?php
 
 
-
       $uid = $_POST["student"];
-      $uidString = (String)$uid;
+      $uidString = $uid;
 
 
       
@@ -257,71 +255,69 @@ table, th, td {
           $query6="SELECT * FROM rec_letters where uid = '$uid'";
 	  $result6=mysqli_query($conn,$query6);
 	  while(mysqli_num_rows($result6)>0){
-	  
-	  
-	  }
-	  $row6 = mysqli_fetch_assoc($result6);
-          if($row6["complete"] == 1){
-          echo 'Letter of Recomendation: <br />';
-          echo 'Sender: '.$row6["rec_title"].' '.$row6["rec_fname"].' '.$row6["rec_lname"].'<br />';
-          echo 'Sender Email '.$row6["rec_email"].'<br />';
-          echo 'Sender Affiliation: '.$row6["rec_affiliation"].'<br />';
-          echo 'Contents: '.$row6["reccomendation"].'<br /><br />';
-          if($row6["rating"]!=NULL)
-          {
-            echo 'Rating: '.$row6["rating"].'<br />';
-          }
-          if($row6["generic"]!=NULL)
-          {
-            echo 'Generic: '.$row6["generic"].'<br />';
-          }
-          if($row6["credible"]!=NULL)
-          {
-            echo 'Credible: '.$row6["credible"].'<br /><br />';
-          }
+		$row6 = mysqli_fetch_assoc($result6);
+	  	if($row6["complete"] == 1){
+			echo 'Letter of Recomendation: <br />';
+           		echo 'Sender: '.$row6["rec_title"].' '.$row6["rec_fname"].' '.$row6["rec_lname"].'<br />';
+           		echo 'Sender Email '.$row6["rec_email"].'<br />';
+           		echo 'Sender Affiliation: '.$row6["rec_affiliation"].'<br />';
+			echo 'Contents: '.$row6["reccomendation"].'<br /><br />';
 
-          if($numEvals>1 && $_SESSION["role"]=='cac' && $row6["rating"]==NULL)
-          { ?>
-            <input type = "hidden" name ="processLetter" value = "yes">
-            Please rate this letter: <br />
-            Rating: 
-            <select name = "letterRating">
-              <option value="5">5 (best)</option>
-              <option value="4">4</option>
-              <option value="3">3</option>
-              <option value="2">2</option>
-              <option value="1">1 (worst)</option>
-            </select>
-            Generic: 
-            <select name = "generic">
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-            Credible: 
-            <select name = "credible">
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-            <br /><br />
-    <?php
-          }
-        }
-    ?>
-		<input type ="submit" name="submit" value = "Submit">
+
+			if($row6["rating"]!=NULL)
+         		 {			
+          			  echo 'Rating: '.$row6["rating"].'<br />';
+         		 }
+         		 if($row6["generic"]!=NULL)
+          		 {
+            			echo 'Generic: '.$row6["generic"].'<br />';
+          		}
+          		if($row6["credible"]!=NULL)
+          		{
+            			echo 'Credible: '.$row6["credible"].'<br /><br />';
+          		}
+
+
+			if($row6["rating"]==NULL){  ?>
+			<input type = "hidden" name ="processLetter" value = "yes">
+            		Please rate this letter: <br />
+            		Rating: 
+            		<select name = "letterRating">
+             		 <option value="5">5 (best)</option>
+              		 <option value="4">4</option>
+              		 <option value="3">3</option>
+             		 <option value="2">2</option>
+             		 <option value="1">1 (worst)</option>
+           	         </select>
+            		Generic: 
+           		 <select name = "generic">
+             		    <option value="yes">Yes</option>
+             		    <option value="no">No</option>
+          		  </select>
+            		Credible: 
+           		 <select name = "credible">
+             		    <option value="yes">Yes</option>
+            		    <option value="no">No</option>
+          		  </select>
+          	          <br /><br />
+			<button type ="submit" class="btn btn-primary" name="submit" value = "Submit"></button>
+			<?php	}
+		}
+	  
+	  }  ?>
+
+	<form method = "post" action="updateDecision.php">
+    		<input type = "hidden" name = "uid" value = <?php echo $uid; ?>>
+    		<input type = submit name = "decision" value = "admit with aid">
+   		 <input type = submit name = "decision" value = "admit">
+    		<input type = submit name = "decision" value = "reject">
 	</form>
-<?php }
-  else
-  {
-?>
-  <form method = "post" action="updateDecision.php">
-    <input type = "hidden" name = "uid" value = <?php echo $uid; ?>>
-    <input type = submit name = "decision" value = "admit with aid">
-    <input type = submit name = "decision" value = "admit">
-    <input type = submit name = "decision" value = "reject">
-</form>
-  <?php 
-}
- ?>
+
+<?php
+      } 
+   ?>   
+     
+
 </td>
 </tr>
 </table>

@@ -25,6 +25,9 @@
     $query = "UPDATE user SET  needsCourseApproval=1 WHERE UID='$uid'";
     $result = mysqli_query($conn, $query);
 
+   $query = "UPDATE user SET email='$email' WHERE uid='$uid'";
+   $result = mysqli_query($conn, $query); 
+
 
     header('Location: http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/dashboard.php');exit;
 

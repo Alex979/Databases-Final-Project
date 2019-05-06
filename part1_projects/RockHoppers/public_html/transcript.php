@@ -6,17 +6,17 @@
 
  if(isset($_POST['submit'])){
 	if (($_POST["transMethod"]) == 'Online') {
-		$transUploadErr = " *Please Select A File";
+	//	$transUploadErr = " *Please Select A File";
 
-		$file_path  = $_POST["transUpload"];
-		$blob = file_get_contents($file_path, true);
-		echo $blob;
+	//	$file_path  = $_POST["transUpload"];
+	//	$blob = file_get_contents($file_path, true);
+	//	echo $blob;
 
 //		$sqll = "INSERT INTO files(mime,data) VALUES(:mime,:data)";
-		$sql = "INSERT INTO transcript(uid, data, submitted) VALUES($uid, $blob, 1)";
+		$query = "UPDATE transcript SET submitted=true WHERE uid='$uid'";;
 		$ret = mysqli_query($conn, $query);
 		if($ret){
-			echo "New record created successfully <br/>";
+			$sucessMessage = "Transcript Recieved";;
 		} else {
 			echo $blob;
 			echo "Error: " .$query . "<br/>" . mysqli_error($conn);

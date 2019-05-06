@@ -45,20 +45,44 @@ session_start();
 			$degree = $_POST["degree"];
 			$term = $_POST["term"];
 			$year = $_POST["year"];
-			if($degree == "" && $term == ""){
+			//default search
+			if($degree == "" && $term == "" && $year == ""){
 			  $query = "SELECT * FROM role r, user s WHERE r.uid = s.uid AND r.type = 'student' AND s.clearedToGrad = 1";
 			  $result = mysqli_query($conn,$query);
 			}
-			else if($degree != "" && $term == ""){
+			//search degree
+			else if($degree != "" && $term == "" && $year == ""){
 			  $query = "SELECT * FROM role r, user s WHERE r.uid = s.uid AND r.type = '$degree' AND s.clearedToGrad = 1";
 			  $result = mysqli_query($conn,$query);
 			}
+			//search term
+			else if($degree == "" && $term != "" && $year == ""){
+			  $query = "SELECT * FROM role r, user s WHERE r.uid = s.uid AND r.type = 'student' AND s.clearedToGrad = 1 AND s.admitTerm = '$term'";
+			  $result = mysqli_query($conn,$query);
+			}
+			//search year
+			else if($degree == "" && $term == "" && $year != ""){
+			  $query = "SELECT * FROM role r, user s WHERE r.uid = s.uid AND r.type = 'student' AND s.clearedToGrad = 1 AND s.admitYear = '$year'";
+			  $result = mysqli_query($conn,$query);
+			}
+			//search term and year
 			else if($degree == "" && $term != "" && $year != ""){
 			  $query = "SELECT * FROM role r, user s WHERE r.uid = s.uid AND r.type = 'student' AND s.clearedToGrad = 1 AND s.admitTerm = '$term' AND s.admitYear = '$year'";
 			  $result = mysqli_query($conn,$query);
 			}
+			//search degree, term, and year
 			else if($degree != "" && $term != "" && $year != ""){
 			  $query = "SELECT * FROM role r, user s WHERE r.uid = s.uid AND r.type = '$degree' AND s.admitTerm = '$term' AND s.admitYear = '$year' AND s.clearedToGrad = 1";
+			  $result = mysqli_query($conn,$query);
+			}
+			//search degree and year
+			else if($degree != "" && $term == "" && $year != ""){
+			  $query = "SELECT * FROM role r, user s WHERE r.uid = s.uid AND r.type = '$degree' AND s.admitYear = '$year' AND s.clearedToGrad = 1";
+			  $result = mysqli_query($conn,$query);
+			}
+			//search degree and term
+			else if($degree != "" && $term != "" && $year == ""){
+			  $query = "SELECT * FROM role r, user s WHERE r.uid = s.uid AND r.type = '$degree' AND s.admitTerm = '$term' AND s.clearedToGrad = 1";
 			  $result = mysqli_query($conn,$query);
 			}
 			if (mysqli_num_rows($result) > 0)
