@@ -37,17 +37,13 @@
     $fname = $row["fname"];
     $lname = $row["lname"];
   }
-  echo "<h1 class='text-primary'>Thesis of ".$fname." ".$lname."</h1>";
-  $student_query = "SELECT * FROM thesis WHERE uid ='$uid'";
-	$student_result = mysqli_query($conn,$student_query);
-	if (mysqli_num_rows($student_result) > 0)
-	{
-		while ($student_row = mysqli_fetch_assoc($student_result))
-		{
-			$paper = $student_row["paper"];
-		}
-	}
-	
+  echo "<h1 class='text-primary'>Thesis: ".$fname." ".$lname."</h1>";
+  $query2 = "SELECT * FROM thesis WHERE uid ='$uid'";
+  $result2 = mysqli_query($conn,$query2);
+  while ($row2 = mysqli_fetch_assoc($result2))
+  {
+    $paper = $row2["paper"];
+  }
   echo 'Thesis: '.$paper.'<br>';
   echo '<br><br><br>';
 
