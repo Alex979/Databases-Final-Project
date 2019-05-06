@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
     <?php
     include("navbar.php");
     ?>
-    <div class="container pt-3">
+    <div class="container mt-3">
         <?php
         if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"])) {
             echo '
@@ -206,7 +206,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
 
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<option value="' . $row["uid"] . '">' . $row["fname"] . ' ' . $row["lname"] . '</option>';
+                    echo '<option value="' . $row["uid"] . '" ';
+                    if(!empty($_POST["advisor"]) && $_POST["advisor"] == $row["uid"]){
+                        echo 'selected';
+                    }
+                    echo '>' . $row["fname"] . ' ' . $row["lname"] . '</option>';
                 }
             }
 
@@ -217,15 +221,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
             <br>';
 
             if(!empty($_POST["action"]) && $_POST["action"] == "show-advisee-list" && !empty($_POST["advisor"])){
-                echo '<table class="table">
+                $query = "select uid, fname, lname from user where advisorid=" . $_POST["advisor"];
+                $result = mysqli_query($conn, $query);
+                if (mysqli_num_rows($result) > 0) {
+                    echo '<table class="table">
                     <tr>
                         <th>UID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                     </tr>';
-                $query = "select uid, fname, lname from user where advisorid=" . $_POST["advisor"];
-                $result = mysqli_query($conn, $query);
-                if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '
                         <tr>
@@ -235,8 +239,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
                         </tr>
                         ';
                     }
+                    echo '</table>';
+                } else {
+                    echo '<p>This advisor currently has no advisees.</p>';
                 }
-                echo '</table>';
             }
         }
         ?>
@@ -376,6 +382,93 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
             echo "</form><br>";
         }
         if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"])) {
+            echo '<h1 class="text-primary">Student List</h1>';
+            echo '
+            <form method="post" style="max-width: 500px">
+                <input type="hidden" name="action" value="search-students" />
+                <h4>Filters</h4>
+                <div class="form-group">
+                    <label>Year</label>
+                    <select class="form-control" name="student-year">
+                        <option value=""></option>';
+            $query = "SELECT DISTINCT admitYear FROM user, role WHERE user.uid=role.uid AND role.type='student' ORDER BY admitYear";
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<option value="' . $row["admitYear"] . '" ';
+                    if(!empty($_POST["student-year"]) && $row["admitYear"] == $_POST["student-year"]) {
+                        echo 'selected';
+                    }
+                    echo '>' . $row["admitYear"] . '</option>';
+                }
+            }
+            echo '</select>
+                </div>
+                <div class="form-group">
+                <label>Degree Type</label>
+                <select class="form-control" name="student-degree">
+                    <option value=""></option>
+                    <option value="phd" ';
+                    if(!empty($_POST["student-degree"]) && $_POST["student-degree"] == "phd"){
+                        echo 'selected';
+                    }
+                    echo '>PhD</option>
+                    <option value="master" ';
+                    if(!empty($_POST["student-degree"]) && $_POST["student-degree"] == "master"){
+                        echo 'selected';
+                    }
+                    echo '>Master</option>
+                </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form><br>
+            ';
+            if(!empty($_POST["action"]) && $_POST["action"] == "search-students"){
+                $query = "SELECT * FROM user, role WHERE user.uid=role.uid AND role.type='student'";
+                $result = mysqli_query($conn, $query);
+                if (mysqli_num_rows($result) > 0) {
+                    echo '
+                    <table class="table">
+                        <tr>
+                            <th>UID</th>
+                            <th>Name</th>
+                            <th>Degree</th>
+                            <th>Admit Term</th>
+                            <th>Admit Year</th>
+                        </tr>
+                    ';
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $degree_query = "SELECT * FROM role WHERE uid=" . $row["uid"];
+                        $degree_result = mysqli_query($conn, $degree_query);
+                        $roles = array();
+                        if (mysqli_num_rows($degree_result) > 0) {
+                            while ($degree_row = mysqli_fetch_assoc($degree_result)) {
+                                array_push($roles, $degree_row["type"]);
+                            }
+                        }
+
+                        if(!((!empty($_POST["student-degree"]) && !in_array($_POST["student-degree"], $roles)) || (!empty($_POST["student-year"]) && $row["admitYear"] != $_POST["student-year"]))){
+                            echo '
+                            <tr>
+                                <td>' . $row["uid"] . '</td>
+                                <td>' . $row["fname"] . ' ' . $row["lname"] . '</td>';
+                            if(in_array("phd", $roles)){
+                                echo '<td>PhD</td>';
+                            }
+                            if(in_array("master", $roles)){
+                                echo '<td>Master</td>';
+                            }
+                            echo '<td>' . $row["admitTerm"] . '</td>
+                                <td>' . $row["admitYear"] . '</td>
+                            </tr>';
+                        }
+                    }
+                    echo '
+                    </table>
+                    ';
+                }
+            }
+
             echo "<h1 class=\"text-primary\">Schedule List</h1>";
             $query = "SELECT * FROM schedule INNER JOIN course ON schedule.cid = course.cid ORDER BY schedule.sid";
             $result = mysqli_query($conn, $query);

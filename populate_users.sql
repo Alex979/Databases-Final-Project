@@ -34,7 +34,7 @@ INSERT INTO user VALUES (
     0,
     55555555,
     0,
-    NULL, NULL
+    'Fall', 2017
 );
 
 INSERT INTO user VALUES (
