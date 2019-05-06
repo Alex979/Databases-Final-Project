@@ -216,7 +216,7 @@ CREATE TABLE faculty_evaluation(
     rec_advisor varchar(20) not null,
     reason varchar(50) not null,
     primary key(uid,fid),
-    foreign key(fid) references faculty(fid)
+    foreign key(fid) references role(uid)
 );
 
 source populate_users.sql;
@@ -225,3 +225,4 @@ source populate_courses.sql;
 source populate_schedule.sql;
 source populate_enrolls.sql;
 source populate_formOne.sql;
+source populate_applicant.sql;
