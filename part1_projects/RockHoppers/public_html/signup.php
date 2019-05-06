@@ -129,7 +129,11 @@ if(isset($_POST['signup'])){
 
         
         $query = "INSERT INTO application_status (uid,ready_for_evaluation,admission_status,num_evaluations) VALUES ('$uid','no',' Application Materials Missing. Please View Above',0)";
+	$result = mysqli_query($conn,$query);
+
+	$query = "INSERT INTO transcript(uid, submitted, data) VALUES ('$uid',NULL, false)";
         $result = mysqli_query($conn,$query);
+
 	if($result) {
 		$subject = 'ARGS Login Information';
        		 $msg = 'Thank you signing up for the ARGS System. Please use your UID: '.$uid.'to login. Good Luck!';
@@ -154,9 +158,7 @@ if(isset($_POST['signup'])){
         $_SESSION['role']= $userRole;
 
 
-        $query = "INSERT INTO transcript VALUES ('$uid',false)";
-        $result = mysqli_query($conn,$query);
-        if(!$result){
+       if(!$result){
           echo "Error: " .$query . "<br/>" . mysqli_error($conn);
         }
         

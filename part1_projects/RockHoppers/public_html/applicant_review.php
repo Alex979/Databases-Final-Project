@@ -201,7 +201,7 @@ table, th, td {
       {
         echo 'Masters: <br />   GPA: '.$MAGpa.'<br/>Major: '.$MADegree.'<br/>Year: '.$MADate.'<br/>University: '.$MASchool.'<br />';
       }
-      echo 'BS/BA: <br />  GPA: '.$bachGpa.'<br/>Major: '.$bachDegree.'<br/>Year: '.$bachDate.'<br/>University: '.$bachSchool.'<br />';
+      echo 'Bachelors: <br />  GPA: '.$bachGpa.'<br/>Major: '.$bachDegree.'<br/>Year: '.$bachDate.'<br/>University: '.$bachSchool.'<br />';
       
       echo 'Interests: '.$interest.'<br />';
       echo 'Experience: '.$experience.'<br />';
@@ -238,7 +238,7 @@ table, th, td {
     <select name = "advisor">
         <?php 
 
-            $query4 = "SELECT * FROM faculty WHERE department='$major'";
+            $query4 = "SELECT * FROM role WHERE type='advisor'";
             $result4 = mysqli_query($conn,$query4);
             if(mysqli_num_rows($result4) >= 0){
               while($advisors = mysqli_fetch_assoc($result4)){
@@ -255,8 +255,12 @@ table, th, td {
         $numEvals=$row5["num_evaluations"];
         
           $query6="SELECT * FROM rec_letters where uid = '$uid'";
-          $result6=mysqli_query($conn,$query6);
-          $row6 = mysqli_fetch_assoc($result6);
+	  $result6=mysqli_query($conn,$query6);
+	  while(mysqli_num_rows($result6)>0){
+	  
+	  
+	  }
+	  $row6 = mysqli_fetch_assoc($result6);
           if($row6["complete"] == 1){
           echo 'Letter of Recomendation: <br />';
           echo 'Sender: '.$row6["rec_title"].' '.$row6["rec_fname"].' '.$row6["rec_lname"].'<br />';

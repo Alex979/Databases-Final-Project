@@ -44,7 +44,7 @@ include('connect.php');
       	if($_POST['displayApps']=='all'){
       		$query = "SELECT a.uid,a.fname,a.lname,t.submitted FROM applicant as a, transcript as t WHERE a.uid=t.uid";
       	}else if($_POST['displayApps']=='need'){
-      		$query = "SELECT a.uid,a.fname,a.lname,t.submitted FROM applicant as a, transcript as t WHERE a.uid=t.uid AND t.submitted=false";
+      		$query = "SELECT a.uid,a.fname,a.lname,t.submitted FROM applicant as a, transcript as t WHERE a.uid=t.uid AND t.submitted=0";
 
       	}
 
