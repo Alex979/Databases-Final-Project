@@ -220,3 +220,91 @@ INSERT INTO enrolls VALUES (
 INSERT INTO enrolls VALUES (
     12345678, 27, 'B'
 );
+
+INSERT INTO enrolls VALUES (
+    77777777, 21, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    77777777, 23, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    77777777, 22, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    77777777, 24, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    77777777, 25, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    77777777, 26, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    77777777, 27, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    77777777, 33, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    77777777, 34, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    77777777, 35, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    34567890, 21, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    34567890, 23, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    34567890, 22, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    34567890, 24, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    34567890, 25, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    34567890, 26, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    34567890, 33, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    34567890, 34, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    34567890, 35, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    34567890, 27, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    34567890, 29, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    34567890, 30, 'B'
+);
