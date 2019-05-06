@@ -2,7 +2,7 @@
 session_start();
 
 if (empty($_SESSION["uid"])) {
-    header("Location: index.php");
+    header("Location: login.php");
 }
 $uid = $_SESSION["uid"];
 
@@ -68,7 +68,7 @@ if (!$conn) {
                 </tr>";
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
-                echo "<td><a href=\"transcriptCourse.php?cid=" . $row["cid"] . "\">" . $row["dept"] . " " . $row["courseNumber"] . "</a></th>";
+                echo "<td><a href=\"course.php?cid=" . $row["cid"] . "\">" . $row["dept"] . " " . $row["courseNumber"] . "</a></th>";
                 echo "<td>" . $row["title"] . "</td>";
                 if(!in_array("alumni", $_SESSION["role"])) {
                     echo "<td>" . $row["section"] . "</td>";

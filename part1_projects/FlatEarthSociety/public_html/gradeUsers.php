@@ -2,7 +2,7 @@
 session_start();
 
 if (empty($_SESSION["uid"])) {
-    header("Location: index.php");
+    header("Location: login.php");
 }
 $uid = $_SESSION["uid"];
 ?>

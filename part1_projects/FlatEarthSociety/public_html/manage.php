@@ -447,6 +447,110 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
                 }
             }
 
+            echo '<h1 class="text-primary">Alumni List</h1>';
+            echo '
+            <form method="post" style="max-width: 500px">
+                <input type="hidden" name="action" value="search-alumni" />
+                <h4>Filters</h4>
+                <div class="form-group">
+                    <label>Term</label>
+                    <select class="form-control" name="alumni-term">
+                        <option value=""></option>';
+            $query = "SELECT DISTINCT admitTerm FROM user, role WHERE user.uid=role.uid AND role.type='alumni' ORDER BY admitTerm";
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<option value="' . $row["admitTerm"] . '" ';
+                    if(!empty($_POST["alumni-term"]) && $row["admitTerm"] == $_POST["alumni-term"]) {
+                        echo 'selected';
+                    }
+                    echo '>' . $row["admitTerm"] . '</option>';
+                }
+            }
+            echo '</select>
+                </div>
+                <div class="form-group">
+                    <label>Year</label>
+                    <select class="form-control" name="alumni-year">
+                        <option value=""></option>';
+            $query = "SELECT DISTINCT admitYear FROM user, role WHERE user.uid=role.uid AND role.type='alumni' ORDER BY admitYear";
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<option value="' . $row["admitYear"] . '" ';
+                    if(!empty($_POST["alumni-year"]) && $row["admitYear"] == $_POST["alumni-year"]) {
+                        echo 'selected';
+                    }
+                    echo '>' . $row["admitYear"] . '</option>';
+                }
+            }
+            echo '</select>
+                </div>
+                <div class="form-group">
+                <label>Degree Type</label>
+                <select class="form-control" name="alumni-degree">
+                    <option value=""></option>
+                    <option value="phd" ';
+                    if(!empty($_POST["alumni-degree"]) && $_POST["alumni-degree"] == "phd"){
+                        echo 'selected';
+                    }
+                    echo '>PhD</option>
+                    <option value="master" ';
+                    if(!empty($_POST["alumni-degree"]) && $_POST["alumni-degree"] == "master"){
+                        echo 'selected';
+                    }
+                    echo '>Master</option>
+                </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form><br>
+            ';
+            if(!empty($_POST["action"]) && $_POST["action"] == "search-alumni"){
+                $query = "SELECT * FROM user, role WHERE user.uid=role.uid AND role.type='alumni'";
+                $result = mysqli_query($conn, $query);
+                if (mysqli_num_rows($result) > 0) {
+                    echo '
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Degree</th>
+                            <th>Admit Term</th>
+                            <th>Admit Year</th>
+                        </tr>
+                    ';
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $degree_query = "SELECT * FROM role WHERE uid=" . $row["uid"];
+                        $degree_result = mysqli_query($conn, $degree_query);
+                        $roles = array();
+                        if (mysqli_num_rows($degree_result) > 0) {
+                            while ($degree_row = mysqli_fetch_assoc($degree_result)) {
+                                array_push($roles, $degree_row["type"]);
+                            }
+                        }
+
+                        if(!((!empty($_POST["alumni-degree"]) && !in_array($_POST["alumni-degree"], $roles)) || (!empty($_POST["alumni-year"]) && $row["admitYear"] != $_POST["alumni-year"]) || (!empty($_POST["alumni-term"]) && $row["admitTerm"] != $_POST["alumni-term"]))){
+                            echo '
+                            <tr>
+                                <td>' . $row["fname"] . ' ' . $row["lname"] . '</td>
+                                <td>' . $row["email"] . '</td>';
+                            if(in_array("phd", $roles)){
+                                echo '<td>PhD</td>';
+                            }
+                            if(in_array("master", $roles)){
+                                echo '<td>Master</td>';
+                            }
+                            echo '<td>' . $row["admitTerm"] . '</td>
+                                <td>' . $row["admitYear"] . '</td>
+                            </tr>';
+                        }
+                    }
+                    echo '
+                    </table>
+                    ';
+                }
+            }
+
             echo "<h1 class=\"text-primary\">Schedule List</h1>";
             $query = "SELECT * FROM schedule INNER JOIN course ON schedule.cid = course.cid ORDER BY schedule.sid";
             $result = mysqli_query($conn, $query);

@@ -2,7 +2,7 @@
 session_start();
 
 if (empty($_SESSION["uid"])) {
-    header("Location: index.php");
+    header("Location: login.php");
 }
 
 if (
@@ -61,8 +61,11 @@ if (!$conn) {
             exit();
         }
 
+        $gpa = 0.0;
+        $credit_hours = 0;
+
         // Show the users currently enrolled courses and their grade if entered
-        $query = "SELECT user.uid, fname, lname, schedule.sid, section, term, day, start, end, grade, course.cid, dept, courseNumber, title FROM enrolls, schedule, course, user WHERE schedule.sid=enrolls.sid AND course.cid=schedule.cid AND enrolls.uid=" . $uid . " AND user.uid=" . $uid . " ORDER BY term";
+        $query = "SELECT user.uid, fname, lname, schedule.sid, section, term, day, start, end, grade, course.cid, dept, courseNumber, title, credits FROM enrolls, schedule, course, user WHERE schedule.sid=enrolls.sid AND course.cid=schedule.cid AND enrolls.uid=" . $uid . " AND user.uid=" . $uid . " ORDER BY term";
         $result = mysqli_query($conn, $query);
 
         // Generate a table of all the enrolled courses
@@ -76,25 +79,58 @@ if (!$conn) {
                     <th>Day</th>
                     <th>Start Time</th>
                     <th>End Time</th>
+                    <th>Credits</th>
                     <th>Grade</th>
                 </tr>";
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
-                echo "<td><a href=\"transcriptCourse.php?cid=" . $row["cid"] . "\">" . $row["dept"] . " " . $row["courseNumber"] . "</a></th>";
+                echo "<td><a href=\"course.php?cid=" . $row["cid"] . "\">" . $row["dept"] . " " . $row["courseNumber"] . "</a></th>";
                 echo "<td>" . $row["title"] . "</td>";
                 echo "<td>" . $row["section"] . "</td>";
                 echo "<td>" . $row["term"] . "</td>";
                 echo "<td>" . $row["day"] . "</td>";
                 echo "<td>" . $row["start"] . "</td>";
                 echo "<td>" . $row["end"] . "</td>";
+                echo "<td>" . $row["credits"] . "</td>";
                 if ($row["grade"] !== null) {
                     echo "<td>" . $row["grade"] . "</td>";
+                    $credits = (int)$row["credits"];
+                    $credit_hours += $credits;
+                    if(strcmp($row["grade"], "A") == 0){
+                        $gpa += 4.0 * $credits;
+                    } elseif(strcmp($row["grade"], "A-") == 0){
+                        $gpa += 3.70 * $credits;
+                    } elseif(strcmp($row["grade"], "B+") == 0){
+                        $gpa += 3.30 * $credits;
+                    } elseif(strcmp($row["grade"], "B") == 0){
+                        $gpa += 3.0 * $credits;
+                    } elseif(strcmp($row["grade"], "B-") == 0){
+                        $gpa += 2.7 * $credits;
+                    } elseif(strcmp($row["grade"], "C+") == 0){
+                        $gpa += 2.3 * $credits;
+                    } elseif(strcmp($row["grade"], "C") == 0){
+                        $gpa += 2.0 * $credits;
+                    } elseif(strcmp($row["grade"], "C-") == 0){
+                        $gpa += 1.7 * $credits;
+                    } elseif(strcmp($row["grade"], "D+") == 0){
+                        $gpa += 1.3 * $credits;
+                    } elseif(strcmp($row["grade"], "D") == 0){
+                        $gpa += 1.0 * $credits;
+                    } elseif(strcmp($row["grade"], "D-") == 0){
+                        $gpa += 0.70 * $credits;
+                    }
                 } else {
                     echo "<td>IP</td>";
                 }
                 echo "</tr>";
             }
             echo "</table>";
+            // Finalize gpa calcualtion
+            if($gpa > 0) {
+                $gpa /= $credit_hours;
+                $gpa = round($gpa, 2);
+            }
+            echo "<h1 class=\"text-dark\">Current GPA: " . $gpa . "</h1>";
         }
         ?>
     </div>

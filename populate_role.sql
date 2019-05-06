@@ -23,6 +23,7 @@ INSERT INTO role VALUES (
 INSERT INTO role VALUES (
     13131313, 'gs'
 );
+
 -- Make Billie Holiday and Diana Krall students
 INSERT INTO role VALUES (
     88888888, 'student'
