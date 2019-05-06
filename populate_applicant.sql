@@ -1,8 +1,8 @@
---JOHN LENNON COMPLETE APPLICANT, NEEDS FACULTY REVIWS
+-- JOHN LENNON COMPLETE APPLICANT, NEEDS FACULTY REVIWS
 INSERT INTO applicant VALUES(
-    55551111, --uid
-    '111-11-1111', --ssn
-    'jLennon', --username
+    55551111, 
+    '111-11-1111',
+    'jLennon',
     'John',
     'Lennon',
     '2121 I St NW',
@@ -11,9 +11,9 @@ INSERT INTO applicant VALUES(
     'arjunvkr@gmail.com',
     '111-111-1111',
     '20052',
-    true
+    1
 );
-INSERT INTO application_info VALUES (
+INSERT INTO application_info(uid, degree_sought, major, start_year, start_semester, b_degree, b_university, b_gpa, b_date,gre_date, area_of_interest, work_experience, complete) VALUES (
     55551111,
     "MS",
     "CSCI",
@@ -26,9 +26,9 @@ INSERT INTO application_info VALUES (
     "2017",
     "Cyber Security",
     "NSA and Google",
-    true);
+    1);
 
-INSERT INTO rec_letters VALUES (
+INSERT INTO rec_letters(uid, rec_fname, rec_lname, rec_email, rec_title, rec_affiliation, reccomendation, complete) VALUES (
     55551111,
     "Kevin",
     "ODonnel",
@@ -36,13 +36,13 @@ INSERT INTO rec_letters VALUES (
     "Professor",
     "Calculus Teacher",
     "Hard worker and great student",
-    true
+    1
 );
 
 INSERT INTO subject_score VALUES (55551111,"GRE Total",339);
 INSERT INTO subject_score VALUES (55551111,"GRE Verbal",169);
 INSERT INTO subject_score VALUES (55551111,"GRE Quantitative",170);
-INSERT INTO transcript VALUES (55551111,true);
+INSERT INTO transcript VALUES (55551111,NULL, 1);
 
 
 INSERT INTO application_status (uid,ready_for_evaluation,admission_status,num_evaluations) VALUES (
@@ -52,11 +52,11 @@ INSERT INTO application_status (uid,ready_for_evaluation,admission_status,num_ev
     0
 );
 
---RINGO STAR INCOMPLETE APPLICANT(MISSING LETTERS)
+-- RINGO STAR INCOMPLETE APPLICANT(MISSING LETTERS)
 INSERT INTO applicant VALUES(
-     66661111, --uid
-    '222-11-1111', --ssn
-    'ringostar', --username
+     66661111, -- uid
+    '222-11-1111', -- ssn
+    'ringostar', -- username
     'Ringo',
     'Star',
     '2121 I St NW',
@@ -67,7 +67,7 @@ INSERT INTO applicant VALUES(
     '20052',
     true
 );
-INSERT INTO application_info VALUES (
+INSERT INTO application_info(uid, degree_sought, major, start_year, start_semester, b_degree, b_university, b_gpa, b_date,gre_date, area_of_interest, work_experience, complete) VALUES (
     66661111,
     "MS",
     "CSCI",
@@ -86,7 +86,7 @@ INSERT INTO application_info VALUES (
 INSERT INTO subject_score VALUES (66661111,"GRE Total",339);
 INSERT INTO subject_score VALUES (66661111,"GRE Verbal",169);
 INSERT INTO subject_score VALUES (66661111,"GRE Quantitative",170);
-INSERT INTO transcript VALUES (66661111,true);
+INSERT INTO transcript VALUES (66661111,NULL, true);
 
 
 INSERT INTO application_status (uid,ready_for_evaluation,admission_status,num_evaluations) VALUES (
@@ -97,11 +97,11 @@ INSERT INTO application_status (uid,ready_for_evaluation,admission_status,num_ev
 );
 
 
---LOUIS ARMSTRONG APPLIED AND WAS REJECTED
+-- LOUIS ARMSTRONG APPLIED AND WAS REJECTED
 INSERT INTO applicant VALUES(
-     00001234, --uid
-    '555-11-1111', --ssn
-    'lArmstrong', --username
+     00001234, -- uid
+    '555-11-1111', -- ssn
+    'lArmstrong', -- username
     'Louis',
     'Armstrong',
     '2121 I St NW',
@@ -112,7 +112,7 @@ INSERT INTO applicant VALUES(
     '20052',
     true
 );
-INSERT INTO application_info VALUES (
+INSERT INTO application_info(uid, degree_sought, major, start_year, start_semester, b_degree, b_university, b_gpa, b_date,gre_date, area_of_interest, work_experience, complete) VALUES (
     00001234,
     "MS",
     "CSCI",
@@ -135,7 +135,7 @@ INSERT INTO rec_letters (uid,rec_fname,rec_lname,rec_email,rec_title,rec_affilia
 INSERT INTO subject_score VALUES (00001234,"GRE Total",339);
 INSERT INTO subject_score VALUES (00001234,"GRE Verbal",169);
 INSERT INTO subject_score VALUES (00001234,"GRE Quantitative",170);
-INSERT INTO transcript VALUES (00001234,true);
+INSERT INTO transcript VALUES (00001234,NULL, true);
 
 INSERT INTO faculty_evaluation VALUES (
     00001234,
@@ -153,14 +153,14 @@ INSERT INTO application_status (uid,ready_for_evaluation,admission_status,decisi
     "Admit",
     "2019/05/07",
     2,
-    1,
+    1
 );
 
---ARETHA FRANKLIN APPLIED AND DID NOT ACCEPT
+-- ARETHA FRANKLIN APPLIED AND DID NOT ACCEPT
 INSERT INTO applicant VALUES(
-     00001235, --uid
-    '666-11-1111', --ssn
-    'afranklin', --username
+     00001235, -- uid
+    '666-11-1111', -- ssn
+    'afranklin', -- username
     'Aretha',
     'Franklin',
     '2121 I St NW',
@@ -171,7 +171,7 @@ INSERT INTO applicant VALUES(
     '20052',
     true
 );
-INSERT INTO application_info VALUES (
+INSERT INTO application_info(uid, degree_sought, major, start_year, start_semester, b_degree, b_university, b_gpa, b_date,gre_date, area_of_interest, work_experience, complete) VALUES (
     00001235,
     "MS",
     "CSCI",
@@ -190,35 +190,36 @@ INSERT INTO application_info VALUES (
 INSERT INTO subject_score VALUES (00001235,"GRE Total",339);
 INSERT INTO subject_score VALUES (00001235,"GRE Verbal",169);
 INSERT INTO subject_score VALUES (00001235,"GRE Quantitative",170);
-INSERT INTO transcript VALUES (00001235,true);
+INSERT INTO transcript VALUES (00001235,NULL, true);
 
- VALUES (00001235,"Kevin","ODonnel","kev@odonnel.com","Professor","Calculus Teacher","This kid loves math",3,"No","yes",true);
+INSERT INTO rec_letters(uid,rec_fname,rec_lname,rec_email,rec_title,rec_affiliation,reccomendation,rating,generic,credible,complete) VALUES (00001235,"Kevin","ODonnel","kev@odonnel.com","Professor","Calculus Teacher","This kid loves math",3,"No","yes",true);
 
 
 INSERT INTO faculty_evaluation VALUES (
     00001235,
     12345678,
     "Brilliant",
-    3,"narahari",
+    3,
+    "narahari",
     "admitted"
 );
 
 
 INSERT INTO application_status (uid,ready_for_evaluation,admission_status,decision,date_completed,avg_rank,num_evaluations) VALUES (
-    00001236,
+    00001235,
     "yes",
     "Admit",
     "Admit",
     "2019/05/07",
     3,
-    1,
+    1
 );
 
---CARLOS SANTANA APPLIED AND DID NOT ACCEPT
+-- CARLOS SANTANA APPLIED AND DID NOT ACCEPT
 INSERT INTO applicant VALUES(
-     00001236, --uid
-    '777-11-1111', --ssn
-    'cSantana', --username
+     00001236, -- uid
+    '777-11-1111', -- ssn
+    'cSantana', -- username
     'Carlos',
     'Santana',
     '2121 I St NW',
@@ -229,7 +230,7 @@ INSERT INTO applicant VALUES(
     '20052',
     true
 );
-INSERT INTO application_info VALUES (
+INSERT INTO application_info(uid, degree_sought, major, start_year, start_semester, b_degree, b_university, b_gpa, b_date,gre_date, area_of_interest, work_experience, complete) VALUES (
     00001236,
     "PhD",
     "CSCI",
@@ -248,7 +249,7 @@ INSERT INTO application_info VALUES (
 INSERT INTO subject_score VALUES (00001236,"GRE Total",339);
 INSERT INTO subject_score VALUES (00001236,"GRE Verbal",169);
 INSERT INTO subject_score VALUES (00001236,"GRE Quantitative",170);
-INSERT INTO transcript VALUES (00001236,true);
+INSERT INTO transcript VALUES (00001236,NULL, true);
 
 INSERT INTO faculty_evaluation VALUES (
     00001236,
@@ -267,7 +268,7 @@ INSERT INTO application_status (uid,ready_for_evaluation,admission_status,decisi
     "Admit",
     "2019/05/07",
     4,
-    1,
+    1
 );
 
 
