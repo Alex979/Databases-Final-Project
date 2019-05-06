@@ -14,7 +14,7 @@ INSERT INTO role VALUES (
 
 -- Make Narahari and Choi Grad Secs
 INSERT INTO role VALUES (
-    12345678, 'gs'
+    12345678, 'advisor'
 );
 
 INSERT INTO role VALUES (

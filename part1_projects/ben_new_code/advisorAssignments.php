@@ -47,6 +47,7 @@ include('../FlatEarthSociety/public_html/navbar.php');
 		if(mysqli_query($conn,$assign_query))
 		{
 			echo "Advisor assignment successful!<br>";
+			header('Location: assignAdvisor.php');
 		}
 		else
 		{
@@ -62,7 +63,7 @@ include('../FlatEarthSociety/public_html/navbar.php');
 			echo '<br>';
 			echo '<br>';
 			
-			echo '<table style="width50%" border="1">';
+			echo '<table class="table">';
    
       			echo '<tr><th>Student Name</th>';
 			echo '<th>Student ID</th>';
@@ -100,7 +101,7 @@ include('../FlatEarthSociety/public_html/navbar.php');
         			echo '<td>';
 				echo $advisor_id;
 				echo '</td></tr>';
-			}	
+			}
 			echo '</table>';
 			echo '<br>';
 				

@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
     ?>
     <div class="container pt-3">
         <?php
-        if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("faculty", $_SESSION["role"])) {
+        if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"])) {
             echo '
             <h1 class="text-primary">View Transcript</h1>
             <form action="viewTranscript.php" method="post" style="max-width: 500px">
@@ -117,18 +117,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
         ?>
         <?php
         if (in_array("advisor", $_SESSION["role"])) {
-            echo '
-            <h1 class="text-primary">Students you advise</h1>
-            <table class="table">
+            echo '<h1 class="text-primary">Students you advise</h1>';
+            $query = "select uid, fname, lname from user where advisorid=$uid";
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) {
+                echo '<table class="table">
                 <tr>
                     <th>UID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th></th>
                 </tr>';
-            $query = "select uid, fname, lname from user where advisorid=$uid";
-            $result = mysqli_query($conn, $query);
-            if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '
                     <tr>
@@ -152,11 +151,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
                     </tr>
                     ';
                 }
+                echo '
+                </table>
+                <br>';
+            } else {
+                echo '<p>You do not advise any students</p>';
             }
-            echo '
-            </table>
-            <br>
-            <h1 class="text-primary">Course Registration Forms</h1>
+            
+            echo '<h1 class="text-primary">Course Registration Forms</h1>
             ';
             $query = "select u.uid, fname, lname from user u, courseRegistrationForm c where u.advisorid=$uid and u.uid=c.uid";
             $result = mysqli_query($conn, $query);
