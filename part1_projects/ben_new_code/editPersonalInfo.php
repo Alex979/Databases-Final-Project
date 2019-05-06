@@ -118,7 +118,7 @@
 			echo '
 			<div class="form-group">
 				<label>Zip Code</label>
-				<input class="form-control" type="text" ID="zip" name="zip" >
+				<input class="form-control" type="number" ID="zip" name="zip" >
 			</div>
 			';
 			echo '<button class="btn btn-primary" style="vertical-align:middle"><span>Update</span></button>';
