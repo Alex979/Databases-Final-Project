@@ -161,6 +161,7 @@ CREATE TABLE application_info(
 CREATE TABLE transcript(
     uid int(8) not null,
     submitted boolean,
+    data BLOB,
     primary key(uid)
 );
 
