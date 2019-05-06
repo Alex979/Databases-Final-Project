@@ -172,7 +172,6 @@
          
          $msg = wordwrap($msg, 70);
          $ret = mail($email, $subject, $msg);
-         echo $ret;
          if($ret){
         
 	}
