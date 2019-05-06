@@ -287,17 +287,16 @@ table, th, td {
     ?>
 		<input type ="submit" name="submit" value = "Submit">
 	</form>
-<?php }
-  elseif(in_array("cac", $_SESSION["role"]))
+<?php 
+  }
+  if(in_array("cac", $_SESSION["role"]))
   {
-?>
-  <form method = "post" action="updateDecision.php">
-    <input type = "hidden" name = "uid" value = <?php echo $uid; ?>>
+  echo '<form method = "post" action="updateDecision.php">
+    <input type = "hidden" name = "uid" value = "' . $uid . '">
     <input type = submit name = "decision" value = "admit with aid">
     <input type = submit name = "decision" value = "admit">
     <input type = submit name = "decision" value = "reject">
-</form>
-  <?php 
+</form> ';
 }
  ?>
 </td>
