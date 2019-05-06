@@ -136,7 +136,7 @@ session_start();
 			echo '</table>';
 			echo '<br>';
 			echo 'Cumulative GPA: ';
-			echo $totalGPA;
+			echo round($totalGPA, 2);
 				
 		}	
 		else	
