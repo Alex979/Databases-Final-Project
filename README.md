@@ -74,6 +74,8 @@ email	address. This	query	can	be	submitted	by	the	GS.
 * Generate	total	list	of	current	students	(by	degree	or	by	admit	year). This	query	can	be	
 submitted	by	the	GS.
 
+  * **DONE - manage.php**
+
 * Change	the	advisor	for	a	student,	given	the	student’s	student	number.	This	query	can	
 be	submitted	by	the	GS.
 
