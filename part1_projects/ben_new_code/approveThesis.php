@@ -52,7 +52,7 @@ echo '
                               <input type="hidden" name="uid" value="' . $row["uid"] . '" />
                               <button type="submit" class="btn btn-primary">View Thesis</button>
                           </form>
-                          <form class="d-inline" method="post" action="../../ben_new_code/thesisSuccess.php">
+                          <form class="d-inline" method="post" action="thesisSuccess.php">
                               <input type="hidden" name="uid" value="' . $row["uid"] . '" />
                               <button type="submit" class="btn btn-primary">Approve Thesis</button>
                           </form>
