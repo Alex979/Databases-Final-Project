@@ -42,7 +42,7 @@ INSERT INTO rec_letters(uid, rec_fname, rec_lname, rec_email, rec_title, rec_aff
 INSERT INTO subject_score VALUES (55551111,"GRE Total",339);
 INSERT INTO subject_score VALUES (55551111,"GRE Verbal",169);
 INSERT INTO subject_score VALUES (55551111,"GRE Quantitative",170);
-INSERT INTO transcript VALUES (55551111,NULL, 1);
+INSERT INTO transcript VALUES (55551111,1,NULL);
 
 
 INSERT INTO application_status (uid,ready_for_evaluation,admission_status,num_evaluations) VALUES (
@@ -86,7 +86,7 @@ INSERT INTO application_info(uid, degree_sought, major, start_year, start_semest
 INSERT INTO subject_score VALUES (66661111,"GRE Total",339);
 INSERT INTO subject_score VALUES (66661111,"GRE Verbal",169);
 INSERT INTO subject_score VALUES (66661111,"GRE Quantitative",170);
-INSERT INTO transcript VALUES (66661111,NULL, true);
+INSERT INTO transcript VALUES (66661111,1,NULL);
 
 
 INSERT INTO application_status (uid,ready_for_evaluation,admission_status,num_evaluations) VALUES (
@@ -135,7 +135,7 @@ INSERT INTO rec_letters (uid,rec_fname,rec_lname,rec_email,rec_title,rec_affilia
 INSERT INTO subject_score VALUES (00001234,"GRE Total",339);
 INSERT INTO subject_score VALUES (00001234,"GRE Verbal",169);
 INSERT INTO subject_score VALUES (00001234,"GRE Quantitative",170);
-INSERT INTO transcript VALUES (00001234,NULL, true);
+INSERT INTO transcript VALUES (00001234,1, NULL);
 
 INSERT INTO faculty_evaluation VALUES (
     00001234,
@@ -190,7 +190,7 @@ INSERT INTO application_info(uid, degree_sought, major, start_year, start_semest
 INSERT INTO subject_score VALUES (00001235,"GRE Total",339);
 INSERT INTO subject_score VALUES (00001235,"GRE Verbal",169);
 INSERT INTO subject_score VALUES (00001235,"GRE Quantitative",170);
-INSERT INTO transcript VALUES (00001235,NULL, true);
+INSERT INTO transcript VALUES (00001235,1, NULL);
 
 INSERT INTO rec_letters(uid,rec_fname,rec_lname,rec_email,rec_title,rec_affiliation,reccomendation,rating,generic,credible,complete) VALUES (00001235,"Kevin","ODonnel","kev@odonnel.com","Professor","Calculus Teacher","This kid loves math",3,"No","yes",true);
 
@@ -249,7 +249,7 @@ INSERT INTO application_info(uid, degree_sought, major, start_year, start_semest
 INSERT INTO subject_score VALUES (00001236,"GRE Total",339);
 INSERT INTO subject_score VALUES (00001236,"GRE Verbal",169);
 INSERT INTO subject_score VALUES (00001236,"GRE Quantitative",170);
-INSERT INTO transcript VALUES (00001236,NULL, true);
+INSERT INTO transcript VALUES (00001236,1,NULL);
 
 INSERT INTO faculty_evaluation VALUES (
     00001236,
