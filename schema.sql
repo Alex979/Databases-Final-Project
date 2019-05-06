@@ -40,6 +40,12 @@ CREATE TABLE user (
     PRIMARY KEY (uid)
 );
 
+CREATE TABLE thesis (
+    uid INT,
+    paper LONGTEXT,
+    FOREIGN KEY (uid) REFERENCES user(uid)
+);
+
 -- Create role table
 CREATE TABLE role (
     uid INT,

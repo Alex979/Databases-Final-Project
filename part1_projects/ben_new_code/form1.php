@@ -17,6 +17,11 @@ session_start();
   ?>
   <div class="container mt-3">
 <?php
+	$role = $_SESSION['role'];
+	if($role != 'student'){
+	  header("Location: ../FlatEarthSociety/public_html/dashboard.php");
+          exit();
+	}
   	$id = $_SESSION["user_id"];
 
 	$servername = "127.0.0.1";
