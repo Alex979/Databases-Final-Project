@@ -31,11 +31,17 @@ session_start();
 			{	
 				die("Connection failed: ".mysqli_connect_error());
 			}
-			
+			echo '<td><form action="clearedGrad.php" method = "post">';
+			echo '<input class="form-control" type="text" name="term">';
+		        echo '<input class="form-control" type="text" name="degree">';
+			echo '<button class="btn btn-primary" type="submit">View </button>';
+			echo '</form>';
+				
 			$query = "SELECT * FROM role r, user s WHERE r.uid = s.uid AND r.type = 'student' AND s.clearedToGrad = 1";
 			$result = mysqli_query($conn,$query);
 			if (mysqli_num_rows($result) > 0)
 			{
+					
 					echo "Students cleared to Graduate:";
 					echo '<br>';
 					echo '<br>';
