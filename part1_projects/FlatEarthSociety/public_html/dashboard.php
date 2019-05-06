@@ -96,6 +96,7 @@ function create_link($title, $description, $link_text, $url) {
                         create_link("Transcript", "Upload your Transcript.", "Upload Transcript", "../../RockHoppers/public_html/transcript.php");
                         create_link("Application Status", "View the status of your application.", "View status", "../../RockHoppers/public_html/applicationStatus.php");
                         create_link("Submit Application", "Click below to submit your application.", "Submit Application", "../../RockHoppers/public_html/submitApplication.php");
+			create_link("Logout", "Click below to logout.", "Logout", "../../RockHoppers/public_html/login.php");
                     } else {
                         create_link("Info", "View personal information and logout.", "Go to info page", "info.php");
                     }
