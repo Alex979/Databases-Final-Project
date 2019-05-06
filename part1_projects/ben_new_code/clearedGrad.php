@@ -34,6 +34,8 @@ session_start();
 			echo '<td><form action="clearedGrad.php" method = "post">';
 			echo '<p>Term<p>';
 			echo '<input type="text" name="term"><br>';
+			echo '<p>Year<p>';
+		        echo '<input type="text" name="year"><br>';
 			echo '<p>Degree<p>';
 		        echo '<input type="text" name="degree"><br>';
 			echo '<button class="btn btn-primary" type="submit">View </button>';
