@@ -71,6 +71,8 @@ students	(i.e.,	those	cleared	for	graduation).	This	query	can	be	submitted	by	th
 * Given	the	semester	or	year	or	degree	program,	generate	the	list	of	alumni	and	their	
 email	address. This	query	can	be	submitted	by	the	GS.
 
+  * **DONE - manage.php**
+
 * Generate	total	list	of	current	students	(by	degree	or	by	admit	year). This	query	can	be	
 submitted	by	the	GS.
 
