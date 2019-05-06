@@ -101,6 +101,7 @@ function create_link($title, $description, $link_text, $url) {
                         create_link("Info", "View personal information and logout.", "Go to info page", "info.php");
                     }
                     create_link("Logout", "Click below to logout.", "Logout", "logout.php");
+                    create_link("Reset", "Click to reset the database.", "Reset", "../../TeamEighteen/reset.php");
                 }
                 ?>
 
