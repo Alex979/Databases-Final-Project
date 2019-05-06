@@ -64,6 +64,9 @@ function create_link($title, $description, $link_text, $url) {
                         create_link("Submit Form 1", "Submit the form required to graduate.", "Go to form 1", "../../ben_new_code/form1Submit.php");
                         create_link("View Form 1", "View your form 1 submission.", "View form 1", "../../ben_new_code/viewForm1.php");
                     }
+		    if (in_array("phd", $_SESSION["role"])) {
+			create_link("Submit Thesis", "Submit thesis required to graduate.", "Go to thesis submission", "../../ben_new_code/thesis.php");  
+		    }
                     if (in_array("alumni", $_SESSION["role"])) {
                         create_link("Transcript", "View the courses you currently are taken and have taken in the past.", "View transcript", "transcript.php");
                     }
