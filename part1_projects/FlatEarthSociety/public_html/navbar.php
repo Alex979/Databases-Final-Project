@@ -18,7 +18,7 @@
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/ben_new_code/form1Submit.php\">Submit Form 1</a></li>");
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/ben_new_code/viewForm1.php\">View Form 1</a></li>");
             }
-            if (in_array("phd", $_SESSION["role"])) {
+            if (in_array("student", $_SESSION["role"]) && in_array("phd", $_SESSION["role"])) {
               echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/ben_new_code/thesis.php\">Submit Thesis</a></li>");
             }
             if (in_array("alumni", $_SESSION["role"])) {
