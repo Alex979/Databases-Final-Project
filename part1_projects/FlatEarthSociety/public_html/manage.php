@@ -69,6 +69,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
             $userAddFail = "Failed to add new user";
         }
     }
+} else if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["action"])) {
+    if($_POST["action"] == "delete-rating") {
+        $query = "DELETE FROM courseRating WHERE rating_id=" . $_POST["rating_id"];
+        mysqli_query($conn, $query);
+    } else if($_POST["action"] == "clear-reports") {
+        $query = "DELETE FROM ratingReport WHERE rating_id=" . $_POST["rating_id"];
+        mysqli_query($conn, $query);
+    }
 }
 ?>
 
@@ -235,6 +243,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
                     if(isset($userAddFail)){echo "<p class=\"text-danger\">" . $userAddFail . "</p>";}
                 }
         if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"])) {
+            echo "<h1 class=\"text-primary\">Reported course reviews</h1>";
+            $query = "SELECT courseRating.uid, fname, lname, ratingReport.rating_id, rating, comment, COUNT(ratingReport.rating_id) FROM ratingReport, courseRating, user WHERE user.uid=courseRating.uid AND ratingReport.rating_id=courseRating.rating_id GROUP BY courseRating.rating_id ORDER BY COUNT(ratingReport.rating_id) DESC";
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) {
+                echo '
+                <table class="table">
+                    <tr>
+                        <th>UID</th>
+                        <th>Name</th>
+                        <th>Rating</th>
+                        <th>Comment</th>
+                        <th># of Reports</th>
+                        <th>Actions</th>
+                    </tr>
+                ';
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '
+                    <tr>
+                        <td>' . $row["uid"] . '</td>
+                        <td>' . $row["fname"] . ' ' . $row["lname"] . '</td>
+                        <td>' . $row["rating"] . '</td>
+                        <td>' . $row["comment"] . '</td>
+                        <td>' . $row["COUNT(ratingReport.rating_id)"] . '</td>
+                        <td>
+                            <form class="d-inline" method="post">
+                                <input type="hidden" name="action" value="delete-rating">
+                                <input type="hidden" name="rating_id" value="' . $row["rating_id"] . '">
+                                <button type="submit" class="btn btn-primary m-1">Delete Review</button>
+                            </form>
+                            <form class="d-inline" method="post">
+                                <input type="hidden" name="action" value="clear-reports">
+                                <input type="hidden" name="rating_id" value="' . $row["rating_id"] . '">
+                                <button type="submit" class="btn btn-primary m-1">Clear Reports</button>
+                            </form>
+                        </td>
+                    </tr>
+                    ';
+                }
+                echo '</table>';
+            } else {
+                echo '<p>No course ratings have been reported</p>';
+            }
+
             echo "<h1 class=\"text-primary\">User List</h1>";
             $query = "SELECT * FROM user INNER JOIN role ON user.uid = role.uid";
             $result = mysqli_query($conn, $query);

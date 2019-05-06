@@ -98,6 +98,45 @@ if (!$conn) {
             } else {
                 echo "This course has no available sections to register for.";
             }
+
+            echo '<h1 class="text-primary">Course Ratings</h1>';
+
+            // Load all ratings for this course and calculate final rating
+            $query = "SELECT rating FROM courseRating WHERE cid=" . $_GET["cid"];
+            $result = mysqli_query($conn, $query);
+            $averageRating = 0;
+            $count = mysqli_num_rows($result);
+            if ($count > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $averageRating += (int)$row["rating"];
+                }
+                $averageRating /= $count;
+                echo "<h2>Overall Rating: $averageRating stars</h2>";
+            }
+
+            echo '<a href="submitRating.php?cid=' . $_GET["cid"] . '">Rate this course</a>';
+
+            // Load all ratings for this course and print them all
+            $query = "SELECT * FROM courseRating WHERE cid=" . $_GET["cid"];
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) {
+                echo '<hr>';
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $submitDate = date('m/d/y', strtotime($row["dateSubmitted"]));
+                    echo '<h2 style="margin-bottom: 0">' . $row["rating"] . ' stars</h2>';
+                    echo "<p><small>Submitted on $submitDate</small></p>";
+                    echo '<p>' . $row["comment"] . '</p>';
+                    if($row["uid"] != $uid){
+                        echo '<a href="reportComment.php?rating_id=' . $row["rating_id"] . '">Report Rating</a>';
+                    } else {
+                        echo '<a style="display: inline-block; margin-right: 1rem" href="editRating.php?rating_id=' . $row["rating_id"] . '">Edit</a>';
+                        echo '<a style="display: inline-block" href="deleteRating.php?rating_id=' . $row["rating_id"] . '">Delete</a>';
+                    }
+                    echo '<hr>';
+                }
+            } else {
+                echo '<p>This course has no ratings</p>';
+            }
         } else {
             echo "This course does not exist.";
         }
