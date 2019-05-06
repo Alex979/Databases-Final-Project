@@ -17,7 +17,7 @@
 </head>
 <?php
 
-  $uid = $_SESSION["user_id"];
+  $uid = $_SESSION["uid"];
   $role = $_SESSION["role"];
   $fname = $_POST["fname"]; 
   $lname = $_POST["lname"]; 
@@ -94,7 +94,7 @@
 			echo '
 			<div class="form-group">
 				<label>Email</label>
-				<input class="form-control" type="text" ID="email" name="email">
+				<input class="form-control" type="email" ID="email" name="email">
 			</div>
 			';
 			echo '
