@@ -52,9 +52,9 @@ $submitApplication = false;
    }
 
    if($submitApplication){
-   		header('location:userDashboard.php?status=success');exit;
+		header('location:userDashboard.php?status=success');exit;
    }else{
-   	 	header('location:userDashboard.php?status=failed');exit;
+   	// 	  header('Location: http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/dashboard.php');exit;
    }
 
  ?>

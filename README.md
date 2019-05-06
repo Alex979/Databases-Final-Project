@@ -66,7 +66,7 @@ score	for	admitted	applicants,	etc.	This	query	can	be	submitted	by	the GS.
 * Given	the	semester	or	year	or	degree	program,	generate	the	list	of	graduating	
 students	(i.e.,	those	cleared	for	graduation).	This	query	can	be	submitted	by	the	GS.
 
-  * **Ben - Add search query to clearedToGrad.php**
+  * **DONE**
 
 * Given	the	semester	or	year	or	degree	program,	generate	the	list	of	alumni	and	their	
 email	address. This	query	can	be	submitted	by	the	GS.
@@ -74,10 +74,12 @@ email	address. This	query	can	be	submitted	by	the	GS.
 * Generate	total	list	of	current	students	(by	degree	or	by	admit	year). This	query	can	be	
 submitted	by	the	GS.
 
+  * **DONE - manage.php**
+
 * Change	the	advisor	for	a	student,	given	the	student’s	student	number.	This	query	can	
 be	submitted	by	the	GS.
 
-  * **UPDATE user SET advisorid = '$advisorid' WHERE uid = '$uid';**
+  * **DONE - assignAdvisor.php**
   
 * Given	a	student’s	student	number,	generate	the	transcript	(list	of	courses,	credits,	and	
 the	current	GPA). This	query	can	be	submitted	by	the	GS	or	by	the	faculty	advisor	or	
