@@ -22,7 +22,7 @@ if(isset($_POST['Admit'])){
 	$emailText = $info['email'];
 	
 	//Send an Email 
-	$msg = "Congraulations! You have recently been accepted to ARGS under your desired Program! Your UID is: ".$uid." . Please use your uid and the following link to accept your admission";
+	$msg = "Congraulations! You have recently been accepted to ARGS under your desired Program! Your UID is: ".$uid." . Please use your uid and the following link to accept your admission: https://bit.ly/2VldyeX";
 	$subject = "ARGS Application Decision"; 
 
 	$msg = wordwrap($msg, 70);

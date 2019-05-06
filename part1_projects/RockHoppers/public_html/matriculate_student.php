@@ -2,19 +2,19 @@
   session_start();
   include('connect.php');
 
-  $successMessage = $successMessagePayment "";
+  $successMessage = $successMessagePayment = "";
 
   if(isset($_POST['submitPayment'])){
-    $successMessagePayment " Thank you for your payment";
+    $successMessagePayment =  " Thank you for your payment";
 
   }
 
   if(isset($_POST['acceptAdmission'])){
-    $successMessage " You are now a Student";
+    $successMessage =  " You are now a Student";
 
     $query = "SELECT uid from applicant WHERE email='$email'";
     $result = mysqli_query($conn, $query);
-    $uid = mysqli_fetch_assoc($result)
+    $uid = mysqli_fetch_assoc($result);
 
     //change role to student
     $email = $_POST["email"];
