@@ -40,7 +40,7 @@ INSERT INTO user VALUES (
 );
 
 INSERT INTO user VALUES (
-    12345678,
+    10101010,
     'bnarahari',
     'password123',
     'Bhagirath',
@@ -147,6 +147,60 @@ INSERT INTO user VALUES (
     0,
     'Fall', 2017,
     'jhendrix@gmail.com'
+);
+
+INSERT INTO user VALUES (
+    55555555,
+    'pmccartney',
+    'password123',
+    'Paul',
+    'McCartney',
+    '309 Brandywine St',
+    'Saint Cloud',
+    'MN',
+    56301,
+    100.0,
+    0, 0, 0,
+    10101010,
+    0,
+    'Fall', 2017,
+    'pmccartney@gmail.com'
+);
+
+INSERT INTO user VALUES (
+    66666666,
+    'gharrison',
+    'password123',
+    'George',
+    'Harrison',
+    '309 Brandywine St',
+    'Saint Cloud',
+    'MN',
+    56301,
+    100.0,
+    0, 0, 0,
+    NULL,
+    0,
+    'Fall', 2016,
+    'gharrison@gmail.com'
+);
+
+INSERT INTO user VALUES (
+    12345678,
+    'snicks',
+    'password123',
+    'Stevie',
+    'Nicks',
+    '309 Brandywine St',
+    'Saint Cloud',
+    'MN',
+    56301,
+    100.0,
+    0, 0, 0,
+    NULL,
+    0,
+    'Fall', 2017,
+    'snicks@gmail.com'
 );
 
 

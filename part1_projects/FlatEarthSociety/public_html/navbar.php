@@ -37,6 +37,7 @@
               echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/ben_new_code/approveThesis.php\">Thesis Submissions</a></li>");
             }
             if (in_array("system-admin", $_SESSION["role"])) {
+              echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/courses.php\">Courses</a></li>");
               echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/RockHoppers/public_html/viewApps.php\">Applicant List</a></li>");
               echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/RockHoppers/public_html/viewFac.php\">Faculty List</a></li>");
             }
@@ -51,6 +52,7 @@
             } else {
               echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/info.php\">Info</a></li>");
             }
+            echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/logout.php\">Log Out</a></li>");
         }
         ?>
     </ul>

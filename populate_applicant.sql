@@ -139,7 +139,7 @@ INSERT INTO transcript VALUES (00001234,NULL, true);
 
 INSERT INTO faculty_evaluation VALUES (
     00001234,
-    12345678,
+    10101010,
     "Medicore",
     2,
     "narahari",
@@ -197,7 +197,7 @@ INSERT INTO rec_letters(uid,rec_fname,rec_lname,rec_email,rec_title,rec_affiliat
 
 INSERT INTO faculty_evaluation VALUES (
     00001235,
-    12345678,
+    10101010,
     "Brilliant",
     3,
     "narahari",
@@ -253,7 +253,7 @@ INSERT INTO transcript VALUES (00001236,NULL, true);
 
 INSERT INTO faculty_evaluation VALUES (
     00001236,
-    12345678,
+    10101010,
     "Brilliant",
     4,
     "narahari",

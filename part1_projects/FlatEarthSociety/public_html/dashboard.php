@@ -83,6 +83,7 @@ function create_link($title, $description, $link_text, $url) {
 			            create_link("Thesis Submissions", "View the students that have submitted a thesis.", "View students", "../../ben_new_code/approveThesis.php");
                     }
                     if (in_array("system-admin", $_SESSION["role"])) {
+                        create_link("Courses", "View all the courses offerred.", "Go to course list", "courses.php");
                         create_link("Applicant List", "See a list of all current applicants.", "View applicants", "../../RockHoppers/public_html/viewApps.php");
                         create_link("Faculty List", "See a list of all current faculty.", "View faculty", "../../RockHoppers/public_html/viewFac.php");
                     }

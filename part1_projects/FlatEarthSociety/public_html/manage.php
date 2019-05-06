@@ -340,38 +340,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
             } else {
                 echo '<p>No course ratings have been reported</p>';
             }
-
-            echo "<h1 class=\"text-primary\">User List</h1>";
-            $query = "SELECT * FROM user";
-            $result = mysqli_query($conn, $query);
-            if (mysqli_num_rows($result) > 0) {
-                echo "<table class=\"table\">
-                    <tr>
-                        <th>User Name</th>
-                        <th>User ID</th>
-                        <th>Address</th>
-                        <th>Role</th>
-                    </tr>";
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td>" . $row["fname"] . " " . $row["lname"] . " " . "</td>";
-                    echo "<td>" . $row["uid"] . "</td>";
-                    echo "<td>" . $row["street"] . ", " . $row["city"] . ", " . $row["state"] . " " . $row["zip"] . "</td>";
-                    echo "<td>";
-                    $role_query = "SELECT * FROM role WHERE uid=" . $row["uid"];
-                    $role_result = mysqli_query($conn, $role_query);
-                    $roles = array();
-                    if (mysqli_num_rows($role_result) > 0) {
-                        while ($role_row = mysqli_fetch_assoc($role_result)) {
-                            array_push($roles, $role_row["type"]);
-                        }
-                    }
-                    echo implode(', ', $roles);
-                    echo "</td>";
-                    echo "</tr>";
-                }
-                echo "</table>";
-            }
         }
         if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"])) {
             echo "<h1 class=\"text-primary\">Change Grade</h1>";
@@ -498,6 +466,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
                     echo "<td>" . $row["cid"] . "</td>";
                     echo "<td>" . $row["section"] . "</td>";
                     echo "<td>" . $row["term"] . "</td>";
+                    echo "</tr>";
+                }
+                echo "</table>";
+            }
+        }
+        if(in_array("system-admin", $_SESSION["role"])){
+            echo "<h1 class=\"text-primary\">User List</h1>";
+            $query = "SELECT * FROM user";
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) {
+                echo "<table class=\"table\">
+                    <tr>
+                        <th>User Name</th>
+                        <th>User ID</th>
+                        <th>Address</th>
+                        <th>Role</th>
+                    </tr>";
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td>" . $row["fname"] . " " . $row["lname"] . " " . "</td>";
+                    echo "<td>" . $row["uid"] . "</td>";
+                    echo "<td>" . $row["street"] . ", " . $row["city"] . ", " . $row["state"] . " " . $row["zip"] . "</td>";
+                    echo "<td>";
+                    $role_query = "SELECT * FROM role WHERE uid=" . $row["uid"];
+                    $role_result = mysqli_query($conn, $role_query);
+                    $roles = array();
+                    if (mysqli_num_rows($role_result) > 0) {
+                        while ($role_row = mysqli_fetch_assoc($role_result)) {
+                            array_push($roles, $role_row["type"]);
+                        }
+                    }
+                    echo implode(', ', $roles);
+                    echo "</td>";
                     echo "</tr>";
                 }
                 echo "</table>";

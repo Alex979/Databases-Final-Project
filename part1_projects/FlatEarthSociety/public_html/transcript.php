@@ -120,8 +120,10 @@ if (!$conn) {
             echo "</table>";
             
             // Finalize gpa calcualtion
-            if($gpa > 0)
+            if($gpa > 0) {
                 $gpa /= $credit_hours;
+                $gpa = round($gpa, 2);
+            }
             echo "<h1 class=\"text-dark\">Current GPA: " . $gpa . "</h1>";
         } else {
             echo "You have not enrolled in any courses.";

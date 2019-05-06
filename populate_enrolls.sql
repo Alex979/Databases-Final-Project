@@ -38,7 +38,7 @@ INSERT INTO enrolls VALUES (
 );
 
 INSERT INTO enrolls VALUES (
-    87654321, 37, 'C'
+    87654321, 26, 'C'
 );
 
 INSERT INTO enrolls VALUES (
@@ -47,4 +47,176 @@ INSERT INTO enrolls VALUES (
 
 INSERT INTO enrolls VALUES (
     87654321, 32, 'C'
+);
+
+INSERT INTO enrolls VALUES (
+    45678901, 21, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    45678901, 23, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    45678901, 22, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    45678901, 24, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    45678901, 25, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    45678901, 34, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    45678901, 35, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    45678901, 26, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    45678901, 37, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    45678901, 38, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    45678901, 39, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    55555555, 21, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    55555555, 23, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    55555555, 22, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    55555555, 24, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    55555555, 25, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    55555555, 26, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    55555555, 28, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    55555555, 32, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    55555555, 33, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    55555555, 27, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    66666666, 38, 'C'
+);
+
+INSERT INTO enrolls VALUES (
+    66666666, 21, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    66666666, 22, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    66666666, 23, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    66666666, 24, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    66666666, 25, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    66666666, 26, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    66666666, 27, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    66666666, 33, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    66666666, 34, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    12345678, 21, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    12345678, 23, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    12345678, 22, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    12345678, 24, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    12345678, 25, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    12345678, 34, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    12345678, 35, 'A'
+);
+
+INSERT INTO enrolls VALUES (
+    12345678, 26, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    12345678, 28, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    12345678, 32, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    12345678, 33, 'B'
+);
+
+INSERT INTO enrolls VALUES (
+    12345678, 27, 'B'
 );
