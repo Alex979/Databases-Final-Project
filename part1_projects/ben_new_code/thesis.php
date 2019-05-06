@@ -15,7 +15,7 @@ session_start();
 </head>
 <?php
   session_start();
-  $search = $_POST["paper"];
+  $paper = $_POST["paper"];
   $uid = $_SESSION["user_id"];
   $servername="localhost";
 	$username = "Team_Name";
