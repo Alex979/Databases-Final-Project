@@ -30,7 +30,6 @@
 		die("Connection failed: ".mysqli_connect_error());
 	}
 	$uid = $_POST["uid"];
-        echo '<p>uid: '.$uid.'</p>';
   $query = "SELECT * FROM user WHERE uid = '$uid'";
   $result = mysqli_query($conn,$query);
   while ($row = mysqli_fetch_assoc($result))
@@ -39,7 +38,7 @@
     $lname = $row["lname"];
   }
   echo "<h1 class='text-primary'>Thesis of ".$fname." ".$lname."</h1>";
-  $student_query = "SELECT paper FROM thesis WHERE uid ='$uid'";
+  $student_query = "SELECT * FROM thesis WHERE uid ='$uid'";
 	$student_result = mysqli_query($conn,$student_query);
 	if (mysqli_num_rows($student_result) > 0)
 	{
