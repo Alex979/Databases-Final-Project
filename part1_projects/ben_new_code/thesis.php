@@ -17,7 +17,7 @@ session_start();
   session_start();
   $paper = $_POST["paper"];
   $uid = $_SESSION["uid"];
-  echo "<p>           uid: ".$uid."   paper: ".$paper."</p>";
+  //echo "<p>           uid: ".$uid."   paper: ".$paper."</p>";
   $servername="localhost";
   $username = "Team_Name";
   $password = "p@ssW0RD";
@@ -35,8 +35,8 @@ session_start();
     else{
       $query2 = "INSERT INTO thesis(uid, paper) VALUES ('$uid', '$paper')";
       $result=mysqli_query($conn,$query2);
-      //header("Location: ../FlatEarthSociety/public_html/dashboard.php");
-      //exit();
+      header("Location: ../FlatEarthSociety/public_html/dashboard.php");
+      exit();
     }
   }
   
