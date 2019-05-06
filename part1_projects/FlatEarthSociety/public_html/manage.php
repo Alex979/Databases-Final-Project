@@ -48,12 +48,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
     $nroles = trim_input($_POST["nroles"]);
     $nusername = trim_input($_POST["nusername"]);
     $npass = trim_input($_POST["npass"]);
+    $nemail = trim_input($_POST["nemail"]);
 
     if (!preg_match("/^[a-zA-Z0-9]*$/", $nuid)) {
         $userIDError = "Only letters and numbers are allowed for UserID";
     } else {
         $sql = "INSERT INTO user
-            VALUES ('$nuid', '$nusername', '$npass', '$nfname', '$nlname', '$nstreet', '$ncity', '$nstate', '$nzip', 0, 0, 0, 0)";
+            VALUES ('$nuid', '$nusername', '$npass', '$nfname', '$nlname', '$nstreet', '$ncity', '$nstate', '$nzip', 0, 0, 0, 0, NULL, 0, 'Fall', 2019, '$nemail')";
+        echo $sql;
         if (mysqli_query($conn, $sql)) {
             $nroles_array = explode(",", $nroles);
             foreach ($nroles_array as $nrole) {
@@ -262,6 +264,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
                     echo "<div class=\"form-group\">";
                     echo "<label>Last Name</label>";
                     echo "<input class=\"form-control\" type=\"text\" name=\"nlname\" id=\"nlname\">";
+                    echo "</div>";
+                    echo "<div class=\"form-group\">";
+                    echo "<label>Email</label>";
+                    echo "<input class=\"form-control\" type=\"email\" name=\"nemail\" id=\"nemail\">";
                     echo "</div>";
                     echo "<div class=\"form-group\">";
                     echo "<label>Street</label>";
