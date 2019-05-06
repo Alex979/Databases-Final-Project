@@ -46,7 +46,9 @@
   }
   echo 'Thesis: '.$paper.'<br>';
   echo '<br><br><br>';
-
+  echo '<form action="../FlatEarthSociety/public_html/approveThesis.php" method="post" style="max-width: 500px" >';
+  echo '<button class="btn btn-primary" style="vertical-align:middle"><span>Go Back</span></button>';
+  echo '</form><br><br>';
 mysqli_close($conn);
  ?>
 		</div>
