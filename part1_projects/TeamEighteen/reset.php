@@ -6,6 +6,6 @@ $command = 'mysql'
         . ' --database="Team_Name"'
         . ' --execute="SOURCE '
 ;
-$output1 = shell_exec($command . 'schema.sql"');
+$output1 = shell_exec($command . '../../schema.sql"');
 header('Location: ../FlatEarthSociety/public_html/dashboard.php'); 
 ?>
