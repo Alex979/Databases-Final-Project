@@ -172,7 +172,7 @@ INSERT INTO user(uid,username, password, fname, lname, street, city, state, zip)
     '2121 I St NW',
     'Washington',
     'DC',
-    20052,
+    20052
 );
 
 INSERT INTO user(uid,username, password, fname, lname, street, city, state, zip) VALUES (
@@ -184,7 +184,7 @@ INSERT INTO user(uid,username, password, fname, lname, street, city, state, zip)
     '2121 I St NW',
     'Washington',
     'DC',
-    20052,
+    20052
 );
 
 INSERT INTO user(uid,username, password, fname, lname, street, city, state, zip) VALUES (
@@ -196,7 +196,7 @@ INSERT INTO user(uid,username, password, fname, lname, street, city, state, zip)
     '2121 I St NW',
     'Washington',
     'DC',
-    20052,
+    20052
 );
 
 INSERT INTO user VALUES (

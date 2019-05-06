@@ -15,6 +15,7 @@ DROP TABLE IF EXISTS enrolls;
 DROP TABLE IF EXISTS formOne;
 DROP TABLE IF EXISTS formOneValid;
 DROP TABLE IF EXISTS courseRegistrationForm;
+DROP TABLE IF EXISTS thesis;
 SET foreign_key_checks = 1;
 
 
