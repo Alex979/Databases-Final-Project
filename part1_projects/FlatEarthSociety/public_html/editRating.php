@@ -92,7 +92,7 @@ if (!$conn) {
             $query = "UPDATE courseRating SET rating=$rating, comment=\"" . htmlspecialchars($comment) . "\" WHERE rating_id=$rating_id";
             $result = mysqli_query($conn, $query);
             if($result) {
-                header("Location: course.php?cid=$cid");
+                header("Location: course.php?cid=" . $row["cid"]);
             } else {
                 echo '<p class="text-danger">There was an error updating your rating.</p>';
             }
