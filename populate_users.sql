@@ -297,7 +297,6 @@ INSERT INTO user VALUES (
     'kcobain@gmail.com'
 );
 
-
 INSERT INTO user(uid,username, password, fname, lname, street, city, state, zip) VALUES (
     55551111,
     'jLennon',

@@ -105,7 +105,7 @@ if (mysqli_num_rows($result) > 0) {
                     // If prereqs are met, check for time conflicts
                     if (empty($conflict)) {
                         // Get all of the users currently enrolled courses
-                        $query = "SELECT uid, schedule.sid, term, day, start, end, course.cid, dept, courseNumber FROM enrolls, schedule, course WHERE schedule.sid=enrolls.sid AND course.cid=schedule.cid AND enrolls.uid=" . $uid;
+                        $query = "SELECT uid, schedule.sid, term, day, start, end, course.cid, dept, courseNumber FROM enrolls, schedule, course WHERE schedule.sid=enrolls.sid AND course.cid=schedule.cid AND grade IS NULL AND enrolls.uid=" . $uid;
                         $result = mysqli_query($conn, $query);
 
                         if (mysqli_num_rows($result) > 0) {
