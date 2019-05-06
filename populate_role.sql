@@ -87,6 +87,22 @@ INSERT INTO role VALUES (
 );
 
 INSERT INTO role VALUES (
+    77777777, 'alumni'
+);
+
+INSERT INTO role VALUES (
+    77777777, 'master'
+);
+
+INSERT INTO role VALUES (
+    34567890, 'alumni'
+);
+
+INSERT INTO role VALUES (
+    34567890, 'phd'
+);
+
+INSERT INTO role VALUES (
     66661111, 
     'applicant'
 );

@@ -54,13 +54,15 @@ if (!$conn) {
             echo "<table class=\"table\">
                 <tr>
                     <th>Course</th>
-                    <th>Title</th>
-                    <th>Section</th>
+                    <th>Title</th>";
+            if(!in_array("alumni", $_SESSION["role"])){
+                echo "<th>Section</th>
                     <th>Term</th>
                     <th>Day</th>
                     <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Credits</th>
+                    <th>End Time</th>";
+            }
+            echo "<th>Credits</th>
                     <th>Grade</th>
                     <th></th>
                 </tr>";
@@ -68,11 +70,13 @@ if (!$conn) {
                 echo "<tr>";
                 echo "<td><a href=\"transcriptCourse.php?cid=" . $row["cid"] . "\">" . $row["dept"] . " " . $row["courseNumber"] . "</a></th>";
                 echo "<td>" . $row["title"] . "</td>";
-                echo "<td>" . $row["section"] . "</td>";
-                echo "<td>" . $row["term"] . "</td>";
-                echo "<td>" . $row["day"] . "</td>";
-                echo "<td>" . $row["start"] . "</td>";
-                echo "<td>" . $row["end"] . "</td>";
+                if(!in_array("alumni", $_SESSION["role"])) {
+                    echo "<td>" . $row["section"] . "</td>";
+                    echo "<td>" . $row["term"] . "</td>";
+                    echo "<td>" . $row["day"] . "</td>";
+                    echo "<td>" . $row["start"] . "</td>";
+                    echo "<td>" . $row["end"] . "</td>";
+                }
                 echo "<td>" . $row["credits"] . "</td>";
                 if ($row["grade"] !== null) {
                     echo "<td>" . $row["grade"] . "</td>";

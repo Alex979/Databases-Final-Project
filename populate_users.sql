@@ -203,6 +203,42 @@ INSERT INTO user VALUES (
     'snicks@gmail.com'
 );
 
+INSERT INTO user VALUES (
+    77777777,
+    'eclapton',
+    'password123',
+    'Eric',
+    'Clapton',
+    '309 Brandywine St',
+    'Saint Cloud',
+    'MN',
+    56301,
+    100.0,
+    0, 0, 0,
+    NULL,
+    0,
+    'Fall', 2012,
+    'eclapton@gmail.com'
+);
+
+INSERT INTO user VALUES (
+    34567890,
+    'kcobain',
+    'password123',
+    'Kurt',
+    'Cobain',
+    '309 Brandywine St',
+    'Saint Cloud',
+    'MN',
+    56301,
+    100.0,
+    0, 0, 0,
+    NULL,
+    0,
+    'Fall', 2012,
+    'kcobain@gmail.com'
+);
+
 
 INSERT INTO user(uid,username, password, fname, lname, street, city, state, zip) VALUES (
     55551111,
