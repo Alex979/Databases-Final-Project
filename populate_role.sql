@@ -71,7 +71,7 @@ INSERT INTO role VALUES (
     'applicant'
 );
 
-NSERT INTO role VALUES (
+INSERT INTO role VALUES (
     66661111, 
     'applicant'
 );
