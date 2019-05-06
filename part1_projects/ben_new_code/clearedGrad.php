@@ -29,7 +29,7 @@ session_start();
 				
 			if (!$conn) //Check if connection failed
 			{	
-				die("Connection failed: ".mysqli_connect_error());
+			  die("Connection failed: ".mysqli_connect_error());
 			}
 			echo '<td><form action="clearedGrad.php" method = "post">';
 			echo '<p>Term<p>';
@@ -38,9 +38,27 @@ session_start();
 		        echo '<input type="text" name="degree"><br>';
 			echo '<button class="btn btn-primary" type="submit">View </button>';
 			echo '</form>';
-				
-			$query = "SELECT * FROM role r, user s WHERE r.uid = s.uid AND r.type = 'student' AND s.clearedToGrad = 1";
-			$result = mysqli_query($conn,$query);
+			$degree = "";
+			$term = "";
+			$degree = $_POST["degree"];
+			$term = $_POST["term"];
+			$year = $_POST["year"];
+			if($degree == "" && $term == ""){
+			  $query = "SELECT * FROM role r, user s WHERE r.uid = s.uid AND r.type = 'student' AND s.clearedToGrad = 1";
+			  $result = mysqli_query($conn,$query);
+			}
+			else if($degree != "" && $term == ""){
+			  $query = "SELECT * FROM role r, user s WHERE r.uid = s.uid AND r.type = '$degree' AND s.clearedToGrad = 1";
+			  $result = mysqli_query($conn,$query);
+			}
+			else if($degree == "" && $term != "" && $year != ""){
+			  $query = "SELECT * FROM role r, user s WHERE r.uid = s.uid AND r.type = 'student' AND s.clearedToGrad = 1 AND s.admitTerm = '$term' AND s.admitYear = '$year'";
+			  $result = mysqli_query($conn,$query);
+			}
+			else if($degree != "" && $term != "" && $year != ""){
+			  $query = "SELECT * FROM role r, user s WHERE r.uid = s.uid AND r.type = '$degree' AND s.admitTerm = '$term' AND s.admitYear = '$year' AND s.clearedToGrad = 1";
+			  $result = mysqli_query($conn,$query);
+			}
 			if (mysqli_num_rows($result) > 0)
 			{
 					
