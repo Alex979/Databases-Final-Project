@@ -20,6 +20,11 @@ include('../FlatEarthSociety/public_html/navbar.php');
 <h1 class="text-primary">Assign an advisor to a student</h1>
  
  <?php
+	$role = $_SESSION['role'];
+	if($role != 'gs'){
+	  header("Location: ../FlatEarthSociety/public_html/dashboard.php");
+          exit();
+	}
 	
 	/* Create connection */
 	$servername = "127.0.0.1";

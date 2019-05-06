@@ -2,6 +2,10 @@
 session_start();
 $id = $_SESSION["id"];
 $role = $_SESSION["role"];
+if($role != 'student'){
+  header("Location: ../FlatEarthSociety/public_html/dashboard.php");
+  exit();
+}
 ?>
 <html>
 

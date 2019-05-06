@@ -81,7 +81,7 @@ if(isset($_POST['Admit'])){
       <div id="content">
 
         <!-- Topbar -->
-        <?php include('gsTopBar.php'); ?>
+       <?php include('../../FlatEarthSociety/public_html/navbar.php');?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->

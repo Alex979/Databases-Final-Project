@@ -129,7 +129,11 @@ if(isset($_POST['signup'])){
 
         
         $query = "INSERT INTO application_status (uid,ready_for_evaluation,admission_status,num_evaluations) VALUES ('$uid','no',' Application Materials Missing. Please View Above',0)";
+	$result = mysqli_query($conn,$query);
+
+	$query = "INSERT INTO transcript(uid, submitted, data) VALUES ('$uid',NULL, false)";
         $result = mysqli_query($conn,$query);
+
 	if($result) {
 		$subject = 'ARGS Login Information';
        		 $msg = 'Thank you signing up for the ARGS System. Please use your UID: '.$uid.'to login. Good Luck!';
@@ -138,7 +142,7 @@ if(isset($_POST['signup'])){
        	 	$ret = mail($email, $subject, $msg);
         	echo $ret;
         	if($ret){
-                	header('http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/dashboard.php');exit;
+		//	header('Location: http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/dashboard.php');exit;
         	}
 	} else {
 		echo "Error: " .$query . "<br/>" . mysqli_error($conn);
@@ -149,17 +153,16 @@ if(isset($_POST['signup'])){
         // $result = mysqli_query($conn,$query);
         $_SESSION['signedin']="true";
         $_SESSION['username']=$uname;
-        $_SESSION['uid']=$uid;
-        $_SESSION['role']='applicant';
+	$_SESSION['uid']=$uid;
+	$userRole = array('applicant');
+        $_SESSION['role']= $userRole;
 
 
-        $query = "INSERT INTO transcript VALUES ('$uid',false)";
-        $result = mysqli_query($conn,$query);
-        if(!$result){
+       if(!$result){
           echo "Error: " .$query . "<br/>" . mysqli_error($conn);
         }
         
-
+	header('Location: http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/dashboard.php');exit;
 
       }
 }

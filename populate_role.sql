@@ -65,3 +65,28 @@ INSERT INTO role VALUES (
 INSERT INTO role VALUES (
     87654321, 'master'
 );
+
+INSERT INTO role VALUES (
+    55551111, 
+    'applicant'
+);
+
+NSERT INTO role VALUES (
+    66661111, 
+    'applicant'
+);
+
+INSERT INTO role VALUES (
+    00001234, 
+    'applicant'
+);
+
+INSERT INTO role VALUES (
+    00001235, 
+    'applicant'
+);
+
+INSERT INTO role VALUES (
+    00001236, 
+    'applicant'
+);

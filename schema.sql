@@ -43,6 +43,12 @@ CREATE TABLE user (
     PRIMARY KEY (uid)
 );
 
+CREATE TABLE thesis (
+    uid INT,
+    paper LONGTEXT,
+    FOREIGN KEY (uid) REFERENCES user(uid)
+);
+
 -- Create role table
 CREATE TABLE role (
     uid INT,
@@ -164,6 +170,7 @@ CREATE TABLE application_info(
 CREATE TABLE transcript(
     uid int(8) not null,
     submitted boolean,
+    data BLOB,
     primary key(uid)
 );
 
@@ -219,7 +226,7 @@ CREATE TABLE faculty_evaluation(
     rec_advisor varchar(20) not null,
     reason varchar(50) not null,
     primary key(uid,fid),
-    foreign key(fid) references faculty(fid)
+    foreign key(fid) references role(uid)
 );
 
 -- Course Rating table
@@ -249,3 +256,4 @@ source populate_schedule.sql;
 source populate_enrolls.sql;
 source populate_formOne.sql;
 source populate_courseRatings.sql;
+source populate_applicant.sql;

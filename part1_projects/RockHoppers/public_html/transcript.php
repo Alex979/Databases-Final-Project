@@ -9,7 +9,8 @@
 		$transUploadErr = " *Please Select A File";
 
 		$file_path  = $_POST["transUpload"];
-		$blob = fopen($file_path, 'rb');
+		$blob = file_get_contents($file_path, true);
+		echo $blob;
 
 //		$sqll = "INSERT INTO files(mime,data) VALUES(:mime,:data)";
 		$sql = "INSERT INTO transcript(uid, data, submitted) VALUES($uid, $blob, 1)";
@@ -17,6 +18,7 @@
 		if($ret){
 			echo "New record created successfully <br/>";
 		} else {
+			echo $blob;
 			echo "Error: " .$query . "<br/>" . mysqli_error($conn);
 		}
 

@@ -348,7 +348,7 @@
 		}	
 	
     		if($ret){
-			echo "New record created successfully <br/>";
+			//echo "New record created successfully <br/>";
 		} else {
 			echo "Error: " .$query . "<br/>" . mysqli_error($conn);
 		}

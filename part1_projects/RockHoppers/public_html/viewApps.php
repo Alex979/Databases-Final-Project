@@ -34,7 +34,7 @@ include('connect.php');
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
-    	<?php include('saTopbar.php'); ?>
+    	<?php include('../../FlatEarthSociety/public_html/navbar.php');?>
       <!-- Main Content -->
       <?php 
       //$query = "SELECT a.uid, a.fname, a.lname, s.decision, s.admission_status, s.date_completed, s.num_evaluations FROM applicant as a, application_status as s WHERE a.uid=s.uid";
@@ -42,7 +42,7 @@ include('connect.php');
 
       if(isset($_POST['Update'])){
       	if($_POST['displayApps']=='complete'){
-      		$query = "SELECT a.uid, a.fname, a.lname, s.decision, s.admission_status, s.date_completed, s.num_evaluations FROM applicant as a, application_status as s WHERE a.uid=s.uid AND s.admission_status='complete'";
+      		$query = "SELECT a.uid, a.fname, a.lname, s.decision, s.admission_status, s.date_completed, s.num_evaluations FROM applicant as a, application_status as s WHERE a.uid=s.uid AND s.admission_status='Application Recieved and Decision Pending'";
       	}else{
       		$query = "SELECT a.uid, a.fname, a.lname, s.decision, s.admission_status, s.date_completed, s.num_evaluations FROM applicant as a, application_status as s WHERE a.uid=s.uid";
       	}

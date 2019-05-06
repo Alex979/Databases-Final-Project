@@ -34,7 +34,7 @@ include('connect.php');
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
-    	<?php include('gsTopBar.php'); ?>
+    	<?php include('../../FlatEarthSociety/public_html/navbar.php');?>
       <!-- Main Content -->
       <?php 
       //$query = "SELECT a.uid, a.fname, a.lname, s.decision, s.admission_status, s.date_completed, s.num_evaluations FROM applicant as a, application_status as s WHERE a.uid=s.uid";
@@ -44,7 +44,7 @@ include('connect.php');
       	if($_POST['displayApps']=='all'){
       		$query = "SELECT a.uid,a.fname,a.lname,t.submitted FROM applicant as a, transcript as t WHERE a.uid=t.uid";
       	}else if($_POST['displayApps']=='need'){
-      		$query = "SELECT a.uid,a.fname,a.lname,t.submitted FROM applicant as a, transcript as t WHERE a.uid=t.uid AND t.submitted=false";
+      		$query = "SELECT a.uid,a.fname,a.lname,t.submitted FROM applicant as a, transcript as t WHERE a.uid=t.uid AND t.submitted=0";
 
       	}
 

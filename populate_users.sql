@@ -161,3 +161,80 @@ INSERT INTO user VALUES (
     0,
     'Fall', 2017
 );
+
+
+INSERT INTO user(uid,username, password, fname, lname, street, city, state, zip) VALUES (
+    55551111,
+    'jLennon',
+    'password123',
+    'John',
+    'Lennon',
+    '2121 I St NW',
+    'Washington',
+    'DC',
+    20052,
+);
+
+INSERT INTO user(uid,username, password, fname, lname, street, city, state, zip) VALUES (
+    66661111,
+    'ringostar',
+    'password123',
+    'Ringo',
+    'Star',
+    '2121 I St NW',
+    'Washington',
+    'DC',
+    20052,
+);
+
+INSERT INTO user(uid,username, password, fname, lname, street, city, state, zip) VALUES (
+    00001234,
+    'lArmstrong',
+    'password123',
+    'Louis',
+    'Armstrong',
+    '2121 I St NW',
+    'Washington',
+    'DC',
+    20052,
+);
+
+INSERT INTO user VALUES (
+    00001235,
+    'afranklin',
+    'password123',
+    'Aretha',
+    'Franklin',
+    '2121 I St NW',
+    'Washington',
+    'DC',
+    20052,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    'Fall', 
+    2017
+);
+
+INSERT INTO user VALUES (
+    00001236,
+    'cSantana',
+    'password123',
+    'Carlos',
+    'Santana',
+    '2121 I St NW',
+    'Washington',
+    'DC',
+    20052,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    'Fall', 
+    2017
+);
