@@ -342,7 +342,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
             }
 
             echo "<h1 class=\"text-primary\">User List</h1>";
-            $query = "SELECT * FROM user INNER JOIN role ON user.uid = role.uid";
+            $query = "SELECT * FROM user";
             $result = mysqli_query($conn, $query);
             if (mysqli_num_rows($result) > 0) {
                 echo "<table class=\"table\">
@@ -357,7 +357,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
                     echo "<td>" . $row["fname"] . " " . $row["lname"] . " " . "</td>";
                     echo "<td>" . $row["uid"] . "</td>";
                     echo "<td>" . $row["street"] . ", " . $row["city"] . ", " . $row["state"] . " " . $row["zip"] . "</td>";
-                    echo "<td>" . $row["type"] . "</td>";
+                    echo "<td>";
+                    $role_query = "SELECT * FROM role WHERE uid=" . $row["uid"];
+                    $role_result = mysqli_query($conn, $role_query);
+                    $roles = array();
+                    if (mysqli_num_rows($role_result) > 0) {
+                        while ($role_row = mysqli_fetch_assoc($role_result)) {
+                            array_push($roles, $role_row["type"]);
+                        }
+                    }
+                    echo implode(', ', $roles);
+                    echo "</td>";
                     echo "</tr>";
                 }
                 echo "</table>";

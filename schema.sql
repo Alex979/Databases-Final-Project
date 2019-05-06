@@ -34,13 +34,14 @@ CREATE TABLE user (
     state VARCHAR(32),
     zip INT,
     balance float(20,2),
-    reviewForm int,
-    approveThesis int,
-    clearedToGrad int,
+    reviewForm int DEFAULT 0,
+    approveThesis int DEFAULT 0,
+    clearedToGrad int DEFAULT 0,
     advisorid int,
     needsCourseApproval int,
     admitTerm VARCHAR(8), -- Spring/Summer/Fall
     admitYear YEAR(4),
+    email VARCHAR(50),
     PRIMARY KEY (uid)
 );
 

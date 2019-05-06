@@ -114,7 +114,9 @@ if (!$conn) {
                 echo "<h2>Overall Rating: $averageRating stars</h2>";
             }
 
-            echo '<a href="submitRating.php?cid=' . $_GET["cid"] . '">Rate this course</a>';
+            if(in_array("student", $_SESSION["role"])){
+                echo '<a href="submitRating.php?cid=' . $_GET["cid"] . '">Rate this course</a>';
+            }
 
             // Load all ratings for this course and print them all
             $query = "SELECT * FROM courseRating WHERE cid=" . $_GET["cid"];

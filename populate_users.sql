@@ -13,28 +13,10 @@ INSERT INTO user VALUES (
     0,
     0,
     0,
-    55555555,
+    NULL,
     0,
-    'Fall', 2018
-);
-
-INSERT INTO user VALUES (
-    10101010,
-    'bgiangrasso',
-    'password123',
-    'Ben',
-    'Giangrasso',
-    '2121 I St NW',
-    'Washington',
-    'DC',
-    20052,
-    100.00,
-    0,
-    0,
-    0,
-    55555555,
-    0,
-    'Fall', 2017
+    'Fall', 2018,
+    'bholiday@gmail.com'
 );
 
 INSERT INTO user VALUES (
@@ -51,9 +33,10 @@ INSERT INTO user VALUES (
     0,
     0,
     0,
-    55555555,
+    NULL,
     0,
-    'Fall', 2019
+    'Fall', 2019,
+    'dkrall@gmail.com'
 );
 
 INSERT INTO user VALUES (
@@ -72,7 +55,8 @@ INSERT INTO user VALUES (
     0,
     NULL,
     0,
-    NULL, NULL
+    NULL, NULL,
+    'bnarahari@gmail.com'
 );
 
 INSERT INTO user VALUES (
@@ -91,7 +75,8 @@ INSERT INTO user VALUES (
     0,
     NULL,
     0,
-    NULL, NULL
+    NULL, NULL,
+    'hchoi@gmail.com'
 );
 
 INSERT INTO user VALUES (
@@ -106,26 +91,8 @@ INSERT INTO user VALUES (
     20147,
     100.00,
     0, 0, 0, NULL, 0,
-    NULL, NULL
-);
-
-INSERT INTO user VALUES (
-    55555555,
-    'advisor',
-    'password123',
-    'faculty',
-    'advisor',
-    '2121 I St NW',
-    'Washington',
-    'DC',
-    20052,
-    100.00,
-    0,
-    0,
-    0,
-    NULL,
-    0,
-    NULL, NULL
+    NULL, NULL,
+    'alexbroaddus1@gmail.com'
 );
 
 INSERT INTO user VALUES (
@@ -142,7 +109,8 @@ INSERT INTO user VALUES (
     0, 0, 0,
     NULL,
     1,
-    'Fall', 2019
+    'Fall', 2019,
+    'efitzgerald@gmail.com'
 );
 
 INSERT INTO user VALUES (
@@ -157,9 +125,28 @@ INSERT INTO user VALUES (
     11373,
     0.0,
     0, 0, 0,
-    55555555,
+    NULL,
     0,
-    'Fall', 2017
+    'Fall', 2017,
+    'ecassidy@gmail.com'
+);
+
+INSERT INTO user VALUES (
+    45678901,
+    'jhendrix',
+    'password123',
+    'Jimi',
+    'Hendrix',
+    '309 Brandywine St',
+    'Saint Cloud',
+    'MN',
+    56301,
+    100.0,
+    0, 0, 0,
+    NULL,
+    0,
+    'Fall', 2017,
+    'jhendrix@gmail.com'
 );
 
 
@@ -216,7 +203,8 @@ INSERT INTO user VALUES (
     0,
     0,
     'Fall', 
-    2017
+    2017,
+    'afranklin@gmail.com'
 );
 
 INSERT INTO user VALUES (
@@ -236,5 +224,6 @@ INSERT INTO user VALUES (
     0,
     0,
     'Fall', 
-    2017
+    2017,
+    'cSantana@gmail.com'
 );

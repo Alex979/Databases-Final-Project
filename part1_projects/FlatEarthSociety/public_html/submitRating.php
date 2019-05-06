@@ -4,6 +4,9 @@ session_start();
 if (empty($_SESSION["uid"])) {
     header("Location: login.php");
 }
+if(!in_array("student", $_SESSION["role"])){
+    header("Location: dashboard.php");
+}
 $uid = $_SESSION["uid"];
 
 $servername = "127.0.0.1";
@@ -57,6 +60,14 @@ if (!$conn) {
         }
         $row = mysqli_fetch_assoc($result);
         $courseName = $row["dept"] . " " . $row["courseNumber"];
+
+        // Check that user has taken this course
+        $query = "SELECT * FROM enrolls, schedule WHERE schedule.cid=$cid AND enrolls.sid=schedule.sid AND enrolls.uid=$uid AND grade IS NOT NULL";
+        $result = mysqli_query($conn, $query);
+        if (mysqli_num_rows($result) == 0) {
+            echo '<p class="text-danger">You cannot rate a course that you haven\'t already completed.</p>';
+            exit();
+        }
 
         // Check that user has not already submitted a rating for this course
         $query = "SELECT * FROM courseRating WHERE cid=$cid AND uid=$uid";
