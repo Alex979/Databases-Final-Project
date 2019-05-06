@@ -271,4 +271,61 @@ INSERT INTO application_status (uid,ready_for_evaluation,admission_status,decisi
     1
 );
 
+INSERT INTO faculty (fid,uname,fname,lname,department) VALUES (10101010, "bnarahari","Bhagirath","Narahari","CSCI");
+INSERT INTO faculty (fid,uname,fname,lname,department) VALUES (12121212, "hchoi","Choi", "Hyeong-Ah","CSCI");
+INSERT INTO faculty (fid,uname,fname,lname,department) VALUES (14141414,"twood","Wood","Tim","CSCI");
+
+INSERT INTO user VALUES (
+    14141414,
+    'twood',
+    'password123',
+    'Tim',
+    'Wood',
+    '2121 I St NW',
+    'Washington',
+    'DC',
+    20052,
+    0,
+    0,
+    0,
+    0,
+    NULL,
+    0,
+    NULL, NULL,
+    'twood@gmail.com'
+);
+
+
+INSERT INTO role VALUES (
+    14141414, 'faculty'
+);
+
+
+INSERT INTO faculty (fid,uname,fname,lname,department) VALUES (15151515,"rheller","Rachelle","Heller","CSCI");
+INSERT INTO user VALUES (
+    15151515,
+    'rheller',
+    'password123',
+    'Rachelle',
+    'Heller',
+    '2121 I St NW',
+    'Washington',
+    'DC',
+    20052,
+    0,
+    0,
+    0,
+    0,
+    NULL,
+    0,
+    NULL, NULL,
+    'rheller@gmail.com'
+);
+
+
+INSERT INTO role VALUES (
+    15151515, 'faculty'
+);
+
+
 
