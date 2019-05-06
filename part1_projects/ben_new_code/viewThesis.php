@@ -21,7 +21,9 @@
 	$username = "Team_Name";
 	$password = "p@ssW0RD";
 	$dbname = "Team_Name";	
-	
+	$fname = "";
+        $lname = "";
+        $paper = "";
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
 	if (!$conn) //Check if connection failed
 	{	
