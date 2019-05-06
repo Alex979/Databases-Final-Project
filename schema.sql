@@ -7,6 +7,8 @@ DROP TABLE IF EXISTS application_status;
 DROP TABLE IF EXISTS rec_letters;
 DROP TABLE IF EXISTS faculty_evaluation;
 DROP TABLE IF EXISTS faculty;
+DROP TABLE IF EXISTS courseRating;
+DROP TABLE IF EXISTS ratingReport;
 DROP TABLE IF EXISTS transcript;
 DROP TABLE IF EXISTS role;
 DROP TABLE IF EXISTS course;
@@ -16,6 +18,7 @@ DROP TABLE IF EXISTS formOne;
 DROP TABLE IF EXISTS formOneValid;
 DROP TABLE IF EXISTS courseRegistrationForm;
 DROP TABLE IF EXISTS thesis;
+
 SET foreign_key_checks = 1;
 
 
@@ -227,10 +230,31 @@ CREATE TABLE faculty_evaluation(
     foreign key(fid) references role(uid)
 );
 
+-- Course Rating table
+CREATE TABLE courseRating (
+    rating_id INT NOT NULL AUTO_INCREMENT,
+    uid INT,
+    cid INT,
+    rating INT,
+    comment text,
+    dateSubmitted DATE,
+    foreign key(uid) references user(uid),
+    foreign key(cid) references course(cid),
+    primary key(rating_id)
+);
+
+CREATE TABLE ratingReport (
+    rating_id INT,
+    uid INT,
+    foreign key(rating_id) references courseRating(rating_id) ON DELETE CASCADE,
+    foreign key(uid) references user(uid)
+);
+
 source populate_users.sql;
 source populate_role.sql;
 source populate_courses.sql;
 source populate_schedule.sql;
 source populate_enrolls.sql;
 source populate_formOne.sql;
+source populate_courseRatings.sql;
 source populate_applicant.sql;
