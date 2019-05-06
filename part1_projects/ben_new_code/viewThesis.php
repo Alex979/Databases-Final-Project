@@ -31,12 +31,12 @@
 	}
 	$uid = $_POST["uid"];
         echo '<p>uid: '.$uid.'</p>';
-  $query = "SELECT fname, lname FROM user WHERE uid = '$uid'";
+  $query = "SELECT * FROM user WHERE uid = '$uid'";
   $result = mysqli_query($conn,$query);
   while ($row = mysqli_fetch_assoc($result))
   {
-    $fname = $student_row["fname"];
-    $lname = $student_row["lname"];
+    $fname = $row["fname"];
+    $lname = $row["lname"];
   }
   echo "<h1 class='text-primary'>Thesis of ".$fname." ".$lname."</h1>";
   $student_query = "SELECT paper FROM thesis WHERE uid ='$uid'";
