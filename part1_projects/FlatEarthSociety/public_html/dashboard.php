@@ -87,7 +87,7 @@ function create_link($title, $description, $link_text, $url) {
                         create_link("Applicant List", "See a list of all current applicants.", "View applicants", "../../RockHoppers/public_html/viewApps.php");
                         create_link("Faculty List", "See a list of all current faculty.", "View faculty", "../../RockHoppers/public_html/viewFac.php");
                     }
-                    if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("faculty", $_SESSION["role"]) || in_array("advisor", $_SESSION["role"])) {
+                    if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"]) || in_array("advisor", $_SESSION["role"])) {
                         create_link("Manage", "Management panel for faculty and staff.", "Go to manage page", "manage.php");
                     }
                     if (in_array("applicant", $_SESSION["role"])) {
