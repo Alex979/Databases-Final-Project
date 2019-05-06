@@ -49,8 +49,18 @@ if (!$conn) {
     include "navbar.php";
     ?>
     <div class="container pt-3">
-        <h1 class="text-primary">Transcript</h1>
         <?php
+        // Get the users first and last name
+        $query = "SELECT fname, lname from user where uid=$uid";
+        $result = mysqli_query($conn, $query);
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            echo '<h1 class="text-primary">Transcript for ' . $row["fname"] . ' ' . $row["lname"] . '</h1>';
+        } else {
+            echo '<p class="text-danger">This student does not exist</p>';
+            exit();
+        }
+
         // Show the users currently enrolled courses and their grade if entered
         $query = "SELECT user.uid, fname, lname, schedule.sid, section, term, day, start, end, grade, course.cid, dept, courseNumber, title FROM enrolls, schedule, course, user WHERE schedule.sid=enrolls.sid AND course.cid=schedule.cid AND enrolls.uid=" . $uid . " AND user.uid=" . $uid . " ORDER BY term";
         $result = mysqli_query($conn, $query);
