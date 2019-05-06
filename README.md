@@ -66,7 +66,7 @@ score	for	admitted	applicants,	etc.	This	query	can	be	submitted	by	the GS.
 * Given	the	semester	or	year	or	degree	program,	generate	the	list	of	graduating	
 students	(i.e.,	those	cleared	for	graduation).	This	query	can	be	submitted	by	the	GS.
 
-  * **Ben - Add search query to clearedToGrad.php**
+  * **DONE**
 
 * Given	the	semester	or	year	or	degree	program,	generate	the	list	of	alumni	and	their	
 email	address. This	query	can	be	submitted	by	the	GS.
