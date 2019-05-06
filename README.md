@@ -39,14 +39,13 @@
 * Search	for	an	applicant	using	their	last	name	or	student	number.	This	query	can	be	
 submitted	by	the	GS	or	by	a	faculty	reviewer.
 
-  * **SELECT user.uid, role.type, fname, lname, approveThesis, clearedToGrad, needsCourseApproval, advisorid FROM user, role WHERE role.uid = user.uid AND role.type = 'applicant' AND (user.lname = '$lname' OR user.uid = '$uid');**
+  * **Arjun - Add an input field to applicant_display.php**
 
 * Update	applicant’s	academic	and	personal	information	– an	applicant	may	choose	to	
 update	their	information	at	any	time.	This	can	be	simplified	by	having	only	the	GS	
 perform	this	but	this	is	not	an	ideal	solution.	
 
-  * **Add editPersonalInfo.php to GS website.**
-
+  * **DONE**
 
 * Given	the	Semester,	or	Year	or	Degree	program,	generate	the	list	of	graduate	
 applicants.	This	query	can	be	submitted	by	the	GS.
@@ -56,14 +55,18 @@ applicants.	This	query	can	be	submitted	by	the	GS.
 * Given	the	semester	or	year	or	degree	program,	generate	the	list	of	admitted	students.	
 This	query	can be	submitted	by	the	GS.
 
+  * **Arjun - Add an input field to applicant_display.php and change role to also include 'gs'**
+
 * Given	the	semester	or	year	or	degree	program,	generate	statistics	such	as	total	
 number	of	applicants,	total	number	admitted,	total	number	rejected,	average	GRE	
 score	for	admitted	applicants,	etc.	This	query	can	be	submitted	by	the GS.
 
+  * 
+
 * Given	the	semester	or	year	or	degree	program,	generate	the	list	of	graduating	
 students	(i.e.,	those	cleared	for	graduation).	This	query	can	be	submitted	by	the	GS.
 
-  * **Add search query to clearedToGrad.php**
+  * **Ben - Add search query to clearedToGrad.php**
 
 * Given	the	semester	or	year	or	degree	program,	generate	the	list	of	alumni	and	their	
 email	address. This	query	can	be	submitted	by	the	GS.
