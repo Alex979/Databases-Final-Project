@@ -18,7 +18,11 @@ session_start();
 		<h2 class="text-primary">Students cleared for graduation</h2>
 		<?php
 			
-			
+			$role = $_SESSION['role'];
+	                if($role != 'gs'){
+	                  header("Location: ../FlatEarthSociety/public_html/dashboard.php");
+                          exit();
+	                }
 			/* Create connection */
 			$servername = "127.0.0.1";
 			$username = "Team_Name";
