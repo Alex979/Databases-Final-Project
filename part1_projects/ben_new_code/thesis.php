@@ -50,9 +50,9 @@ session_start();
 <?php
   echo '<h1 class="text-primary">Enter Your Thesis Below</h1>';
   echo '<form action="thesis.php" method="post" style="max-width: 500px" >';
-  echo '<div class="form-group"><label>Thesis</label><input class="form-control rounded-0" rows = "25" type="text" ID="paper" name="paper"></div>';
+  echo '<div class="form-group"><label>Thesis</label><textarea class="form-control rounded-0" rows = "25" type="text" ID="paper" name="paper"></textarea></div>';
   echo '<button class="btn btn-primary" style="vertical-align:middle"><span>Submit</span></button>';
-  echo '</form><br><br>';
+  echo '</form><br>';
 
   echo '<form action="../FlatEarthSociety/public_html/dashboard.php" method="post" style="max-width: 500px" >';
   echo '<button class="btn btn-primary" style="vertical-align:middle"><span>Go to Homepage</span></button>';
