@@ -436,7 +436,7 @@ $fid = $_SESSION["uid"];
                     <div class="row">
                     	<form method="post" action="statusUpdate.php?id=<?php echo $uid?>">
                 			<input type="submit" name="Admit" value="Admit" align="right">
-                			<input type="submit" name="Admit with Aid" value="Admit With Aid" align="right">
+                			
                       <input type="submit" name="Reject" value="Reject" align="right">
                 		</form>
                     </div>

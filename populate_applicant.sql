@@ -45,10 +45,13 @@ INSERT INTO subject_score VALUES (55551111,"GRE Quantitative",170);
 INSERT INTO transcript VALUES (55551111,1,NULL);
 
 
-INSERT INTO application_status (uid,ready_for_evaluation,admission_status,num_evaluations) VALUES (
+INSERT INTO application_status (uid,ready_for_evaluation,admission_status,decision, date_completed, avg_rank, num_evaluations) VALUES (
     55551111,
     "yes",
     "Application Recieved and Decision Pending",
+    NULL,
+    "2019/05/07",
+    NULL,
     0
 );
 
