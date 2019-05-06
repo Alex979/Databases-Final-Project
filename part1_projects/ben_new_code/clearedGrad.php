@@ -32,9 +32,9 @@ session_start();
 				die("Connection failed: ".mysqli_connect_error());
 			}
 			echo '<td><form action="clearedGrad.php" method = "post">';
-			echo '<p>Term<p><br>';
+			echo '<p>Term<p>';
 			echo '<input type="text" name="term"><br>';
-			echo '<p>Degree<p><br>';
+			echo '<p>Degree<p>';
 		        echo '<input type="text" name="degree"><br>';
 			echo '<button class="btn btn-primary" type="submit">View </button>';
 			echo '</form>';
