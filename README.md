@@ -95,6 +95,8 @@ GS	or	the	faculty	advisor.
 * For	a	faculty	instructor,	generate	their	course	roster	(i.e.,	list	of	students	enrolled	in	
 their	class)	given	a	specific	course	they	are	teaching.
 
+  * **DONE**
+
 # Dashboard Items
 
 **Systems Admin**
