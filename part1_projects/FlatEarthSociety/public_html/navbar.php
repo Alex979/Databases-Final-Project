@@ -18,6 +18,9 @@
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/ben_new_code/form1Submit.php\">Submit Form 1</a></li>");
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/ben_new_code/viewForm1.php\">View Form 1</a></li>");
             }
+            if (in_array("phd", $_SESSION["role"])) {
+              echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/ben_new_code/thesis.php\">Submit Thesis</a></li>");
+            }
             if (in_array("alumni", $_SESSION["role"])) {
                 echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/transcript.php\">Transcript</a></li>");
             }
@@ -31,6 +34,7 @@
               echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/ben_new_code/clearedGrad.php\">Graduation list</a></li>");
               echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/RockHoppers/public_html/displayAppStatus.php\">Application Statuses</a></li>");
               echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/RockHoppers/public_html/updateTranscript.php\">Update Transcript</a></li>");
+              echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/ben_new_code/approveThesis.php\">Thesis Submissions</a></li>");
             }
             if (in_array("system-admin", $_SESSION["role"])) {
               echo ("<li class=\"nav-item\"><a class=\"nav-link\" href=\"/~sp19DBp2-Team_Name/Team_Name/part1_projects/RockHoppers/public_html/viewApps.php\">Applicant List</a></li>");

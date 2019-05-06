@@ -64,9 +64,9 @@ function create_link($title, $description, $link_text, $url) {
                         create_link("Submit Form 1", "Submit the form required to graduate.", "Go to form 1", "../../ben_new_code/form1Submit.php");
                         create_link("View Form 1", "View your form 1 submission.", "View form 1", "../../ben_new_code/viewForm1.php");
                     }
-		    if (in_array("phd", $_SESSION["role"])) {
-			create_link("Submit Thesis", "Submit thesis required to graduate.", "Go to thesis submission", "../../ben_new_code/thesis.php");  
-		    }
+                    if (in_array("phd", $_SESSION["role"])) {
+                        create_link("Submit Thesis", "Submit thesis required to graduate.", "Go to thesis submission", "../../ben_new_code/thesis.php");  
+                    }
                     if (in_array("alumni", $_SESSION["role"])) {
                         create_link("Transcript", "View the courses you currently are taken and have taken in the past.", "View transcript", "transcript.php");
                     }
@@ -80,7 +80,7 @@ function create_link($title, $description, $link_text, $url) {
                         create_link("Graduation list", "View list of students that are cleared to graduate.", "Go to graduation list", "../../ben_new_code/clearedGrad.php");
                         create_link("Application Statuses", "View the application status of all current applicants.", "View application statuses", "../../RockHoppers/public_html/displayAppStatus.php");
                         create_link("Update Transcript", "Update transcript.", "Update transcript", "../../RockHoppers/public_html/updateTranscript.php");
-			create_link("Thesis Submissions", "View the students that have submitted a thesis.", "View students", "../../ben_new_code/approveThesis.php");
+			            create_link("Thesis Submissions", "View the students that have submitted a thesis.", "View students", "../../ben_new_code/approveThesis.php");
                     }
                     if (in_array("system-admin", $_SESSION["role"])) {
                         create_link("Applicant List", "See a list of all current applicants.", "View applicants", "../../RockHoppers/public_html/viewApps.php");

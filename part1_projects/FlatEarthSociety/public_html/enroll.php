@@ -27,6 +27,7 @@ if (mysqli_num_rows($result) > 0) {
     if((int)$row["needsCourseApproval"] == 1) {
         // If course approval is needed, redirect to form submission page
         header("Location: courseRegistrationForm.php");
+        exit();
     }
 }
 ?>

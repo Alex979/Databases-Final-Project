@@ -27,14 +27,6 @@ INSERT INTO role VALUES (
 );
 
 INSERT INTO role VALUES (
-    10101010, 'student'
-);
-
-INSERT INTO role VALUES (
-    10101010, 'phd'
-);
-
-INSERT INTO role VALUES (
     88888888, 'master'
 );
 
@@ -44,10 +36,6 @@ INSERT INTO role VALUES (
 
 INSERT INTO role VALUES (
     99999999, 'phd'
-);
-
-INSERT INTO role VALUES (
-    55555555, 'advisor'
 );
 
 INSERT INTO role VALUES (
@@ -67,12 +55,20 @@ INSERT INTO role VALUES (
 );
 
 INSERT INTO role VALUES (
-    55551111, 
-    'applicant'
+    45678901, 'student'
+);
+
+INSERT INTO role VALUES (
+    45678901, 'master'
 );
 
 INSERT INTO role VALUES (
     66661111, 
+    'applicant'
+);
+
+INSERT INTO role VALUES (
+    55551111, 
     'applicant'
 );
 
