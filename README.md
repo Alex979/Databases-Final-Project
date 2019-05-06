@@ -50,7 +50,7 @@ perform	this	but	this	is	not	an	ideal	solution.
 * Given	the	Semester,	or	Year	or	Degree	program,	generate	the	list	of	graduate	
 applicants.	This	query	can	be	submitted	by	the	GS.
 
-  * **ALEX DO THIS**
+  * 
 
 * Given	the	semester	or	year	or	degree	program,	generate	the	list	of	admitted	students.	
 This	query	can be	submitted	by	the	GS.

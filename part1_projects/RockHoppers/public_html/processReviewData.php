@@ -2,7 +2,7 @@
 
 	session_start();
 	include('connect.php');
-	$fid = $_SESSION["fid"];
+	$fid = $_SESSION["uid"];
 	$uid = $_POST["uid"];
 	$admitted = $_POST["admitCategory"];
 	$deficiencies = $_POST["deficiency"];
@@ -26,6 +26,11 @@
 	{
 		$ranking = 3;
 	}
+
+	//:w
+	//in_array("faculty", $_SESSION["role"])
+
+
 	$query = "INSERT INTO faculty_evaluation VALUES ('$uid','$fid', '$comments', '$ranking', '$recAdvisor', '$reason')";
 	$result = mysqli_query($conn,$query);
 

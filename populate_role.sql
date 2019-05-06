@@ -129,3 +129,8 @@ INSERT INTO role VALUES (
     00001236, 
     'applicant'
 );
+
+INSERT INTO role VALUES (
+    45454545,
+    'cac'
+);

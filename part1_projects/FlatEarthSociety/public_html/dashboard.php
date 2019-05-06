@@ -70,7 +70,7 @@ function create_link($title, $description, $link_text, $url) {
                     if (in_array("alumni", $_SESSION["role"])) {
                         create_link("Transcript", "View the courses you currently are taken and have taken in the past.", "View transcript", "transcript.php");
                     }
-                    if (in_array("faculty", $_SESSION["role"])) {
+                    if (in_array("faculty", $_SESSION["role"]) || in_array("cac", $_SESSION["role"])) {
                         create_link("Courses", "View all the courses offerred.", "Go to course list", "courses.php");
                         create_link("Grades", "View the courses you teach and assign grades to students.", "View courses you teach", "gradeCourses.php");
                         create_link("Applicant Review", "See a list of student applicants and review them.", "View applicants", "../../RockHoppers/public_html/applicant_display.php");
