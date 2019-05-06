@@ -38,7 +38,7 @@ echo '
                   <th>Last Name</th>
                   <th></th>
               </tr>';
-          $query = "select user.uid, fname, lname from user, thesis where user.uid = thesis.uid";
+          $query = "select user.uid, fname, lname from user, thesis where user.uid = thesis.uid and approveThesis = 0";
           $result = mysqli_query($conn, $query);
           if (mysqli_num_rows($result) > 0) {
               while ($row = mysqli_fetch_assoc($result)) {
