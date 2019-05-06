@@ -345,7 +345,7 @@ if(isset($_POST['Admit'])){
                   <div class="card-body w-100 p-3"">
                   	<div class="row">
                   		<?php
-                  		$query = "SELECT fe.comments,fe.reason, fe.ranking,fe.rec_advisor,f.fname,f.lname FROM faculty_evaluation as fe,faculty as f WHERE uid='$uid' AND fe.fid=f.fid";
+                  		$query = "SELECT fe.comments,fe.reason, fe.ranking,fe.rec_advisor,f.fname,f.lname, r.uid FROM faculty_evaluation as fe, r as role WHERE uid='$uid' AND fe.fid=r.uid";
 					    $result = mysqli_query($conn,$query);
 
 					    if(mysqli_num_rows($result) >= 0){
