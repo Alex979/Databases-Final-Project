@@ -100,6 +100,26 @@ INSERT INTO user VALUES (
 );
 
 INSERT INTO user VALUES (
+    45454545,
+    'jfisher',
+    'password123',
+    'Jason',
+    'Fisher',
+    '2121 I St NW',
+    'Washington',
+    'DC',
+    20052,
+    100.00,
+    0,
+    0,
+    0,
+    NULL,
+    0,
+    NULL, NULL,
+    'jfisher@gmail.com'
+);
+
+INSERT INTO user VALUES (
     43782859,
     'abroaddus',
     'password123',

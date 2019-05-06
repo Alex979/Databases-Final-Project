@@ -1,5 +1,5 @@
-<?php  
-session_start(); 
+<?php session_start(); 
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +42,7 @@ table, th, td {
       <div id="content">
 
         <!-- Topbar -->
-       <?php include('../../FlatEarthSociety/public_html/navbar.php');?>
+        <?php include('../../FlatEarthSociety/public_html/navbar.php');?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -51,17 +51,10 @@ table, th, td {
           <!-- Page Heading -->
          <!--  <h1 class="h3 mb-4 text-gray-800">Application</h1> -->
           <?php
-
-
       $uid = $_POST["student"];
-      $uidString = $uid;
-
-
+      $uidString = (String)$uid;
       
-
       include('connect.php');
-
-
       $query = "SELECT * FROM applicant WHERE uid = '$uid'";
       $result = mysqli_query($conn,$query);
       $applicant = mysqli_fetch_assoc($result);
@@ -102,19 +95,15 @@ table, th, td {
                 <a href="#facEval" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="facEval">
                   <h6 class="m-0 font-weight-bold text-primary">Faculty Evalutations</h6>
                 </a>
-
                 <!-- Card Content - Collapse -->
                 <div class="collapse" id="facEval">
                   <div class="card-body w-100 p-3"">
                     <div class="row">
                       <?php
-                      $query = "SELECT fe.comments,fe.reason, fe.ranking,fe.rec_advisor,f.fname,f.lname FROM faculty_evaluation as fe,user as f WHERE uid='$uid' AND fe.fid=f.uid";
+                      $query = "SELECT fe.comments,fe.reason, fe.ranking,fe.rec_advisor,f.fname,f.lname FROM faculty_evaluation as fe,faculty as f WHERE uid='$uid' AND fe.fid=f.fid";
               $result = mysqli_query($conn,$query);
-
               if(mysqli_num_rows($result) >= 0){
-
                   while($rec = mysqli_fetch_assoc($result)){
-
                     $facFname = $rec['fname'];
                   $facLname = $rec['lname'];
                   $facDept = $rec['department'];
@@ -122,7 +111,6 @@ table, th, td {
                   $reason = $rec['reason'];
                   $rank = $rec['ranking'];
                   $rec_advisor = $rec['rec_advisor'];
-
                   echo 'Faculty Reviewer (from '.$facDept.' department):<br/>';
                   echo 'Name: '.$facLname.', '.$facFname.'<br/>';
                   echo 'Comments:<br/>'.$comments.'<br/>';
@@ -143,8 +131,6 @@ table, th, td {
                   
                   
                   echo 'Reccomended advisor:<br/>'.$rec_advisor.'<br/><br/>';
-
-
                   }
                   
               }
@@ -199,7 +185,7 @@ table, th, td {
       {
         echo 'Masters: <br />   GPA: '.$MAGpa.'<br/>Major: '.$MADegree.'<br/>Year: '.$MADate.'<br/>University: '.$MASchool.'<br />';
       }
-      echo 'Bachelors: <br />  GPA: '.$bachGpa.'<br/>Major: '.$bachDegree.'<br/>Year: '.$bachDate.'<br/>University: '.$bachSchool.'<br />';
+      echo 'BS/BA: <br />  GPA: '.$bachGpa.'<br/>Major: '.$bachDegree.'<br/>Year: '.$bachDate.'<br/>University: '.$bachSchool.'<br />';
       
       echo 'Interests: '.$interest.'<br />';
       echo 'Experience: '.$experience.'<br />';
@@ -235,15 +221,13 @@ table, th, td {
       Recommended Advisor: 
     <select name = "advisor">
         <?php 
-
-            $query4 = "SELECT * FROM role WHERE type='advisor'";
+            $query4 = "SELECT * FROM faculty WHERE department='$major'";
             $result4 = mysqli_query($conn,$query4);
             if(mysqli_num_rows($result4) >= 0){
               while($advisors = mysqli_fetch_assoc($result4)){
                  echo '<option value='.$advisors["fname"].' '.$advisors["lname"].'>'.$advisors["fname"].' '.$advisors["lname"].'</option>';
         }
       }
-
         ?>
     </select><br /><br />
     <?php 
@@ -253,71 +237,69 @@ table, th, td {
         $numEvals=$row5["num_evaluations"];
         
           $query6="SELECT * FROM rec_letters where uid = '$uid'";
-	  $result6=mysqli_query($conn,$query6);
-	  while(mysqli_num_rows($result6)>0){
-		$row6 = mysqli_fetch_assoc($result6);
-	  	if($row6["complete"] == 1){
-			echo 'Letter of Recomendation: <br />';
-           		echo 'Sender: '.$row6["rec_title"].' '.$row6["rec_fname"].' '.$row6["rec_lname"].'<br />';
-           		echo 'Sender Email '.$row6["rec_email"].'<br />';
-           		echo 'Sender Affiliation: '.$row6["rec_affiliation"].'<br />';
-			echo 'Contents: '.$row6["reccomendation"].'<br /><br />';
+          $result6=mysqli_query($conn,$query6);
+          $row6 = mysqli_fetch_assoc($result6);
+          if($row6["complete"] == 1){
+          echo 'Letter of Recomendation: <br />';
+          echo 'Sender: '.$row6["rec_title"].' '.$row6["rec_fname"].' '.$row6["rec_lname"].'<br />';
+          echo 'Sender Email '.$row6["rec_email"].'<br />';
+          echo 'Sender Affiliation: '.$row6["rec_affiliation"].'<br />';
+          echo 'Contents: '.$row6["reccomendation"].'<br /><br />';
+          if($row6["rating"]!=NULL)
+          {
+            echo 'Rating: '.$row6["rating"].'<br />';
+          }
+          if($row6["generic"]!=NULL)
+          {
+            echo 'Generic: '.$row6["generic"].'<br />';
+          }
+          if($row6["credible"]!=NULL)
+          {
+            echo 'Credible: '.$row6["credible"].'<br /><br />';
+	  }
 
-
-			if($row6["rating"]!=NULL)
-         		 {			
-          			  echo 'Rating: '.$row6["rating"].'<br />';
-         		 }
-         		 if($row6["generic"]!=NULL)
-          		 {
-            			echo 'Generic: '.$row6["generic"].'<br />';
-          		}
-          		if($row6["credible"]!=NULL)
-          		{
-            			echo 'Credible: '.$row6["credible"].'<br /><br />';
-          		}
-
-
-			if($row6["rating"]==NULL){  ?>
-			<input type = "hidden" name ="processLetter" value = "yes">
-            		Please rate this letter: <br />
-            		Rating: 
-            		<select name = "letterRating">
-             		 <option value="5">5 (best)</option>
-              		 <option value="4">4</option>
-              		 <option value="3">3</option>
-             		 <option value="2">2</option>
-             		 <option value="1">1 (worst)</option>
-           	         </select>
-            		Generic: 
-           		 <select name = "generic">
-             		    <option value="yes">Yes</option>
-             		    <option value="no">No</option>
-          		  </select>
-            		Credible: 
-           		 <select name = "credible">
-             		    <option value="yes">Yes</option>
-            		    <option value="no">No</option>
-          		  </select>
-          	          <br /><br />
-			<button type ="submit" class="btn btn-primary" name="submit" value = "Submit"></button>
-			<?php	}
-		}
-	  
-	  }  ?>
-
-	<form method = "post" action="updateDecision.php">
-    		<input type = "hidden" name = "uid" value = <?php echo $uid; ?>>
-    		<input type = submit name = "decision" value = "admit with aid">
-   		 <input type = submit name = "decision" value = "admit">
-    		<input type = submit name = "decision" value = "reject">
+          if($numEvals>1 && in_array("faculty", $_SESSION["role"]) && $row6["rating"]==NULL)
+          { ?>
+            <input type = "hidden" name ="processLetter" value = "yes">
+            Please rate this letter: <br />
+            Rating: 
+            <select name = "letterRating">
+              <option value="5">5 (best)</option>
+              <option value="4">4</option>
+              <option value="3">3</option>
+              <option value="2">2</option>
+              <option value="1">1 (worst)</option>
+            </select>
+            Generic: 
+            <select name = "generic">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+            Credible: 
+            <select name = "credible">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+            <br /><br />
+    <?php
+          }
+        }
+    ?>
+		<input type ="submit" name="submit" value = "Submit">
 	</form>
-
-<?php
-      } 
-   ?>   
-     
-
+<?php }
+  elseif(in_array("cac", $_SESSION["role"]))
+  {
+?>
+  <form method = "post" action="updateDecision.php">
+    <input type = "hidden" name = "uid" value = <?php echo $uid; ?>>
+    <input type = submit name = "decision" value = "admit with aid">
+    <input type = submit name = "decision" value = "admit">
+    <input type = submit name = "decision" value = "reject">
+</form>
+  <?php 
+}
+ ?>
 </td>
 </tr>
 </table>

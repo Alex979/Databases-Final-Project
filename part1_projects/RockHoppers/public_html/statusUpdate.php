@@ -7,6 +7,7 @@ include('connect.php');
 if(isset($_POST['Admit'])){
 
 	$uid=$_GET['id'];
+	$fid = $_SESSION["uid"];
 	$update = "UPDATE application_status SET admission_status='Admit' WHERE uid='$uid'";
 	$result = mysqli_query($conn,$update);
 	
@@ -113,7 +114,8 @@ if(isset($_POST['Admit'])){
       if(!isset($_POST["student"])){
       	header("location:displayAppStatus.php");exit;
       }
-      $uid = $_POST["student"];
+$uid = $_POST["student"];
+$fid = $_SESSION["uid"];
       $_SESSION['applicant-uid']=$uid;
       $uidString = (String)$uid;
 
@@ -345,7 +347,7 @@ if(isset($_POST['Admit'])){
                   <div class="card-body w-100 p-3"">
                   	<div class="row">
                   		<?php
-                  		$query = "SELECT fe.comments,fe.reason, fe.ranking,fe.rec_advisor,f.fname,f.lname, r.uid FROM faculty_evaluation as fe, r as role WHERE uid='$uid' AND fe.fid=r.uid";
+					    $query = "SELECT fe.comments,fe.reason, fe.ranking,fe.rec_advisor,f.fname,f.lname FROM faculty_evaluation as fe, faculty as f WHERE fe.uid='$uid' AND fe.fid=f.fid";
 					    $result = mysqli_query($conn,$query);
 
 					    if(mysqli_num_rows($result) >= 0){
