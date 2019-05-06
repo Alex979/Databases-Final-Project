@@ -10,11 +10,9 @@
   }
 
   if(isset($_POST['acceptAdmission'])){
-    $successMessage =  " You are now a Student";
-
-    $query = "SELECT uid from applicant WHERE email='$email'";
-    $result = mysqli_query($conn, $query);
-    $uid = mysqli_fetch_assoc($result);
+   $successMessage =  " You are now a Student";
+   $uid = $_POST['uid'];
+   echo $uid;
 
     //change role to student
     $email = $_POST["email"];
@@ -29,7 +27,7 @@
    $result = mysqli_query($conn, $query); 
 
 
-    header('Location: http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/dashboard.php');exit;
+    header('Location: http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/login.php');
 
   }
 ?>
@@ -67,8 +65,6 @@
         <!-- Main Content -->
         <div id="content">
 
-          <!-- Topbar -->
-          <?php include('../../FlatEarthSociety/public_html/navbar.php'); ?>
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->
@@ -156,8 +152,9 @@
                           <label for="Email">Email</label><span class="text-danger">
                           <input type="text" class="form-control" id="Email" name="Email">
                         </div>
-                        <div class="form-group col-md-6">
-                          <input type="checkBox" class="form-control" id="recAffiliation" name="recAffiliation"><label for="recAffiliation">I Accept the Terms and Conditions</label>
+			<div class="form-group col-md-6">
+			  <label for="Email">UID</label><span class="text-danger">
+                          <input type="text" class="form-control" id="uid" name="uid">
                         </div>
                       </div>
                       <button type="submit" name="acceptAdmission" class="btn btn-primary">Accept Addmission</button>
