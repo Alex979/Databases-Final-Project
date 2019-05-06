@@ -190,6 +190,53 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
                 echo '<p>There are no registration forms that require your approval.</p>';
             }
         }
+        if (in_array("gs", $_SESSION["role"])) {
+            echo '
+            <h1 class="text-primary">Advisee list</h1>
+            <form style="max-width: 500px" method="post">
+                <input type="hidden" name="action" value="show-advisee-list" />
+                <div class="form-group">
+                    <label>Advisor</label>
+                    <select class="form-control" name="advisor">';
+            
+            $query = "SELECT * FROM user, role WHERE user.uid=role.uid AND role.type='advisor'";
+            $result = mysqli_query($conn, $query);
+
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<option value="' . $row["uid"] . '">' . $row["fname"] . ' ' . $row["lname"] . '</option>';
+                }
+            }
+
+            echo '</select>
+                </div>
+                <button type="submit" class="btn btn-primary">Show advisees</button>
+            </form>
+            <br>';
+
+            if(!empty($_POST["action"]) && $_POST["action"] == "show-advisee-list" && !empty($_POST["advisor"])){
+                echo '<table class="table">
+                    <tr>
+                        <th>UID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                    </tr>';
+                $query = "select uid, fname, lname from user where advisorid=" . $_POST["advisor"];
+                $result = mysqli_query($conn, $query);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '
+                        <tr>
+                            <td>' . $row["uid"] . '</td>
+                            <td>' . $row["fname"] . '</td>
+                            <td>' . $row["lname"] . '</td>
+                        </tr>
+                        ';
+                    }
+                }
+                echo '</table>';
+            }
+        }
         ?>
         <?php
         if (in_array("system-admin", $_SESSION["role"])) {
@@ -242,7 +289,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nuid"])) {
                     if(isset($userAddSuccess)){echo "<p class=\"text-success\">" . $userAddSuccess . "</p>";}
                     if(isset($userAddFail)){echo "<p class=\"text-danger\">" . $userAddFail . "</p>";}
                 }
-        if (in_array("system-admin", $_SESSION["role"]) || in_array("gs", $_SESSION["role"])) {
+        if (in_array("system-admin", $_SESSION["role"])) {
             echo "<h1 class=\"text-primary\">Reported course reviews</h1>";
             $query = "SELECT courseRating.uid, fname, lname, ratingReport.rating_id, rating, comment, COUNT(ratingReport.rating_id) FROM ratingReport, courseRating, user WHERE user.uid=courseRating.uid AND ratingReport.rating_id=courseRating.rating_id GROUP BY courseRating.rating_id ORDER BY COUNT(ratingReport.rating_id) DESC";
             $result = mysqli_query($conn, $query);

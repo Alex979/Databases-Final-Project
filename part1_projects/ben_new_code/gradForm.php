@@ -17,11 +17,6 @@ session_start();
 <body>
   <?php
   include('../FlatEarthSociety/public_html/navbar.php');
-  $role = $_SESSION['role'];
-	if($role != 'student'){
-	  header("Location: ../FlatEarthSociety/public_html/dashboard.php");
-    exit();
-	}
   ?>
   <div class="container mt-3">
     <h1 class="text-primary">Apply to Graduate</h1>

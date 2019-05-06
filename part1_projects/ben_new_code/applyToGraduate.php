@@ -40,11 +40,6 @@ session_start();
     </form>
 
     <?php
-      $role = $_SESSION['role'];
-      if($role != 'student'){
-        header("Location: ../FlatEarthSociety/public_html/dashboard.php");
-        exit();
-      }
     $servername = "127.0.0.1";
     $username = "Team_Name";
     $password = "p@ssW0RD";
