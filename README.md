@@ -1,6 +1,81 @@
-# URL
+# Databases-Final-Project
 
-<a href="http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/login.php"> Website </a>
+<a href="http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/login.php"> View Site Here</a>
+
+## Test Logins
+#### Applicants
+* John Lennon
+  * UID: 55551111
+  * Password: password123
+* Ringo Starr
+  * UID: 66661111
+  * Password: password123
+* Armstrong, Louis
+  * UID: 00001234
+  * Password: password123
+* Franklin, Aretha
+  * UID: 00001235
+  * Password: password123
+* Santana, Carlos
+  * UID: 00001236
+  * Password: password123
+#### Students
+* Holiday, Billie
+  * UID: 88888888
+  * Password: password123
+* Krall, Diana
+  * UID: 99999999
+  * Password: password123
+* Fitzgerald, Ella
+  * UID: 23456789
+  * Password: password123
+* Cassidy, Eva
+  * UID: 87654321
+  * Password: password123
+* Hendrix, Jimi
+  * UID: 45678901
+  * Password: password123
+* McCartney, Paul
+  * UID: 55555555
+  * Password: password123
+* Harrison, George
+  * UID: 66666666 
+  * Password: password123
+* Nicks, Stevie
+  * UID: 12345678
+  * Password: password123
+#### Alumni
+* Clapton, Eric
+  * UID: 77777777
+  * Password: password123
+* Cobain, Kurt
+  * UID: 34567890
+  * Password: password123
+#### Graduate Secretary
+* Vijay, Arjun
+  * UID: 13131313
+  * Password: password123
+#### Sys Admin
+* Broaddus, Alex
+  * UID: 43782859
+  * Password: password123
+#### Faculty
+* Narahari, Bhagirath
+  * UID: 10101010
+  * Password: password123
+* Choi, Hyeong-Ah
+  * UID: 12121212
+  * Password: password123
+* Wood, Tim
+  * UID: 14141414
+  * Password: password123
+* Keller, Rachelle
+  * UID: 15151515
+  * Password: password123
+#### CAC
+* Fisher, Jason
+  * UID: 45454545
+  * Password: password123
 
 # Team_Name
 
