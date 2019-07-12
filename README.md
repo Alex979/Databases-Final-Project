@@ -1,6 +1,6 @@
 # Databases-Final-Project
 
-<a href="http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/login.php"> View Site Here</a>
+<a target="_blank" href="http://gwupyterhub.seas.gwu.edu/~sp19DBp2-Team_Name/Team_Name/part1_projects/FlatEarthSociety/public_html/login.php"> View Site Here</a>
 
 ## Test Logins
 #### Applicants
